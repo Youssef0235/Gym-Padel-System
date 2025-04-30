@@ -1,0 +1,35 @@
+{
+    "1": {
+        "Assigned Classes": [],
+        "Class": "Yoga",
+        "Day": 10,
+        "First Name": "Ahmed",
+        "ID": 1,
+        "Last Name": "Sayed",
+        "Middle Name": "Mohamed",
+        "Month": 5,
+        "Year": 2000
+    },
+    "2": {
+        "Assigned Classes": [],
+        "Class": "Dance",
+        "Day": 5,
+        "First Name": "Badr",
+        "ID": 2,
+        "Last Name": "Khaled",
+        "Middle Name": "Ashraf",
+        "Month": 11,
+        "Year": 1990
+    },
+    "3": {
+        "Assigned Classes": [],
+        "Class": "Pilates",
+        "Day": 14,
+        "First Name": "Karim",
+        "ID": 3,
+        "Last Name": "Medhat",
+        "Middle Name": "Hamed",
+        "Month": 2,
+        "Year": 1995
+    }
+}

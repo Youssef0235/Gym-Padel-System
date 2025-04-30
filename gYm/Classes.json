@@ -1,0 +1,34 @@
+{
+    "Cardio": {
+        "Capacity": 0,
+        "Class ID": 1,
+        "Coach ID": 1,
+        "Day": "Friday",
+        "Members": [],
+        "Time": "8 PM"
+    },
+    "Dance": {
+        "Capacity": 0,
+        "Class ID": 2,
+        "Coach ID": 2,
+        "Day": "Friday",
+        "Members": [],
+        "Time": "6 PM"
+    },
+    "Pilates": {
+        "Capacity": 0,
+        "Class ID": 3,
+        "Coach ID": 3,
+        "Day": "Wednesday",
+        "Members": [],
+        "Time": "10 AM"
+    },
+    "Yoga": {
+        "Capacity": 1,
+        "Class ID": 4,
+        "Coach ID": 4,
+        "Day": "Monday",
+        "Members": [],
+        "Time": "7 PM"
+    }
+}
