@@ -96,6 +96,7 @@ void to_json(json& j, const ClassInfo& u)
 	{
 		{"Day", u.getClassDay()},
 		{"Time", u.getClassTime()},
+		{"Name", u.getClassName()},
 		{"Capacity", u.getClassCapacity()},
 		{"Members", u.getClassMembers()},
 	    {"Class ID",u.getCoachId()},
@@ -110,6 +111,7 @@ void from_json(const json& j, ClassInfo& u)
 	{
 		j.at("Day").get<string>(),
 		j.at("Time").get<string>(),
+		j.at("Name").get<string>(),
 		j.at("Capacity").get<int>(),
 		j.at("Members").get<set<Member>>(),
 		j.at("Class ID").get<long long>(),

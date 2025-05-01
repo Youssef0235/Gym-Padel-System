@@ -4,7 +4,7 @@ ClassInfo::ClassInfo() : classCapacity(0), classId(0), coachId(0)
 {
 }
 
-ClassInfo::ClassInfo(string ClassDay, string ClassTime, int ClassCapacity, set<Member>ClassMembers, long long ClassId, long long CoachId)
+ClassInfo::ClassInfo(string ClassDay, string ClassTime, string ClassName, int ClassCapacity, set<Member>ClassMembers, long long ClassId, long long CoachId)
 {
 	classId = ClassId;
 	classDay = ClassDay;
@@ -12,6 +12,7 @@ ClassInfo::ClassInfo(string ClassDay, string ClassTime, int ClassCapacity, set<M
 	coachId = CoachId;
 	classCapacity = ClassCapacity;
 	classMembers = ClassMembers;
+	className = ClassName;
 }
 
 void ClassInfo::setClassId(long long ClassId)
@@ -44,6 +45,11 @@ void ClassInfo::setClassMembers(set<Member> ClassMembers)
 	classMembers = ClassMembers;
 }
 
+void ClassInfo::setClassName(string ClassName)
+{
+	className = ClassName;
+}
+
 long long ClassInfo::getClassId() const
 {
 	return classId;
@@ -72,6 +78,11 @@ int ClassInfo::getClassCapacity() const
 set<Member> ClassInfo::getClassMembers() const
 {
 	return classMembers;
+}
+
+string ClassInfo::getClassName() const
+{
+	return className;
 }
 
 void ClassInfo::addMember(const Member& member)

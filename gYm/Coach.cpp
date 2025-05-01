@@ -46,3 +46,10 @@ vector<ClassInfo> Coach::getAssignedClasses() const
 {
 	return assignedClasses;
 }
+
+void Coach::displayClasses()
+{
+	for (auto x : assignedClasses)
+		cout << x.getClassName() << " ";
+	cout << "\n";
+}

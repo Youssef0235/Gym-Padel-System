@@ -5,6 +5,7 @@
         "Coach ID": 1,
         "Day": "Friday",
         "Members": [],
+        "Name": "Cardio",
         "Time": "8 PM"
     },
     "Dance": {
@@ -13,6 +14,7 @@
         "Coach ID": 2,
         "Day": "Friday",
         "Members": [],
+        "Name": "Dance",
         "Time": "6 PM"
     },
     "Pilates": {
@@ -21,6 +23,7 @@
         "Coach ID": 3,
         "Day": "Wednesday",
         "Members": [],
+        "Name": "Pilates",
         "Time": "10 AM"
     },
     "Yoga": {
@@ -29,6 +32,7 @@
         "Coach ID": 4,
         "Day": "Monday",
         "Members": [],
+        "Name": "Yoga",
         "Time": "7 PM"
     }
 }
