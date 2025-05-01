@@ -286,6 +286,16 @@ void FileManager::saveCoachesInfo()
 	file.close();
 }
 
+void FileManager::clearWaitingList()
+{
+	waitingLists.clear();
+}
+
+void FileManager::clearVipWaitingList()
+{
+	vipWaitingList.clear();
+}
+
 long long FileManager::getLastId()
 {
 	return members.rbegin()->first;
@@ -327,6 +337,12 @@ void FileManager::removeFromWaiting(string className)
 
 	else if(waitingLists[className].size())
 		waitingLists[className].pop();
+}
+
+void FileManager::removeMemberFromGym(const Member& member)
+{
+	if (members.find(member.getID()) != members.end())
+		members.erase(member.getID());
 }
 
 bool FileManager::fileExist(string fileName)

@@ -40,6 +40,11 @@ public:
 	static void loadCoachesInfo();
 	static void saveCoachesInfo();
   
+	// At End Of Month
+	static void clearWaitingList();
+	static void clearVipWaitingList();
+
+
 	// Utilities
 	static long long getLastId();
 	static bool matchingNameAndId(string firstName, string middleName, string lastName, long long id);
@@ -50,6 +55,7 @@ public:
 	static void removeFromClass(string className, const Member& member);
 	static void addToWaiting(string className, const Member& member);
 	static void removeFromWaiting(string className);
+	static void removeMemberFromGym(const Member& member);
 
 
 	// Wait

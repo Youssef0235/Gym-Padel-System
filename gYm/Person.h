@@ -9,6 +9,7 @@ protected:
 public:
 	Person();
 	Person(string firstName, string middleName, string lastName, int dd, int mm, int yy);
+
 	string getFname() const;
 	string getMname() const;
 	string getLname() const;
@@ -16,6 +17,7 @@ public:
 	int getMonth() const;
 	int getYear() const;
 	Date getDateOfBirth() const;
+
 	void setFname(string Fname);
 	void setMname(string Mname);
 	void setLname(string Lname);

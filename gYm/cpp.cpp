@@ -8,6 +8,7 @@
 #define ll long long
 using namespace std;
 
+
 class message
 {
 private:
@@ -31,6 +32,8 @@ int main()
 	FileManager::loadWaitLists();
 	FileManager::loadVipWaitingList();
 	FileManager::loadCoachesInfo();
+
+
 
 
 	FileManager::saveAccounts();
