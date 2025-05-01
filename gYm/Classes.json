@@ -1,6 +1,6 @@
 {
     "Cardio": {
-        "Capacity": 0,
+        "Capacity": 10,
         "Class ID": 1,
         "Coach ID": 1,
         "Day": "Friday",
@@ -8,8 +8,17 @@
         "Name": "Cardio",
         "Time": "8 PM"
     },
+    "CrossFit": {
+        "Capacity": 15,
+        "Class ID": 5,
+        "Coach ID": 5,
+        "Day": "Monday",
+        "Members": [],
+        "Name": "CrossFit",
+        "Time": "10 AM"
+    },
     "Dance": {
-        "Capacity": 0,
+        "Capacity": 10,
         "Class ID": 2,
         "Coach ID": 2,
         "Day": "Friday",
@@ -17,8 +26,26 @@
         "Name": "Dance",
         "Time": "6 PM"
     },
+    "Kickboxing": {
+        "Capacity": 20,
+        "Class ID": 6,
+        "Coach ID": 6,
+        "Day": "Saturday",
+        "Members": [],
+        "Name": "Kickboxing",
+        "Time": "12 PM"
+    },
+    "MMA conditioning": {
+        "Capacity": 10,
+        "Class ID": 7,
+        "Coach ID": 7,
+        "Day": "Sunday",
+        "Members": [],
+        "Name": "MMA conditioning",
+        "Time": "6 PM"
+    },
     "Pilates": {
-        "Capacity": 0,
+        "Capacity": 30,
         "Class ID": 3,
         "Coach ID": 3,
         "Day": "Wednesday",
@@ -26,8 +53,35 @@
         "Name": "Pilates",
         "Time": "10 AM"
     },
+    "Powerlifting": {
+        "Capacity": 20,
+        "Class ID": 10,
+        "Coach ID": 10,
+        "Day": "Wednesday",
+        "Members": [],
+        "Name": "Powerlifting",
+        "Time": "11 AM"
+    },
+    "Strength training": {
+        "Capacity": 10,
+        "Class ID": 9,
+        "Coach ID": 9,
+        "Day": "Tuesday",
+        "Members": [],
+        "Name": "Strength training",
+        "Time": "5 PM"
+    },
+    "Tabata": {
+        "Capacity": 5,
+        "Class ID": 8,
+        "Coach ID": 8,
+        "Day": "Monday",
+        "Members": [],
+        "Name": "Tabata",
+        "Time": "3 PM"
+    },
     "Yoga": {
-        "Capacity": 1,
+        "Capacity": 15,
         "Class ID": 4,
         "Coach ID": 4,
         "Day": "Monday",

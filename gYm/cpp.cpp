@@ -35,7 +35,6 @@ int main()
 
 
 
-
 	FileManager::saveAccounts();
 	FileManager::saveClasses();
 	FileManager::saveWaitLists();

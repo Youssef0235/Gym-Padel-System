@@ -32,6 +32,7 @@ public:
 	
 	void addMember(const Member& member);
 	void removeMember(const Member& member);
+	void clearClassMembers();
 
 	// for debug
 	void display();

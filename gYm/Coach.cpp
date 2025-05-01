@@ -47,6 +47,11 @@ vector<ClassInfo> Coach::getAssignedClasses() const
 	return assignedClasses;
 }
 
+void Coach::clearAssignedClasses()
+{
+	assignedClasses.clear();
+}
+
 void Coach::displayClasses()
 {
 	for (auto x : assignedClasses)

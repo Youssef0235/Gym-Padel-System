@@ -18,6 +18,8 @@ public:
     void assignClass(const ClassInfo& classInfo);
     void removeClass(long long classId);
     vector<ClassInfo> getAssignedClasses() const;
+    void clearAssignedClasses();
+
     // for debug
     void displayClasses();
 };

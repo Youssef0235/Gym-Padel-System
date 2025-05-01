@@ -290,12 +290,44 @@ void FileManager::saveCoachesInfo()
 
 void FileManager::clearWaitingList()
 {
-	waitingLists.clear();
+	auto it = waitingLists.begin();
+	while (it != waitingLists.end())
+	{
+		while (waitingLists[it->first].size())
+			waitingLists[it->first].pop();
+		it++;
+	}
 }
 
 void FileManager::clearVipWaitingList()
 {
-	vipWaitingList.clear();
+	auto it = vipWaitingList.begin();
+	while (it != vipWaitingList.end())
+	{
+		while (vipWaitingList[it->first].size())
+			vipWaitingList[it->first].pop();
+		it++;
+	}
+}
+
+void FileManager::clearMembersInClasses()
+{
+	auto it = classes.begin();
+	while (it != classes.end())
+	{
+		classes[it->first].clearClassMembers();
+		it++;
+	}
+}
+
+void FileManager::clearCoachesAssignedClasses()
+{
+	auto it = coachesInfo.begin();
+	while (it != coachesInfo.end())
+	{
+		coachesInfo[it->first].clearAssignedClasses();
+		it++;
+	}
 }
 
 long long FileManager::getLastId()

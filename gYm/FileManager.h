@@ -43,6 +43,8 @@ public:
 	// At End Of Month
 	static void clearWaitingList();
 	static void clearVipWaitingList();
+	static void clearMembersInClasses();
+	static void clearCoachesAssignedClasses();
 
 
 	// Utilities

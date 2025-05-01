@@ -97,6 +97,11 @@ void ClassInfo::removeMember(const Member& member)
 	classCapacity--;
 }
 
+void ClassInfo::clearClassMembers()
+{
+	classMembers.clear();
+}
+
 void ClassInfo::display()
 {
 	cout << classTime << "\n";
