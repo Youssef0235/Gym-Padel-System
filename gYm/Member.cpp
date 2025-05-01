@@ -1,13 +1,14 @@
 #include "Member.h"
 using namespace std;
 
-Member::Member() : ID(0), isVip(0) {}
+Member::Member() : ID(0), isVip(0), visits(0) {}
 
-Member::Member(string FirstName, string MiddleName, string LastName, int dd, int mm, int yy, long long id, string planName, int dur, vector<string>PastWorkouts, bool vip) : Person(FirstName, MiddleName, LastName, dd, mm, yy), plan(planName, dur)
+Member::Member(string FirstName, string MiddleName, string LastName, int dd, int mm, int yy, long long id, string planName, int dur, vector<string>PastWorkouts, bool vip, int Visits) : Person(FirstName, MiddleName, LastName, dd, mm, yy), plan(planName, dur)
 {
     ID = id;
     pastWorkouts = PastWorkouts;
     isVip = vip;
+    visits = Visits;
 }
 
 void Member::setID(long long id)
@@ -18,6 +19,11 @@ void Member::setID(long long id)
 void Member::setVipStatus(bool vip)
 {
     isVip = vip;
+}
+
+void Member::setVisits(int Visits)
+{
+    visits = Visits;
 }
 
 bool Member::getVipStatus() const
@@ -48,6 +54,11 @@ string Member::getPlanName() const
 int Member::getPlanDuration() const
 {
     return plan.getDuration();
+}
+
+int Member::getVisits() const
+{
+    return visits;
 }
 
 //For Staff

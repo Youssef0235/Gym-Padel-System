@@ -13,17 +13,22 @@ private:
     vector<string>pastWorkouts;
     long long ID;
     bool isVip;
-
+    int visits;
 public:
     Member();
-    Member(string FirstName, string MiddleName, string LastName, int dd, int mm, int yy, long long id, string planName, int dur, vector<string>PastWorkouts, bool vip);
+    Member(string FirstName, string MiddleName, string LastName, int dd, int mm, int yy, long long id, string planName, int dur, vector<string>PastWorkouts, bool vip, int Visits);
+
     void setID(long long id);
     void setVipStatus(bool vip);
+    void setVisits(int Visits);
+
     bool getVipStatus() const;
     long long getID() const;
     vector<string>getPastWorkouts()const;
     string getPlanName() const;
     int getPlanDuration() const;
+    int getVisits()const;
+
     //For Staff
     Subscription getPlan();
     void addWorkout(string workout);

@@ -16,7 +16,8 @@ FileManager::FileManager()
 {
 }
 
-void from_json(const json& j, Member& u) {
+void from_json(const json& j, Member& u)
+{
 	u = Member
 	{
 		j.at("First Name").get<string>(),
@@ -29,7 +30,8 @@ void from_json(const json& j, Member& u) {
 		j.at("Plan Name").get<string>(),
 		j.at("Duration").get<int>(),
 		j.at("Past Workouts").get<vector<string>>(),
-		j.at("VIP").get<bool>()
+		j.at("VIP").get<bool>(),
+		j.at("Visits").get<int>()
 	};
 }
 
@@ -47,7 +49,8 @@ void to_json(json& j, const Member& u)
 		{"Plan Name", u.getPlanName()},
 		{"Duration", u.getPlanDuration()},
 		{"Past Workouts", u.getPastWorkouts()},
-		{"VIP", u.getVipStatus()}
+		{"VIP", u.getVipStatus()},
+		{"Visits", u.getVisits()}
 	};
 }
 

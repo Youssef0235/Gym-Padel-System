@@ -10,6 +10,7 @@
         "Past Workouts": [],
         "Plan Name": "Basic",
         "VIP": false,
+        "Visits": 0,
         "Year": 2004
     },
     "2023170735": {
@@ -23,6 +24,7 @@
         "Past Workouts": [],
         "Plan Name": "Basic",
         "VIP": true,
+        "Visits": 0,
         "Year": 2003
     },
     "2023170736": {
@@ -36,6 +38,7 @@
         "Past Workouts": [],
         "Plan Name": "Basic",
         "VIP": false,
+        "Visits": 0,
         "Year": 2005
     }
 }
