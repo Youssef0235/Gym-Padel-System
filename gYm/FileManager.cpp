@@ -247,9 +247,7 @@ void from_json(const json& j, Coach& u)
 		j.at("Middle Name").get<string>(),
 		j.at("Last Name").get<string>(),
 		j.at("Class").get<string>(),
-		j.at("Day").get<int>(),
-		j.at("Month").get<int>(),
-		j.at("Year").get<int>(),
+		j.at("Birth Date").get<Date>(),
 		j.at("ID").get<long long>(),
 		j.at("Assigned Classes").get<vector<ClassSession>>()
 	};
@@ -280,9 +278,7 @@ void to_json(json& j, const Coach& u)
 		{"Middle Name", u.getMname()},
 		{"Last Name", u.getLname()},
 		{"Class", u.getClassName()},
-        {"Day", u.getDateOfBirth().getDay()},
-		{"Month", u.getDateOfBirth().getMonth()},
-		{"Year", u.getDateOfBirth().getYear()},
+        {"Birth Date", u.getDateOfBirth()},
 		{"ID", u.getID()},
 		{"Assigned Classes", u.getAssignedClasses()}
 	};

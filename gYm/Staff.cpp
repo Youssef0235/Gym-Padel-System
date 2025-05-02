@@ -47,7 +47,8 @@ void Staff::searchMember(vector<Member>& members, long long memID)
 	}
 }
 
-vector<Member> Staff::ManageSubscription(vector<Member>& members) {
+vector<Member> Staff::ManageSubscription(vector<Member>& members)
+{
 
 	vector<Member> membersToRenew;
 
@@ -60,13 +61,14 @@ vector<Member> Staff::ManageSubscription(vector<Member>& members) {
 	for (Member& member : members) 
 	{
 
-		Date endDate(member.getPlan().getEndDay(), member.getPlan().getEndMonth(), member.getPlan().getEndYear());
+		Date endDate(member.getPlan().getEndDate().getDay(), member.getPlan().getEndDate().getMonth(), member.getPlan().getEndDate().getYear());
 
 		int daysUntilRenewal = (endDate.getYear() - currentDate.getYear()) * 365 +
 			(endDate.getMonth() - currentDate.getMonth()) * 30 +
 			(endDate.getDay() - currentDate.getDay());
 
-		if (daysUntilRenewal <= 7) {
+		if (daysUntilRenewal <= 7) 
+		{
 			membersToRenew.push_back(member);
 		}
 	}

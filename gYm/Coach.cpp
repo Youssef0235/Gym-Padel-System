@@ -2,7 +2,7 @@
 
 Coach::Coach() {}
 
-Coach::Coach(string firstName, string middleName, string lastName, string ClassName, int dd, int mm, int yy, long long id, vector<ClassSession> AssignedClasses) : Staff(firstName, middleName, lastName, dd, mm, yy, id)
+Coach::Coach(string firstName, string middleName, string lastName, string ClassName, Date dob, long long id, vector<ClassSession> AssignedClasses) : Staff(firstName, middleName, lastName, dob.getDay(), dob.getMonth(), dob.getYear(), id)
 {
 	className = ClassName;
 	assignedClasses = AssignedClasses;

@@ -1,112 +1,132 @@
 {
     "1": {
         "Assigned Classes": [],
+        "Birth Date": {
+            "Day": 1,
+            "Month": 5,
+            "Year": 2000
+        },
         "Class": "Yoga",
-        "Day": 10,
         "First Name": "Ahmed",
         "ID": 1,
         "Last Name": "Sayed",
-        "Middle Name": "Mohamed",
-        "Month": 5,
-        "Year": 2000
+        "Middle Name": "Mohamed"
     },
     "10": {
         "Assigned Classes": [],
+        "Birth Date": {
+            "Day": 2,
+            "Month": 4,
+            "Year": 1995
+        },
         "Class": "MMA Conditioning",
-        "Day": 2,
         "First Name": "Samer",
         "ID": 10,
         "Last Name": "Tarek",
-        "Middle Name": "Wael",
-        "Month": 4,
-        "Year": 1995
+        "Middle Name": "Wael"
     },
     "2": {
         "Assigned Classes": [],
+        "Birth Date": {
+            "Day": 5,
+            "Month": 1,
+            "Year": 1990
+        },
         "Class": "Dance",
-        "Day": 5,
         "First Name": "Badr",
         "ID": 2,
         "Last Name": "Khaled",
-        "Middle Name": "Ashraf",
-        "Month": 11,
-        "Year": 1990
+        "Middle Name": "Ashraf"
     },
     "3": {
         "Assigned Classes": [],
+        "Birth Date": {
+            "Day": 14,
+            "Month": 2,
+            "Year": 1995
+        },
         "Class": "Pilates",
-        "Day": 14,
         "First Name": "Karim",
         "ID": 3,
         "Last Name": "Medhat",
-        "Middle Name": "Hamed",
-        "Month": 2,
-        "Year": 1995
+        "Middle Name": "Hamed"
     },
     "4": {
         "Assigned Classes": [],
+        "Birth Date": {
+            "Day": 7,
+            "Month": 3,
+            "Year": 1998
+        },
         "Class": "Cardio",
-        "Day": 7,
         "First Name": "Omar",
         "ID": 4,
         "Last Name": "Mostafa",
-        "Middle Name": "Salah",
-        "Month": 3,
-        "Year": 1998
+        "Middle Name": "Salah"
     },
     "5": {
         "Assigned Classes": [],
+        "Birth Date": {
+            "Day": 20,
+            "Month": 7,
+            "Year": 1993
+        },
         "Class": "CrossFit",
-        "Day": 20,
         "First Name": "Mazen",
         "ID": 5,
         "Last Name": "Ayman",
-        "Middle Name": "Asser",
-        "Month": 7,
-        "Year": 1993
+        "Middle Name": "Asser"
     },
     "6": {
         "Assigned Classes": [],
+        "Birth Date": {
+            "Day": 3,
+            "Month": 1,
+            "Year": 1995
+        },
         "Class": "Tabata",
-        "Day": 3,
         "First Name": "Amr",
         "ID": 6,
         "Last Name": "Mohsen",
-        "Middle Name": "Zaher",
-        "Month": 1,
-        "Year": 1995
+        "Middle Name": "Zaher"
     },
     "7": {
         "Assigned Classes": [],
+        "Birth Date": {
+            "Day": 18,
+            "Month": 12,
+            "Year": 1999
+        },
         "Class": "Kickboxing",
-        "Day": 18,
         "First Name": "Adel",
         "ID": 7,
         "Last Name": "Amir",
-        "Middle Name": "Selim",
-        "Month": 12,
-        "Year": 1999
+        "Middle Name": "Selim"
     },
     "8": {
         "Assigned Classes": [],
+        "Birth Date": {
+            "Day": 29,
+            "Month": 9,
+            "Year": 1990
+        },
         "Class": "Powerlifting",
-        "Day": 29,
         "First Name": "Bassel",
         "ID": 8,
         "Last Name": "Samir",
-        "Middle Name": "Mahmoud",
-        "Month": 9,
-        "Year": 1990
+        "Middle Name": "Mahmoud"
     },
     "9": {
         "Assigned Classes": [],
+        "Birth Date": {
+            "Day": 12,
+            "Month": 7,
+            "Year": 1993
+        },
         "Class": "Strength Training",
-        "Day": 12,
         "First Name": "Magdy",
         "ID": 9,
         "Last Name": "Sherif",
-        "Middle Name": "Abdelrhman",
-        "Month": 7,
-        "Year": 1993
+        "Middle Name": "Abdelrhman"
     }
 }

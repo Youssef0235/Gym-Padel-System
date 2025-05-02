@@ -10,7 +10,7 @@ private:
     string className;
 public:
     Coach();
-    Coach(string firstName, string middleName, string lastName, string ClassName, int dd, int mm, int yy, long long id, vector<ClassSession>AssignedClasses);
+    Coach(string firstName, string middleName, string lastName, string ClassName, Date dob, long long id, vector<ClassSession>AssignedClasses);
 
     void setClassName(string ClassName);
     string getClassName() const;

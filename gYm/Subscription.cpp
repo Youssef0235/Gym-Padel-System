@@ -25,22 +25,12 @@ void Subscription::setPlan(const Subscription& subscription)
 	duration = subscription.duration;
 }
 
-void Subscription::setStartDate(const Date& StartDate)
-{
-	startDate = StartDate;
-}
 
-void Subscription::setEndDate(const Date& EndDate)
-{
-	endDate = EndDate;
-}
-
-// CHECK!
 void Subscription::setEndDate()
 {
-	endDate.setDay(startDate.getDay());
-	endDate.setMonth((startDate.getMonth() + (duration / 30)) % 12);
-	endDate.setYear(startDate.getYear() + (startDate.getMonth() == 12 ? 1 : 0));
+	endDate.setDay(Date::getTodaysDate().getDay());
+	endDate.setMonth((Date::getTodaysDate().getMonth() + (duration / 30)) % 12);
+	endDate.setYear(Date::getTodaysDate().getYear() + (Date::getTodaysDate().getMonth() == 12 ? 1 : 0));
 }
 
 string Subscription::getName() const
@@ -51,26 +41,6 @@ string Subscription::getName() const
 int Subscription::getDuration() const
 {
 	return duration;
-}
-
-int Subscription::getEndDay() const
-{
-	return endDate.getDay();
-}
-
-int Subscription::getEndMonth() const
-{
-	return endDate.getMonth();
-}
-
-int Subscription::getEndYear() const
-{
-	return endDate.getYear();
-}
-
-Date Subscription::getStartDate() const
-{
-	return startDate;
 }
 
 Date Subscription::getEndDate() const
