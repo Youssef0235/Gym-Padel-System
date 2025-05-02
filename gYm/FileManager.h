@@ -3,7 +3,7 @@
 #include<fstream>
 #include"json.hpp"
 #include<queue>
-#include"ClassInfo.h"
+#include"ClassSession.h"
 #include"Member.h"
 #include"Coach.h"
 using json = nlohmann::json;
@@ -16,9 +16,9 @@ public:
 	FileManager();
 	static map<long long, Member>members;
 	static map<long long, Coach>coachesInfo;
-	static unordered_map<string, queue<Member>>waitingLists;
-	static unordered_map<string, ClassInfo>classes;
-	static unordered_map<string, queue<Member>>vipWaitingList;
+	static unordered_map<string, queue<long long>>waitingLists;
+	static unordered_map<string, queue<long long>>vipWaitingList;
+	static unordered_map<string, ClassSession>classes;
 
 	// Working
 	static void loadAccounts();
@@ -48,16 +48,17 @@ public:
 
 
 	// Utilities
-	static long long getLastId();
+	static long long getLastMemberId();
+	static long long getLastCoachId();
 	static bool matchingNameAndId(string firstName, string middleName, string lastName, long long id);
 
 
 	// Needs Testing
-	static void addToClass(string className, const Member& member);
-	static void removeFromClass(string className, const Member& member);
-	static void addToWaiting(string className, const Member& member);
+	static void addToClass(string className, long long memberId);
+	static void removeFromClass(string className, long long memberId);
+	static void addToWaiting(string className, long long memberId);
 	static void removeFromWaiting(string className);
-	static void removeMemberFromGym(const Member& member);
+	static void removeMemberFromGym(long long memberId);
 
 
 	// Wait

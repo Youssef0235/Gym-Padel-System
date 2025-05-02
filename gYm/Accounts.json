@@ -1,5 +1,6 @@
 {
     "2023170734": {
+        "Classes": [],
         "Day": 7,
         "Duration": 30,
         "First Name": "Sameh",
@@ -14,6 +15,9 @@
         "Year": 2004
     },
     "2023170735": {
+        "Classes": [
+            "Cardio"
+        ],
         "Day": 29,
         "Duration": 30,
         "First Name": "Youssef",
@@ -21,13 +25,18 @@
         "Last Name": "Farid",
         "Middle Name": "Fayek",
         "Month": 11,
-        "Past Workouts": [],
+        "Past Workouts": [
+            "Back",
+            "Shoulder",
+            "Back"
+        ],
         "Plan Name": "Basic",
         "VIP": true,
-        "Visits": 0,
+        "Visits": 2,
         "Year": 2003
     },
     "2023170736": {
+        "Classes": [],
         "Day": 5,
         "Duration": 30,
         "First Name": "Ahmed",

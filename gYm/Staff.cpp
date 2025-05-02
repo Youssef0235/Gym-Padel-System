@@ -5,7 +5,7 @@
 using namespace chrono;
 
 
-Staff::Staff()
+Staff::Staff() : ID(0)
 {
 }
 
@@ -19,19 +19,9 @@ long long Staff::getID() const
 	return ID;
 }
 
-string Staff::getRole() const
-{
-	return role;
-}
-
 void Staff::setID(long long id)
 {
 	ID = id;
-}
-
-void Staff::setRole(string Role)
-{
-	role = Role;
 }
 
 // set

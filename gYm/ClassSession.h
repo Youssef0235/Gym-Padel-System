@@ -4,22 +4,23 @@
 #include"Member.h"
 using namespace std;
 
-class ClassInfo
+class ClassSession
 {
 private:
 	long long classId, coachId;
 	string classDay, classTime, className;
 	int classCapacity;
-	set<Member>classMembers;
+	unordered_set<long long>classMembers;
 public:
-	ClassInfo();
-	ClassInfo(string ClassDay, string ClassTime, string ClassName, int ClassCapacity, set<Member>ClassMembers, long long ClassId, long long CoachId);
+	ClassSession();
+	ClassSession(string ClassDay, string ClassTime, string ClassName, int ClassCapacity, unordered_set<long long>ClassMembers, long long ClassId, long long CoachId);
+
 	void setClassId(long long ClassId);
 	void setClassTime(string ClassTime);
 	void setClassDay(string ClassDay);
 	void setCoachId(long long CoachId);
 	void setClassCapacity(int Capacity);
-	void setClassMembers(set<Member>ClassMembers);
+	void setClassMembers(unordered_set<long long>ClassMembers);
 	void setClassName(string ClassName);
 
 	long long getClassId() const;
@@ -27,11 +28,11 @@ public:
 	string getClassDay() const;
 	long long getCoachId() const;
 	int getClassCapacity() const;
-	set<Member>getClassMembers() const;
+	unordered_set<long long>getClassMembers() const;
 	string getClassName()const;
 	
-	void addMember(const Member& member);
-	void removeMember(const Member& member);
+	void addMember(long long memberId);
+	void removeMember(long long memberId);
 	void clearClassMembers();
 
 	// for debug

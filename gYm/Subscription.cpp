@@ -1,4 +1,5 @@
 #include "Subscription.h"
+#include "PlansData.h"
 
 Subscription::Subscription() : duration(0)
 {
@@ -16,6 +17,12 @@ void Subscription::setName(string Name)
 void Subscription::setDurtion(int Duration)
 {
 	duration = Duration;
+}
+
+void Subscription::setPlan(const Subscription& subscription)
+{
+	name = subscription.name;
+	duration = subscription.duration;
 }
 
 //For Staff
@@ -46,7 +53,7 @@ int Subscription::getDuration() const
 	return duration;
 }
 
-//For Staff
+// For Staff
 int Subscription::getEndDay()
 {
 	return endTime.getDay();
@@ -70,11 +77,11 @@ void Subscription::extendPlan(string planName)
 void Subscription::cancelPlan()
 {
 	duration = 0;
+	name = "";
 }
 
 void Subscription::changePlan(string newPlan)
 {
-	// If Sub Ends Only
 	duration = PlansData::getDuration(newPlan);
 	name = newPlan;
 }

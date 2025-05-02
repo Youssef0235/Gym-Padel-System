@@ -1,12 +1,8 @@
 #include "Coach.h"
 
-Coach::Coach()
-{
-	ID = 0;
-	role = "Coach";
-}
+Coach::Coach() {}
 
-Coach::Coach(string firstName, string middleName, string lastName, string ClassName, int dd, int mm, int yy, long long id, vector<ClassInfo> AssignedClasses) : Staff(firstName, middleName, lastName, dd, mm, yy, id)
+Coach::Coach(string firstName, string middleName, string lastName, string ClassName, int dd, int mm, int yy, long long id, vector<ClassSession> AssignedClasses) : Staff(firstName, middleName, lastName, dd, mm, yy, id)
 {
 	className = ClassName;
 	assignedClasses = AssignedClasses;
@@ -23,9 +19,9 @@ string Coach::getClassName() const
 }
 
 
-void Coach::assignClass(const ClassInfo& classInfo)
+void Coach::assignClass(const ClassSession& classSession)
 {
-	assignedClasses.push_back(classInfo);
+	assignedClasses.push_back(classSession);
 }
 
 void Coach::removeClass(long long classId)
@@ -42,7 +38,7 @@ void Coach::removeClass(long long classId)
 	}
 }
 
-vector<ClassInfo> Coach::getAssignedClasses() const
+vector<ClassSession> Coach::getAssignedClasses() const
 {
 	return assignedClasses;
 }

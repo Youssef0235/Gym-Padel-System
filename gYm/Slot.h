@@ -3,22 +3,19 @@
 
 class Slot
 {
-	int memberID;
-	int courtID;
-	int slotID; // every slot = 1 Hour from 0 - 23
+	long long memberID, courtID, slotID; // every slot = 1 Hour from 0 - 23
 	Date date;
 public:
 	Slot();
-	Slot(int, int, Date);
+	Slot(long long, long long, Date);
 
-	void setMemberID(int id);
-	void setCourtID(int);
-	void setSlotID(int);
+	void setMemberID(long long id);
+	void setCourtID(long long);
+	void setSlotID(long long);
 	void setDate(int, int, int);
 
-	int getMemberID();
-	int getCourtID();
-	int getSlotID();
+	long long getMemberID();
+	long long getCourtID();
+	long long getSlotID();
 	Date getDate();
-
 };

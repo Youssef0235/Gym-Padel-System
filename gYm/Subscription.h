@@ -1,7 +1,8 @@
 #pragma once
 #include<iostream>
-#include"PlansData.h"
 #include "Date.h"
+
+
 using namespace std;
 
 // Basic, Standard, Premium, Ultimate 
@@ -19,6 +20,7 @@ public:
 	Subscription(string Name, int Duration);
 	void setName(string Name);
 	void setDurtion(int Duration);
+	void setPlan(const Subscription& subscription);
 
 	//For Staff
 	void setStartTime(int day, int month, int year);

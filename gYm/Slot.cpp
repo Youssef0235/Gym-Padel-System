@@ -2,7 +2,8 @@
 
 //Constructors
 Slot::Slot() {}
-Slot::Slot(int cid, int sid, Date dt)
+
+Slot::Slot(long long cid, long long sid, Date dt)
 {
 	courtID = cid;
 	slotID = sid;
@@ -10,15 +11,15 @@ Slot::Slot(int cid, int sid, Date dt)
 }
 
 //Setters
-void Slot::setMemberID(int id)
+void Slot::setMemberID(long long id)
 {
 	memberID = id;
 }
-void Slot::setCourtID(int cid)
+void Slot::setCourtID(long long cid)
 {
 	courtID = cid;
 }
-void Slot::setSlotID(int sid)
+void Slot::setSlotID(long long sid)
 {
 	slotID = sid;
 }
@@ -30,18 +31,21 @@ void Slot::setDate(int d, int m, int y)
 }
 
 //Getters
-int Slot::getMemberID()
+long long Slot::getMemberID()
 {
 	return memberID;
 }
-int Slot::getCourtID()
+
+long long Slot::getCourtID()
 {
 	return courtID;
 }
-int Slot::getSlotID()
+
+long long Slot::getSlotID()
 {
 	return slotID;
 }
+
 Date Slot::getDate()
 {
 	return date;

@@ -127,7 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="ClassInfo.h" />
+    <ClInclude Include="ClassSession.h" />
     <ClInclude Include="Coach.h" />
     <ClInclude Include="Court.h" />
     <ClInclude Include="Date.h" />
@@ -140,7 +140,7 @@
     <ClInclude Include="Subscription.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ClassInfo.cpp" />
+    <ClCompile Include="ClassSession.cpp" />
     <ClCompile Include="Coach.cpp" />
     <ClCompile Include="Court.cpp" />
     <ClCompile Include="cpp.cpp" />

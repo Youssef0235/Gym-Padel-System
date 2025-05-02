@@ -8,13 +8,11 @@
 // Map Uses Self Balancing Tree -> Red Black Tree So Retrieval Is In O(Log n)
 map<long long, Member> FileManager::members;
 map<long long, Coach> FileManager::coachesInfo;
-unordered_map<string, queue<Member>> FileManager::waitingLists;
-unordered_map<string, ClassInfo> FileManager::classes;
-unordered_map<string, queue<Member>>FileManager::vipWaitingList;
+unordered_map<string, queue<long long>> FileManager::waitingLists;
+unordered_map<string, queue<long long>>FileManager::vipWaitingList;
+unordered_map<string, ClassSession> FileManager::classes;
 
-FileManager::FileManager()
-{
-}
+FileManager::FileManager() {}
 
 void from_json(const json& j, Member& u)
 {
@@ -31,7 +29,8 @@ void from_json(const json& j, Member& u)
 		j.at("Duration").get<int>(),
 		j.at("Past Workouts").get<vector<string>>(),
 		j.at("VIP").get<bool>(),
-		j.at("Visits").get<int>()
+		j.at("Visits").get<int>(),
+		j.at("Classes").get<unordered_set<string>>()
 	};
 }
 
@@ -50,7 +49,8 @@ void to_json(json& j, const Member& u)
 		{"Duration", u.getPlanDuration()},
 		{"Past Workouts", u.getPastWorkouts()},
 		{"VIP", u.getVipStatus()},
-		{"Visits", u.getVisits()}
+		{"Visits", u.getVisits()},
+		{"Classes", u.getSubClasses()}
 	};
 }
 
@@ -85,12 +85,11 @@ void FileManager::saveAccounts()
 	}
 	ofstream file("Accounts.json");
 	file << Accounts.dump(4);
-
 	file.close();
 }
 
 
-void to_json(json& j, const ClassInfo& u)
+void to_json(json& j, const ClassSession& u)
 {
 	j = json
 	{
@@ -105,15 +104,15 @@ void to_json(json& j, const ClassInfo& u)
 }
 
 
-void from_json(const json& j, ClassInfo& u)
+void from_json(const json& j, ClassSession& u)
 {
-	u = ClassInfo
+	u = ClassSession
 	{
 		j.at("Day").get<string>(),
 		j.at("Time").get<string>(),
 		j.at("Name").get<string>(),
 		j.at("Capacity").get<int>(),
-		j.at("Members").get<set<Member>>(),
+		j.at("Members").get<unordered_set<long long>>(),
 		j.at("Class ID").get<long long>(),
 		j.at("Coach ID").get<long long>()
 	};
@@ -161,8 +160,8 @@ void FileManager::loadWaitLists()
 	while (it != waitingListsJson.end())
 	{
 		string className = it.key();
-		for (Member member : it.value())
-			waitingLists[className].push(member);
+		for (long long memberId : it.value())
+			waitingLists[className].push(memberId);
 		it++;
 	}
 }
@@ -173,7 +172,7 @@ void FileManager::saveWaitLists()
 	auto it = waitingLists.begin();
 	while (it != waitingLists.end())
 	{
-		queue<Member>currentClass = it->second;
+		queue<long long>currentClass = it->second;
 		string className = it->first;
 		while (currentClass.size())
 		{
@@ -197,8 +196,8 @@ void FileManager::loadVipWaitingList()
 	while (it != waitingListsJson.end())
 	{
 		string className = it.key();
-		for (Member member : it.value())
-			vipWaitingList[className].push(member);
+		for (long long memberId : it.value())
+			vipWaitingList[className].push(memberId);
 		it++;
 	}
 }
@@ -210,7 +209,7 @@ void FileManager::saveVipWaitingList()
 	auto it = vipWaitingList.begin();
 	while (it != vipWaitingList.end())
 	{
-		queue<Member>currentClass = it->second;
+		queue<long long>currentClass = it->second;
 		string className = it->first;
 		while (currentClass.size())
 		{
@@ -236,7 +235,7 @@ void from_json(const json& j, Coach& u)
 		j.at("Month").get<int>(),
 		j.at("Year").get<int>(),
 		j.at("ID").get<long long>(),
-		j.at("Assigned Classes").get<vector<ClassInfo>>()
+		j.at("Assigned Classes").get<vector<ClassSession>>()
 	};
 }
 
@@ -330,38 +329,42 @@ void FileManager::clearCoachesAssignedClasses()
 	}
 }
 
-long long FileManager::getLastId()
+long long FileManager::getLastMemberId()
 {
 	return members.rbegin()->first;
 }
 
+long long FileManager::getLastCoachId()
+{
+	return coachesInfo.rbegin()->first;
+}
+
 bool FileManager::matchingNameAndId(string firstName, string middleName, string lastName, long long id)
 {
-	// Check If User Exists First In O(Log n)
 	if (members.find(id) == members.end())
 		return false;
 	string fName = members[id].getFname();
 	string mName = members[id].getMname();
 	string lName = members[id].getLname();
-	return fName == firstName and mName == middleName and lName == lastName;
+	return fName == firstName && mName == middleName && lName == lastName;
 }
 
-void FileManager::addToClass(string className, const Member& member)
+void FileManager::addToClass(string className, long long memberId)
 {
-	classes[className].addMember(member);
+	classes[className].addMember(memberId);
 }
 
-void FileManager::removeFromClass(string className, const Member& member)
+void FileManager::removeFromClass(string className, long long memberId)
 {
-	classes[className].removeMember(member);
+	classes[className].removeMember(memberId);
 }
 
-void FileManager::addToWaiting(string className, const Member& member)
+void FileManager::addToWaiting(string className, long long memberId)
 {
-	if (member.getVipStatus())
-		vipWaitingList[className].push(member);
+	if (members[memberId].getVipStatus())
+		vipWaitingList[className].push(memberId);
 	else
-		waitingLists[className].push(member);
+		waitingLists[className].push(memberId);
 }
 
 void FileManager::removeFromWaiting(string className)
@@ -369,14 +372,13 @@ void FileManager::removeFromWaiting(string className)
 	if (vipWaitingList[className].size())
 		vipWaitingList[className].pop();
 
-	else if(waitingLists[className].size())
+	else if (waitingLists[className].size())
 		waitingLists[className].pop();
 }
 
-void FileManager::removeMemberFromGym(const Member& member)
+void FileManager::removeMemberFromGym(long long memberId)
 {
-	if (members.find(member.getID()) != members.end())
-		members.erase(member.getID());
+	members.erase(memberId);
 }
 
 bool FileManager::fileExist(string fileName)

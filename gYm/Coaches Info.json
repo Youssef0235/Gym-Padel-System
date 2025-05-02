@@ -10,11 +10,22 @@
         "Month": 5,
         "Year": 2000
     },
+    "10": {
+        "Assigned Classes": [],
+        "Class": "MMA Conditioning",
+        "Day": 2,
+        "First Name": "Samer",
+        "ID": 10,
+        "Last Name": "Tarek",
+        "Middle Name": "Wael",
+        "Month": 4,
+        "Year": 1995
+    },
     "2": {
         "Assigned Classes": [],
         "Class": "Dance",
         "Day": 5,
-        "First Name": "Rana",
+        "First Name": "Badr",
         "ID": 2,
         "Last Name": "Khaled",
         "Middle Name": "Ashraf",
@@ -31,5 +42,71 @@
         "Middle Name": "Hamed",
         "Month": 2,
         "Year": 1995
+    },
+    "4": {
+        "Assigned Classes": [],
+        "Class": "Cardio",
+        "Day": 7,
+        "First Name": "Omar",
+        "ID": 4,
+        "Last Name": "Mostafa",
+        "Middle Name": "Salah",
+        "Month": 3,
+        "Year": 1998
+    },
+    "5": {
+        "Assigned Classes": [],
+        "Class": "CrossFit",
+        "Day": 20,
+        "First Name": "Mazen",
+        "ID": 5,
+        "Last Name": "Ayman",
+        "Middle Name": "Asser",
+        "Month": 7,
+        "Year": 1993
+    },
+    "6": {
+        "Assigned Classes": [],
+        "Class": "Tabata",
+        "Day": 3,
+        "First Name": "Amr",
+        "ID": 6,
+        "Last Name": "Mohsen",
+        "Middle Name": "Zaher",
+        "Month": 1,
+        "Year": 1995
+    },
+    "7": {
+        "Assigned Classes": [],
+        "Class": "Kickboxing",
+        "Day": 18,
+        "First Name": "Adel",
+        "ID": 7,
+        "Last Name": "Amir",
+        "Middle Name": "Selim",
+        "Month": 12,
+        "Year": 1999
+    },
+    "8": {
+        "Assigned Classes": [],
+        "Class": "Powerlifting",
+        "Day": 29,
+        "First Name": "Bassel",
+        "ID": 8,
+        "Last Name": "Samir",
+        "Middle Name": "Mahmoud",
+        "Month": 9,
+        "Year": 1990
+    },
+    "9": {
+        "Assigned Classes": [],
+        "Class": "Strength Training",
+        "Day": 12,
+        "First Name": "Magdy",
+        "ID": 9,
+        "Last Name": "Sherif",
+        "Middle Name": "Abdelrhman",
+        "Month": 7,
+        "Year": 1993
     }
 }

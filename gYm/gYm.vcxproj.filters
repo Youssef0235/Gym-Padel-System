@@ -33,7 +33,7 @@
     <ClInclude Include="PlansData.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ClassInfo.h">
+    <ClInclude Include="ClassSession.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Coach.h">
@@ -71,9 +71,6 @@
     <ClCompile Include="PlansData.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ClasssInfo.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Coach.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -84,6 +81,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Slot.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ClassSession.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
