@@ -11,28 +11,25 @@ class Subscription
 private:
 	string name;
 	int duration;
-
-	//For Staff
-	Date startTime;
-	Date endTime;
+	Date startDate, endDate;
 public:
 	Subscription();
 	Subscription(string Name, int Duration);
-	void setName(string Name);
-	void setDurtion(int Duration);
+	void setPlanName(string Name);
+	void setPlanDuration(int Duration);
 	void setPlan(const Subscription& subscription);
-
-	//For Staff
-	void setStartTime(int day, int month, int year);
-	void setEndTime();
+	void setStartDate(const Date& StartDate);
+	void setEndDate(const Date& EndDate);
+	void setEndDate();
 
 	string getName() const;
 	int getDuration() const;
+	int getEndDay() const;
+	int getEndMonth() const;
+	int getEndYear() const;
+	Date getStartDate() const;
+	Date getEndDate() const;
 
-	//For Staff
-	int getEndDay();
-	int getEndMonth();
-	int getEndYear();
 
 	void extendPlan(string planName);
 	void cancelPlan();

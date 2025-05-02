@@ -14,10 +14,12 @@ public:
 	int getDay() const;
 	int getMonth() const;
 	int getYear() const;
+	static Date getTodaysDate();
 
 	void setDay(int Day);
 	void setMonth(int Month);
 	void setYear(int Year);
+
 
 	// Operator Overloading
 	bool operator == (const Date& date) const;

@@ -3,13 +3,15 @@ using namespace std;
 
 Member::Member() : ID(0), isVip(0), visits(0) {}
 
-Member::Member(string FirstName, string MiddleName, string LastName, int dd, int mm, int yy, long long id, string planName, int dur, vector<string>PastWorkouts, bool vip, int Visits, unordered_set<string>SubClasses) : Person(FirstName, MiddleName, LastName, dd, mm, yy), plan(planName, dur)
+Member::Member(string FirstName, string MiddleName, string LastName, Date dob, long long id, string planName, vector<string> PastWorkouts, bool vip, int Visits, unordered_set<string> SubClasses, Date endDate) : Person(FirstName, MiddleName, LastName, dob.getDay(), dob.getMonth(), dob.getYear())
 {
     ID = id;
     pastWorkouts = PastWorkouts;
     isVip = vip;
     visits = Visits;
     subClasses = SubClasses;
+    plan.setPlanName(planName);
+    plan.setEndDate(endDate);
 }
 
 Member::Member(string FirstName, string MiddleName, string LastName, int dd, int mm, int yy, long long id, Subscription subscription, vector<string> PastWorkouts, bool vip, int Visits, unordered_set<string> SubClasses) : Person(FirstName, MiddleName, LastName, dd, mm, yy)
@@ -36,20 +38,40 @@ void Member::setVisits(int Visits)
 {
     visits = Visits;
 }
-// Fix Here
+
+// Fix Here -> done
 void Member::setPlan(int PlanNumber)
 {
-    plan.setPlan(Subscription());
+    plan.setPlan(PlansData::getSubscription(PlanNumber));
 }
 
+// Handles All;
 void Member::setPlan(const Subscription& sub)
 {
+    // Name, dur only
     plan = sub;
+    plan.setStartDate(Date::getTodaysDate());
+    plan.setEndDate();
 }
 
 void Member::setSubClasses(unordered_set<string> SubClasses)
 {
     subClasses = SubClasses;
+}
+
+void Member::setStartDate(const Date& startDate)
+{
+    plan.setStartDate(startDate);
+}
+
+void Member::setEndDate(const Date& endDate)
+{
+    plan.setEndDate(endDate);
+}
+
+void Member::setEndDate()
+{
+    plan.setEndDate();
 }
 
 bool Member::getVipStatus() const
@@ -90,6 +112,16 @@ int Member::getVisits() const
 unordered_set<string> Member::getSubClasses() const
 {
     return subClasses;
+}
+
+Date Member::getStartDate () const
+{
+    return plan.getStartDate();
+}
+
+Date Member::getEndDate() const
+{
+    return plan.getEndDate();
 }
 
 //For Staff

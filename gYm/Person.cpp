@@ -41,21 +41,6 @@ void Person::setLname(string Lname)
 	lName = Lname;
 }
 
-int Person::getDay() const
-{
-	return dateOfBirth.getDay();
-}
-
-int Person::getMonth() const
-{
-	return dateOfBirth.getMonth();
-}
-
-int Person::getYear() const
-{
-	return dateOfBirth.getYear();
-}
-
 Date Person::getDateOfBirth() const
 {
 	return dateOfBirth;

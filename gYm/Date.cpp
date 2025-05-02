@@ -38,6 +38,17 @@ void Date::setYear(int Year)
 	year = Year;
 }
 
+Date Date::getTodaysDate()
+{
+	time_t t = time(nullptr);
+	tm now;
+	localtime_s(&now, &t);
+	int currentDay = now.tm_mday;
+	int currentMonth = now.tm_mon + 1; 
+	int currentYear = now.tm_year + 1900;
+	return Date(currentDay, currentMonth, currentYear);
+}
+
 bool Date::operator == (const Date& date) const
 {
 	return day == date.day and

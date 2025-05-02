@@ -45,7 +45,7 @@ public:
 	static void clearVipWaitingList();
 	static void clearMembersInClasses();
 	static void clearCoachesAssignedClasses();
-
+	static void clearVisits();
 
 	// Utilities
 	static long long getLastMemberId();

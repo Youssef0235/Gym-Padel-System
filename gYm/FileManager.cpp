@@ -14,6 +14,26 @@ unordered_map<string, ClassSession> FileManager::classes;
 
 FileManager::FileManager() {}
 
+void from_json(const json& j, Date& u)
+{
+	u = Date
+	{
+		j.at("Day").get<int>(),
+		j.at("Month").get<int>(),
+		j.at("Year").get<int>(),
+	};
+}
+
+void to_json(json& j, const Date& u)
+{
+	j = json
+	{
+		{"Day", u.getDay()},
+		{"Month", u.getMonth()},
+		{"Year", u.getYear()},
+	};
+}
+
 void from_json(const json& j, Member& u)
 {
 	u = Member
@@ -21,16 +41,14 @@ void from_json(const json& j, Member& u)
 		j.at("First Name").get<string>(),
 		j.at("Middle Name").get<string>(),
 		j.at("Last Name").get<string>(),
-		j.at("Day").get<int>(),
-		j.at("Month").get<int>(),
-		j.at("Year").get<int>(),
+		j.at("Birth Date").get<Date>(),
 		j.at("ID").get<long long>(),
-		j.at("Plan Name").get<string>(),
-		j.at("Duration").get<int>(),
+		j.at("Plan").get<string>(),
 		j.at("Past Workouts").get<vector<string>>(),
 		j.at("VIP").get<bool>(),
 		j.at("Visits").get<int>(),
-		j.at("Classes").get<unordered_set<string>>()
+		j.at("Classes").get<unordered_set<string>>(),
+		j.at("End Date").get<Date>()
 	};
 }
 
@@ -41,16 +59,14 @@ void to_json(json& j, const Member& u)
 		{"First Name", u.getFname()},
 		{"Middle Name", u.getMname()},
 		{"Last Name", u.getLname()},
-		{"Day", u.getDay()},
-		{"Month", u.getMonth()},
-		{"Year", u.getYear()},
+		{"Birth Date", u.getDateOfBirth()},
 		{"ID", u.getID()},
-		{"Plan Name", u.getPlanName()},
-		{"Duration", u.getPlanDuration()},
+		{"Plan", u.getPlanName()},
 		{"Past Workouts", u.getPastWorkouts()},
 		{"VIP", u.getVipStatus()},
 		{"Visits", u.getVisits()},
-		{"Classes", u.getSubClasses()}
+		{"Classes", u.getSubClasses()},
+		{"End Date", u.getEndDate()},
 	};
 }
 
@@ -264,9 +280,9 @@ void to_json(json& j, const Coach& u)
 		{"Middle Name", u.getMname()},
 		{"Last Name", u.getLname()},
 		{"Class", u.getClassName()},
-		{"Day", u.getDay()},
-		{"Month", u.getMonth()},
-		{"Year", u.getYear()},
+        {"Day", u.getDateOfBirth().getDay()},
+		{"Month", u.getDateOfBirth().getMonth()},
+		{"Year", u.getDateOfBirth().getYear()},
 		{"ID", u.getID()},
 		{"Assigned Classes", u.getAssignedClasses()}
 	};
@@ -325,6 +341,16 @@ void FileManager::clearCoachesAssignedClasses()
 	while (it != coachesInfo.end())
 	{
 		coachesInfo[it->first].clearAssignedClasses();
+		it++;
+	}
+}
+
+void FileManager::clearVisits()
+{
+	auto it = members.begin();
+	while (it != members.end())
+	{
+		members[it->first].setVisits(0);
 		it++;
 	}
 }

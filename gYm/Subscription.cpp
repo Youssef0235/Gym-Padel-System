@@ -9,12 +9,12 @@ Subscription::Subscription(string Name, int Duration) : name(Name), duration(Dur
 {
 }
 
-void Subscription::setName(string Name)
+void Subscription::setPlanName(string Name)
 {
 	name = Name;
 }
 
-void Subscription::setDurtion(int Duration)
+void Subscription::setPlanDuration(int Duration)
 {
 	duration = Duration;
 }
@@ -25,22 +25,22 @@ void Subscription::setPlan(const Subscription& subscription)
 	duration = subscription.duration;
 }
 
-//For Staff
-void Subscription::setStartTime(int day, int month, int year)
+void Subscription::setStartDate(const Date& StartDate)
 {
+	startDate = StartDate;
+}
 
-	startTime.setDay(day);
-	startTime.setMonth(month);
-	startTime.setYear(day);
+void Subscription::setEndDate(const Date& EndDate)
+{
+	endDate = EndDate;
 }
 
 // CHECK!
-void Subscription::setEndTime()
+void Subscription::setEndDate()
 {
-
-	endTime.setDay(startTime.getDay());
-	endTime.setMonth((startTime.getMonth() + duration) % 12);
-	endTime.setYear(startTime.getYear() + ((startTime.getMonth() + endTime.getMonth()) / 12));
+	endDate.setDay(startDate.getDay());
+	endDate.setMonth((startDate.getMonth() + (duration / 30)) % 12);
+	endDate.setYear(startDate.getYear() + (startDate.getMonth() == 12 ? 1 : 0));
 }
 
 string Subscription::getName() const
@@ -53,20 +53,29 @@ int Subscription::getDuration() const
 	return duration;
 }
 
-// For Staff
-int Subscription::getEndDay()
+int Subscription::getEndDay() const
 {
-	return endTime.getDay();
+	return endDate.getDay();
 }
 
-int Subscription::getEndMonth()
+int Subscription::getEndMonth() const
 {
-	return endTime.getMonth();
+	return endDate.getMonth();
 }
 
-int Subscription::getEndYear()
+int Subscription::getEndYear() const
 {
-	return endTime.getYear();
+	return endDate.getYear();
+}
+
+Date Subscription::getStartDate() const
+{
+	return startDate;
+}
+
+Date Subscription::getEndDate() const
+{
+	return endDate;
 }
 
 void Subscription::extendPlan(string planName)

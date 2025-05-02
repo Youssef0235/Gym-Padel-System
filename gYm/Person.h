@@ -13,9 +13,6 @@ public:
 	string getFname() const;
 	string getMname() const;
 	string getLname() const;
-	int getDay() const;
-	int getMonth() const;
-	int getYear() const;
 	Date getDateOfBirth() const;
 
 	void setFname(string Fname);

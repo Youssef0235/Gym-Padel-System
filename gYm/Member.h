@@ -18,7 +18,7 @@ private:
     int visits;
 public:
     Member();
-    Member(string FirstName, string MiddleName, string LastName, int dd, int mm, int yy, long long id, string planName, int dur, vector<string>PastWorkouts, bool vip, int Visits, unordered_set<string>SubClasses);
+    Member(string FirstName, string MiddleName, string LastName, Date dob, long long id, string planName, vector<string>PastWorkouts, bool vip, int Visits, unordered_set<string>SubClasses, Date endDate);
     Member(string FirstName, string MiddleName, string LastName, int dd, int mm, int yy, long long id, Subscription subscription, vector<string>PastWorkouts, bool vip, int Visits, unordered_set<string>SubClasses);
 
     void setID(long long id);
@@ -27,14 +27,21 @@ public:
     void setPlan(int PlanNumber);
     void setPlan(const Subscription& sub);
     void setSubClasses(unordered_set<string>SubClasses);
+    void setStartDate(const Date& startDate);
+    void setEndDate(const Date& endDate);
+    void setEndDate();
+
 
     bool getVipStatus() const;
     long long getID() const;
     vector<string>getPastWorkouts()const;
+    unordered_set<string>getSubClasses() const;
     string getPlanName() const;
     int getPlanDuration() const;
     int getVisits() const;
-    unordered_set<string>getSubClasses() const;
+    Date getStartDate() const;
+    Date getEndDate() const;
+
 
     // For Staff // ---------------------------------------
     Subscription getPlan();
