@@ -10,20 +10,16 @@ class Subscription
 {
 private:
 	string name;
-	int duration;
 	Date endDate;
 public:
 	Subscription();
-	Subscription(string Name, int Duration);
+	Subscription(string Name, const Date& EndDate);
 	void setPlanName(string Name);
-	void setPlanDuration(int Duration);
 	void setPlan(const Subscription& subscription);
 	void setEndDate();
 
 	string getName() const;
-	int getDuration() const;
 	Date getEndDate() const;
-
 
 	void extendPlan(string planName);
 	void cancelPlan();

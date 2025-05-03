@@ -1,12 +1,11 @@
 #include "Subscription.h"
 #include "PlansData.h"
 
-Subscription::Subscription() : duration(0)
-{
-}
+Subscription::Subscription() {}
 
-Subscription::Subscription(string Name, int Duration) : name(Name), duration(Duration)
+Subscription::Subscription(string Name, const Date& EndDate) : name(Name)
 {
+	endDate = EndDate;
 }
 
 void Subscription::setPlanName(string Name)
@@ -14,33 +13,22 @@ void Subscription::setPlanName(string Name)
 	name = Name;
 }
 
-void Subscription::setPlanDuration(int Duration)
-{
-	duration = Duration;
-}
-
 void Subscription::setPlan(const Subscription& subscription)
 {
 	name = subscription.name;
-	duration = subscription.duration;
+	endDate = subscription.endDate;
 }
-
 
 void Subscription::setEndDate()
 {
 	endDate.setDay(Date::getTodaysDate().getDay());
-	endDate.setMonth((Date::getTodaysDate().getMonth() + (duration / 30)) % 12);
-	endDate.setYear(Date::getTodaysDate().getYear() + (Date::getTodaysDate().getMonth() == 12 ? 1 : 0));
+	endDate.setMonth((Date::getTodaysDate().getMonth() + (PlansData::getDuration(name) / 30)) % 12);
+	endDate.setYear(Date::getTodaysDate().getYear() + Date::getTodaysDate().getMonth() / 12);
 }
 
 string Subscription::getName() const
 {
 	return name;
-}
-
-int Subscription::getDuration() const
-{
-	return duration;
 }
 
 Date Subscription::getEndDate() const
@@ -50,23 +38,21 @@ Date Subscription::getEndDate() const
 
 void Subscription::extendPlan(string planName)
 {
-	duration += PlansData::getDuration(planName);
+	endDate = Date::extendBy(endDate, PlansData::getDuration(planName) / 30);
 }
 
 void Subscription::cancelPlan()
 {
-	duration = 0;
 	name = "";
 }
 
 void Subscription::changePlan(string newPlan)
 {
-	duration = PlansData::getDuration(newPlan);
 	name = newPlan;
 }
 
 bool Subscription::operator==(const Subscription& subscription) const
 {
 	return name == subscription.name and
-		duration == subscription.duration;
+		endDate == subscription.endDate;
 }

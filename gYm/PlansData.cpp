@@ -48,8 +48,3 @@ int PlansData::getPrice(int number)
 	else if (number == 4)
 		return 1000;
 }
-
-Subscription PlansData::getSubscription(int number)
-{
-	return Subscription(getName(number), getDuration(number));
-}

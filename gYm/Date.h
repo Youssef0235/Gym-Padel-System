@@ -14,12 +14,16 @@ public:
 	int getDay() const;
 	int getMonth() const;
 	int getYear() const;
-	static Date getTodaysDate();
 
 	void setDay(int Day);
 	void setMonth(int Month);
 	void setYear(int Year);
 
+	// Utilities
+	static Date getTodaysDate();
+	static bool isFutureDate(const Date& dateToCheck);
+	static bool isFirstDay();
+	static Date extendBy(Date&date, int months);
 
 	// Operator Overloading
 	bool operator == (const Date& date) const;

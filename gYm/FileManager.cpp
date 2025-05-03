@@ -299,6 +299,18 @@ void FileManager::saveCoachesInfo()
 	file.close();
 }
 
+void FileManager::handleSubscriptions()
+{
+	auto it = members.begin();
+	while (it != members.end())
+	{
+		Date userEndDate = members[it->first].getEndDate();
+		if (!Date::isFutureDate(userEndDate))
+			members[it->first].resetSubscription();
+		it++;
+	}
+}
+
 void FileManager::clearWaitingList()
 {
 	auto it = waitingLists.begin();

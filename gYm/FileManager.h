@@ -39,6 +39,9 @@ public:
 	// Working
 	static void loadCoachesInfo();
 	static void saveCoachesInfo();
+
+	// Handle If Sub Ended
+	static void handleSubscriptions();
   
 	// At End Of Month
 	static void clearWaitingList();
@@ -46,6 +49,7 @@ public:
 	static void clearMembersInClasses();
 	static void clearCoachesAssignedClasses();
 	static void clearVisits();
+
 
 	// Utilities
 	static long long getLastMemberId();

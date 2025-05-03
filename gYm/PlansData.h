@@ -13,5 +13,4 @@ public:
 	static int getDuration(int number);
 	static int getDuration(string planName);
 	static int getPrice(int number);
-    static Subscription getSubscription(int number);
 };

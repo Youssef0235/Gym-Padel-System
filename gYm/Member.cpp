@@ -14,16 +14,6 @@ Member::Member(string FirstName, string MiddleName, string LastName, Date dob, l
     plan.setEndDate();
 }
 
-Member::Member(string FirstName, string MiddleName, string LastName, int dd, int mm, int yy, long long id, Subscription subscription, vector<string> PastWorkouts, bool vip, int Visits, unordered_set<string> SubClasses) : Person(FirstName, MiddleName, LastName, dd, mm, yy)
-{
-    ID = id;
-    pastWorkouts = PastWorkouts;
-    isVip = vip;
-    visits = Visits;
-    subClasses = SubClasses;
-    plan = subscription;
-}
-
 void Member::setID(long long id)
 {
     ID = id;
@@ -39,17 +29,9 @@ void Member::setVisits(int Visits)
     visits = Visits;
 }
 
-// Fix Here -> done
 void Member::setPlan(int PlanNumber)
 {
-    plan.setPlan(PlansData::getSubscription(PlanNumber));
-}
-
-// Handles All;
-void Member::setPlan(const Subscription& sub)
-{
-    // Name, dur only
-    plan = sub;
+    plan.setPlanName(PlansData::getName(PlanNumber));
     plan.setEndDate();
 }
 
@@ -88,11 +70,6 @@ string Member::getPlanName() const
     return plan.getName();
 }
 
-int Member::getPlanDuration() const
-{
-    return plan.getDuration();
-}
-
 int Member::getVisits() const
 {
     return visits;
@@ -125,6 +102,11 @@ void Member::leaveClass(string className)
 }
 
 // Membership functions
+
+void Member::resetSubscription()
+{
+    plan.setPlanName("");
+}
 
 void Member::renewPlan()
 {
@@ -171,6 +153,5 @@ void Member::display()
     cout << dateOfBirth.getYear() << "\n";
     cout << ID << "\n";
     cout << plan.getName() << "\n";
-    cout << plan.getDuration() << "\n";
     cout << isVip << "\n";
 }
