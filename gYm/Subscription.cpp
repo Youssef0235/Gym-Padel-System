@@ -1,5 +1,4 @@
 #include "Subscription.h"
-#include "PlansData.h"
 
 Subscription::Subscription() {}
 
@@ -46,9 +45,11 @@ void Subscription::cancelPlan()
 	name = "";
 }
 
+// only when sub ends
 void Subscription::changePlan(string newPlan)
 {
 	name = newPlan;
+	setEndDate();
 }
 
 bool Subscription::operator==(const Subscription& subscription) const

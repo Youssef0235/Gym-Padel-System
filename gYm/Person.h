@@ -8,7 +8,7 @@ protected:
 	Date dateOfBirth;
 public:
 	Person();
-	Person(string firstName, string middleName, string lastName, int dd, int mm, int yy);
+	Person(string firstName, string middleName, string lastName, Date dob);
 
 	string getFname() const;
 	string getMname() const;

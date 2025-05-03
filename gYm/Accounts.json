@@ -8,7 +8,7 @@
         "Classes": [],
         "End Date": {
             "Day": 3,
-            "Month": 5,
+            "Month": 6,
             "Year": 2025
         },
         "First Name": "Youssef",
@@ -17,7 +17,8 @@
         "Middle Name": "Fayek",
         "Past Workouts": [],
         "Plan": "Basic",
-        "VIP": true,
+        "Total Paid": 100,
+        "VIP": false,
         "Visits": 0
     },
     "10": {
@@ -29,7 +30,7 @@
         "Classes": [],
         "End Date": {
             "Day": 3,
-            "Month": 5,
+            "Month": 8,
             "Year": 2025
         },
         "First Name": "Badr",
@@ -38,6 +39,7 @@
         "Middle Name": "Khaled",
         "Past Workouts": [],
         "Plan": "Standard",
+        "Total Paid": 300,
         "VIP": false,
         "Visits": 5
     },
@@ -50,7 +52,7 @@
         "Classes": [],
         "End Date": {
             "Day": 3,
-            "Month": 5,
+            "Month": 11,
             "Year": 2025
         },
         "First Name": "Karim",
@@ -59,6 +61,7 @@
         "Middle Name": "Hamed",
         "Past Workouts": [],
         "Plan": "Premium",
+        "Total Paid": 600,
         "VIP": false,
         "Visits": 17
     },
@@ -71,7 +74,7 @@
         "Classes": [],
         "End Date": {
             "Day": 3,
-            "Month": 5,
+            "Month": 7,
             "Year": 2025
         },
         "First Name": "Asser",
@@ -79,8 +82,9 @@
         "Last Name": "Shawky",
         "Middle Name": "Hamdy",
         "Past Workouts": [],
-        "Plan": "Ultimate",
-        "VIP": true,
+        "Plan": "",
+        "Total Paid": 1000,
+        "VIP": false,
         "Visits": 30
     },
     "13": {
@@ -92,7 +96,7 @@
         "Classes": [],
         "End Date": {
             "Day": 3,
-            "Month": 5,
+            "Month": 6,
             "Year": 2025
         },
         "First Name": "Salah",
@@ -101,6 +105,7 @@
         "Middle Name": "Adel",
         "Past Workouts": [],
         "Plan": "Basic",
+        "Total Paid": 100,
         "VIP": false,
         "Visits": 24
     },
@@ -113,7 +118,7 @@
         "Classes": [],
         "End Date": {
             "Day": 3,
-            "Month": 5,
+            "Month": 8,
             "Year": 2025
         },
         "First Name": "Younis",
@@ -122,7 +127,8 @@
         "Middle Name": "Hany",
         "Past Workouts": [],
         "Plan": "Standard",
-        "VIP": true,
+        "Total Paid": 300,
+        "VIP": false,
         "Visits": 2
     },
     "15": {
@@ -134,7 +140,7 @@
         "Classes": [],
         "End Date": {
             "Day": 3,
-            "Month": 5,
+            "Month": 11,
             "Year": 2025
         },
         "First Name": "Wael",
@@ -143,7 +149,8 @@
         "Middle Name": "Mostafa",
         "Past Workouts": [],
         "Plan": "Premium",
-        "VIP": true,
+        "Total Paid": 600,
+        "VIP": false,
         "Visits": 32
     },
     "16": {
@@ -155,7 +162,7 @@
         "Classes": [],
         "End Date": {
             "Day": 3,
-            "Month": 5,
+            "Month": 7,
             "Year": 2025
         },
         "First Name": "Essam",
@@ -163,7 +170,8 @@
         "Last Name": "Ramy",
         "Middle Name": "Hesham",
         "Past Workouts": [],
-        "Plan": "Ultimate",
+        "Plan": "",
+        "Total Paid": 1000,
         "VIP": false,
         "Visits": 27
     },
@@ -176,7 +184,7 @@
         "Classes": [],
         "End Date": {
             "Day": 3,
-            "Month": 5,
+            "Month": 8,
             "Year": 2025
         },
         "First Name": "Youssef",
@@ -185,7 +193,8 @@
         "Middle Name": "Akram",
         "Past Workouts": [],
         "Plan": "Standard",
-        "VIP": true,
+        "Total Paid": 300,
+        "VIP": false,
         "Visits": 11
     },
     "18": {
@@ -197,7 +206,7 @@
         "Classes": [],
         "End Date": {
             "Day": 3,
-            "Month": 5,
+            "Month": 6,
             "Year": 2025
         },
         "First Name": "Nabil",
@@ -206,6 +215,7 @@
         "Middle Name": "Gamal",
         "Past Workouts": [],
         "Plan": "Basic",
+        "Total Paid": 100,
         "VIP": false,
         "Visits": 8
     },
@@ -218,7 +228,7 @@
         "Classes": [],
         "End Date": {
             "Day": 3,
-            "Month": 5,
+            "Month": 11,
             "Year": 2025
         },
         "First Name": "Hussein",
@@ -227,7 +237,8 @@
         "Middle Name": "Rafik",
         "Past Workouts": [],
         "Plan": "Premium",
-        "VIP": true,
+        "Total Paid": 600,
+        "VIP": false,
         "Visits": 19
     },
     "2": {
@@ -239,7 +250,7 @@
         "Classes": [],
         "End Date": {
             "Day": 3,
-            "Month": 5,
+            "Month": 8,
             "Year": 2025
         },
         "First Name": "Ahmed",
@@ -248,6 +259,7 @@
         "Middle Name": "Mohamed",
         "Past Workouts": [],
         "Plan": "Standard",
+        "Total Paid": 300,
         "VIP": false,
         "Visits": 5
     },
@@ -260,7 +272,7 @@
         "Classes": [],
         "End Date": {
             "Day": 3,
-            "Month": 5,
+            "Month": 7,
             "Year": 2025
         },
         "First Name": "Fayek",
@@ -268,7 +280,8 @@
         "Last Name": "Reda",
         "Middle Name": "Said",
         "Past Workouts": [],
-        "Plan": "Ultimate",
+        "Plan": "",
+        "Total Paid": 1000,
         "VIP": false,
         "Visits": 35
     },
@@ -281,7 +294,7 @@
         "Classes": [],
         "End Date": {
             "Day": 3,
-            "Month": 5,
+            "Month": 11,
             "Year": 2025
         },
         "First Name": "Mohsen",
@@ -290,7 +303,8 @@
         "Middle Name": "Zaher",
         "Past Workouts": [],
         "Plan": "Premium",
-        "VIP": true,
+        "Total Paid": 600,
+        "VIP": false,
         "Visits": 20
     },
     "4": {
@@ -302,7 +316,7 @@
         "Classes": [],
         "End Date": {
             "Day": 3,
-            "Month": 5,
+            "Month": 6,
             "Year": 2025
         },
         "First Name": "Magdy",
@@ -311,7 +325,8 @@
         "Middle Name": "Hady",
         "Past Workouts": [],
         "Plan": "Basic",
-        "VIP": true,
+        "Total Paid": 100,
+        "VIP": false,
         "Visits": 13
     },
     "5": {
@@ -323,7 +338,7 @@
         "Classes": [],
         "End Date": {
             "Day": 3,
-            "Month": 5,
+            "Month": 8,
             "Year": 2025
         },
         "First Name": "Mazen",
@@ -332,6 +347,7 @@
         "Middle Name": "Amr",
         "Past Workouts": [],
         "Plan": "Standard",
+        "Total Paid": 300,
         "VIP": false,
         "Visits": 38
     },
@@ -344,7 +360,7 @@
         "Classes": [],
         "End Date": {
             "Day": 3,
-            "Month": 5,
+            "Month": 7,
             "Year": 2025
         },
         "First Name": "Yassin",
@@ -352,7 +368,8 @@
         "Last Name": "Abdelrahamn",
         "Middle Name": "Malek",
         "Past Workouts": [],
-        "Plan": "Ultimate",
+        "Plan": "",
+        "Total Paid": 1000,
         "VIP": false,
         "Visits": 7
     },
@@ -365,7 +382,7 @@
         "Classes": [],
         "End Date": {
             "Day": 3,
-            "Month": 5,
+            "Month": 11,
             "Year": 2025
         },
         "First Name": "Samer",
@@ -374,7 +391,8 @@
         "Middle Name": "Ali",
         "Past Workouts": [],
         "Plan": "Premium",
-        "VIP": true,
+        "Total Paid": 600,
+        "VIP": false,
         "Visits": 23
     },
     "8": {
@@ -386,7 +404,7 @@
         "Classes": [],
         "End Date": {
             "Day": 3,
-            "Month": 5,
+            "Month": 6,
             "Year": 2025
         },
         "First Name": "Nader",
@@ -395,6 +413,7 @@
         "Middle Name": "Ayman",
         "Past Workouts": [],
         "Plan": "Basic",
+        "Total Paid": 100,
         "VIP": false,
         "Visits": 11
     },
@@ -407,7 +426,7 @@
         "Classes": [],
         "End Date": {
             "Day": 3,
-            "Month": 5,
+            "Month": 7,
             "Year": 2025
         },
         "First Name": "Ramez",
@@ -416,7 +435,8 @@
         "Middle Name": "Atef",
         "Past Workouts": [],
         "Plan": "Utltimate",
-        "VIP": true,
+        "Total Paid": 1000,
+        "VIP": false,
         "Visits": 3
     }
 }

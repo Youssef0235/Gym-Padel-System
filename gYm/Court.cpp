@@ -1,32 +1,40 @@
 #include "Court.h"
 
-//Constructors
 Court::Court() : courtId(0) {}
 
-
-Court::Court(int id, std::string loc)
+Court::Court(long long CourtId, string CourtLocation, string CourtName)
 {
-	courtId = id;
-	location = loc;
+	courtId = CourtId;
+	courtLocation = CourtLocation;
+	courtName = CourtName;
 }
 
-//Setters
 void Court::setID(long long Courtid)
 {
 	courtId = Courtid;
 }
-void Court::setLocation(string loc)
+
+void Court::setLocation(string CourtLocation)
 {
-	location = loc;
+	courtLocation = CourtLocation;
 }
 
-//Getters
-long long Court::getID()
+void Court::setName(string CourtName)
+{
+	courtName = CourtName;
+}
+
+long long Court::getID() const
 {
 	return courtId;
 }
 
-string Court::getLocation()
+string Court::getLocation() const
 {
-	return location;
+	return courtLocation;
+}
+
+string Court::getName() const
+{
+	return courtName;
 }

@@ -3,60 +3,45 @@
 
 void BookingSystem::addCourt(int cid, string loc)
 {
-	Court cnew(cid, loc);
+	Court cnew(cid, loc, "");
 	courts.push_back(cnew);
 }
 
-Slot BookingSystem::searchAvailableCourts(int d, int m, int y, int sid, string loc)
+Slot BookingSystem::searchAvailableCourts(Date date, int sid, string loc)
 {
-	int id = -1; //Location Error
-	vector<Court>::iterator tempC;
-	for (tempC = courts.begin(); tempC != courts.end(); tempC++)
+	long long id = -1;
+	for (auto& court : courts) 
 	{
-		if (loc == (*tempC).getLocation())
+		if (loc == court.getLocation()) 
+			id = court.getID();
+	}
+	Date newDate = date;
+	while (true) 
+	{
+		Slot candidateSlot(id, sid, newDate);
+		bool found = false;
+		for (auto& slot : slots)
 		{
-			id = (*tempC).getID();
+			// Search in the booked slots
+			if (slot == candidateSlot)
+			{
+				found = false;
+				break;
+			}
+		}
+		if (!found) 
+		{
+			// Slot is available
+			return Slot(id, sid, date);
+		}
+		// Search for the next hour (sid == hours from 0 to 23
+		sid++;
+		if (sid == 24)
+		{
+			sid = 0;
+			newDate = Date::getNextDate(newDate);
 		}
 	}
-
-	vector<Slot>::iterator tempS;
-	for (tempS = slots.begin(); tempS != slots.end(); tempS++)
-	{
-
-		if (!((*tempS).getCourtID() == id &&
-			(*tempS).getDate().getDay() == d &&
-			(*tempS).getDate().getMonth() == m &&
-			(*tempS).getDate().getYear() == y &&
-			(*tempS).getSlotID() == sid))
-		{
-			//Availavble
-			return (*tempS);
-		}
-		else
-		{
-			sid++;
-
-			if (sid >= 23)
-			{
-				d++;
-				sid = -1;
-			}
-			if (d > 30)
-			{
-				m++;
-				d = 1;
-			}
-			if (m > 12)
-			{
-				y++;
-				m = 1;
-			}
-			//Not Available & return the next closest slot
-			return searchAvailableCourts(d, m, y, sid, loc);
-
-		}
-	}
-
 }
 
 void BookingSystem::checkSlotTimePassed(vector<Slot>& slots)
@@ -120,5 +105,5 @@ bool BookingSystem::cancelBooking(int sid)
 			}
 		}
 	}
-
+	return 0;
 }

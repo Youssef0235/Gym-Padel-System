@@ -4,7 +4,7 @@ Person::Person()
 {
 }
 
-Person::Person(string firstName, string middleName, string lastName, int dd, int mm, int yy) : dateOfBirth(dd, mm, yy)
+Person::Person(string firstName, string middleName, string lastName, Date dob) : dateOfBirth(dob)
 {
 	fName = firstName;
 	mName = middleName;

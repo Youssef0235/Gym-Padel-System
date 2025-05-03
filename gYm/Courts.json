@@ -1,0 +1,102 @@
+{
+    "1": {
+        "ID": 1,
+        "Location": "Masr El Gedida",
+        "Name": "Padel World"
+    },
+    "10": {
+        "ID": 10,
+        "Location": "Tagamoa",
+        "Name": "Padel City"
+    },
+    "11": {
+        "ID": 11,
+        "Location": "Shorouk",
+        "Name": "ProCourt"
+    },
+    "12": {
+        "ID": 12,
+        "Location": "Obour",
+        "Name": "Padel Square"
+    },
+    "13": {
+        "ID": 13,
+        "Location": "Rehab",
+        "Name": "Racket Club"
+    },
+    "14": {
+        "ID": 14,
+        "Location": "Madinty",
+        "Name": "Court House"
+    },
+    "15": {
+        "ID": 15,
+        "Location": "Shobra",
+        "Name": "Padel View"
+    },
+    "16": {
+        "ID": 16,
+        "Location": "Almaza",
+        "Name": "Padel Hub"
+    },
+    "17": {
+        "ID": 17,
+        "Location": "Triumph",
+        "Name": "Padel League"
+    },
+    "18": {
+        "ID": 18,
+        "Location": "Saint Fatima",
+        "Name": "PowerCourt"
+    },
+    "19": {
+        "ID": 19,
+        "Location": "El Nozha",
+        "Name": "The Arena"
+    },
+    "2": {
+        "ID": 2,
+        "Location": "Nasr City",
+        "Name": "Smash Club"
+    },
+    "20": {
+        "ID": 20,
+        "Location": "Roxy",
+        "Name": "Padel Base"
+    },
+    "3": {
+        "ID": 3,
+        "Location": "Zamalek",
+        "Name": "Padel Point"
+    },
+    "4": {
+        "ID": 4,
+        "Location": "Heliopolis",
+        "Name": "The Court"
+    },
+    "5": {
+        "ID": 5,
+        "Location": "New Cairo",
+        "Name": "Padel Spot"
+    },
+    "6": {
+        "ID": 6,
+        "Location": "Dokki",
+        "Name": "Racket Zone"
+    },
+    "7": {
+        "ID": 7,
+        "Location": "Maadi",
+        "Name": "Top Serve"
+    },
+    "8": {
+        "ID": 8,
+        "Location": "Sheikh Zayed",
+        "Name": "Ace Arena"
+    },
+    "9": {
+        "ID": 9,
+        "Location": "6th October",
+        "Name": "Smash Center"
+    }
+}

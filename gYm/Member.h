@@ -15,18 +15,17 @@ private:
     unordered_set<string>subClasses;
     long long ID;
     bool isVip;
-    int visits;
+    int visits, totalPaid;
 public:
     Member();
-    Member(string FirstName, string MiddleName, string LastName, Date dob, long long id, string planName, vector<string>PastWorkouts, bool vip, int Visits, unordered_set<string>SubClasses, Date endDate);
+    Member(string FirstName, string MiddleName, string LastName, Date dob, long long id, string planName, vector<string>PastWorkouts, bool vip, int Visits, unordered_set<string>SubClasses, Date endDate, int TotalPaid);
 
     void setID(long long id);
     void setVipStatus(bool vip);
     void setVisits(int Visits);
     void setPlan(int PlanNumber);
     void setSubClasses(unordered_set<string>SubClasses);
-    void setEndDate();
-
+    void setTotalPaid(int TotalPaid);
 
     bool getVipStatus() const;
     long long getID() const;
@@ -34,13 +33,13 @@ public:
     unordered_set<string>getSubClasses() const;
     string getPlanName() const;
     int getVisits() const;
+    int getTotalPaid() const;
     Date getEndDate() const;
 
 
     // For Staff // ---------------------------------------
     Subscription getPlan();
     void joinClass(string className);
-    // Handle If In Waiting??
     void leaveClass(string className);
     void addWorkout(string workout);
     // when sub ends
@@ -52,6 +51,7 @@ public:
     // Operator Overloading
     bool operator == (const Member& member);
     bool operator<(const Member& other) const; // For Set
-        // for debug
+
+    // for debug
     void display();
 };

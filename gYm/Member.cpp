@@ -3,7 +3,7 @@ using namespace std;
 
 Member::Member() : ID(0), isVip(0), visits(0) {}
 
-Member::Member(string FirstName, string MiddleName, string LastName, Date dob, long long id, string planName, vector<string> PastWorkouts, bool vip, int Visits, unordered_set<string> SubClasses, Date endDate) : Person(FirstName, MiddleName, LastName, dob.getDay(), dob.getMonth(), dob.getYear())
+Member::Member(string FirstName, string MiddleName, string LastName, Date dob, long long id, string planName, vector<string> PastWorkouts, bool vip, int Visits, unordered_set<string> SubClasses, Date endDate, int TotalPaid) : Person(FirstName, MiddleName, LastName, dob)
 {
     ID = id;
     pastWorkouts = PastWorkouts;
@@ -12,6 +12,7 @@ Member::Member(string FirstName, string MiddleName, string LastName, Date dob, l
     subClasses = SubClasses;
     plan.setPlanName(planName);
     plan.setEndDate();
+    totalPaid = TotalPaid;
 }
 
 void Member::setID(long long id)
@@ -29,6 +30,7 @@ void Member::setVisits(int Visits)
     visits = Visits;
 }
 
+// Sets Name And End Date
 void Member::setPlan(int PlanNumber)
 {
     plan.setPlanName(PlansData::getName(PlanNumber));
@@ -40,9 +42,9 @@ void Member::setSubClasses(unordered_set<string> SubClasses)
     subClasses = SubClasses;
 }
 
-void Member::setEndDate()
+void Member::setTotalPaid(int TotalPaid)
 {
-    plan.setEndDate();
+    totalPaid = TotalPaid;
 }
 
 bool Member::getVipStatus() const
@@ -73,6 +75,11 @@ string Member::getPlanName() const
 int Member::getVisits() const
 {
     return visits;
+}
+
+int Member::getTotalPaid() const
+{
+    return totalPaid;
 }
 
 unordered_set<string> Member::getSubClasses() const
@@ -122,9 +129,10 @@ void Member::cancelPlan()
 void Member::changePlan(string newPlan) 
 {
     plan.changePlan(newPlan);
+    isVip = 0;
 }
 
-bool Member::operator==(const Member& member)
+bool Member::operator == (const Member& member)
 {
     return fName == member.fName and
         mName == member.mName and

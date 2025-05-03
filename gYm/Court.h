@@ -6,18 +6,16 @@ class Court
 {
 private:
 	long long courtId;
-	string location;
-
+	string courtLocation, courtName;
 public:
-	//Constructors
 	Court();
-	Court(int, string);
+	Court(long long CourtId, string CourtLocation, string CourtName);
 
-	//Setters
 	void setID(long long CourtId);
-	void setLocation(string Location);
+	void setLocation(string CourtLocation);
+	void setName(string CourtName);
 
-	//Getters
-	long long getID();
-	string getLocation();
+	long long getID() const;
+	string getLocation() const;
+	string getName() const;
 };

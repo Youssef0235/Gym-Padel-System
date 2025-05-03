@@ -1,9 +1,7 @@
 #pragma once
 #include<iostream>
-#include "Subscription.h"
 using namespace std;
 
-class Subscription;
 
 // For Reading Only
 class PlansData

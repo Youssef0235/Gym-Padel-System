@@ -8,9 +8,11 @@
 // Map Uses Self Balancing Tree -> Red Black Tree So Retrieval Is In O(Log n)
 map<long long, Member> FileManager::members;
 map<long long, Coach> FileManager::coachesInfo;
+map<long long, Court> FileManager::courts;
 unordered_map<string, queue<long long>> FileManager::waitingLists;
 unordered_map<string, queue<long long>>FileManager::vipWaitingList;
 unordered_map<string, ClassSession> FileManager::classes;
+
 
 FileManager::FileManager() {}
 
@@ -48,7 +50,8 @@ void from_json(const json& j, Member& u)
 		j.at("VIP").get<bool>(),
 		j.at("Visits").get<int>(),
 		j.at("Classes").get<unordered_set<string>>(),
-		j.at("End Date").get<Date>()
+		j.at("End Date").get<Date>(),
+		j.at("Total Paid").get<int>()
 	};
 }
 
@@ -67,6 +70,7 @@ void to_json(json& j, const Member& u)
 		{"Visits", u.getVisits()},
 		{"Classes", u.getSubClasses()},
 		{"End Date", u.getEndDate()},
+		{"Total Paid", u.getTotalPaid()}
 	};
 }
 
@@ -249,7 +253,8 @@ void from_json(const json& j, Coach& u)
 		j.at("Class").get<string>(),
 		j.at("Birth Date").get<Date>(),
 		j.at("ID").get<long long>(),
-		j.at("Assigned Classes").get<vector<ClassSession>>()
+		j.at("Assigned Classes").get<vector<ClassSession>>(),
+		j.at("Salary").get<int>()
 	};
 }
 
@@ -278,9 +283,10 @@ void to_json(json& j, const Coach& u)
 		{"Middle Name", u.getMname()},
 		{"Last Name", u.getLname()},
 		{"Class", u.getClassName()},
-        {"Birth Date", u.getDateOfBirth()},
+		{"Birth Date", u.getDateOfBirth()},
 		{"ID", u.getID()},
-		{"Assigned Classes", u.getAssignedClasses()}
+		{"Assigned Classes", u.getAssignedClasses()},
+		{"Salary", u.getSalary()}
 	};
 }
 
@@ -296,6 +302,55 @@ void FileManager::saveCoachesInfo()
 	}
 	ofstream file("Coaches Info.json");
 	file << CoachesInfo.dump(4);
+	file.close();
+}
+
+void from_json(const json& j, Court& u)
+{
+	u = Court
+	{
+		j.at("ID").get<long long>(),
+		j.at("Location").get<string>(),
+		j.at("Name").get<string>()
+	};
+}
+
+void FileManager::loadCourts()
+{
+	json Courts;
+	ifstream file("Courts.json");
+	file >> Courts;
+	file.close();
+	auto it = Courts.begin();
+	while (it != Courts.end())
+	{
+		courts[stoll(it.key())] = it.value();
+		it++;
+	}
+}
+
+void to_json(json& j, const Court& u)
+{
+	j = json
+	{
+		{"ID", u.getID()},
+		{"Location", u.getLocation()},
+		{"Name", u.getName()},
+	};
+}
+
+void FileManager::saveCourts()
+{
+	json Courts;
+	auto it = courts.begin();
+	while (it != courts.end())
+	{
+		string id = to_string(it->first);
+		Courts[id] = it->second;
+		it++;
+	}
+	ofstream file("Courts.json");
+	file << Courts.dump(4);
 	file.close();
 }
 
@@ -363,6 +418,26 @@ void FileManager::clearVisits()
 	}
 }
 
+void FileManager::clearVip()
+{
+	auto it = members.begin();
+	while (it != members.end())
+	{
+		members[it->first].setVipStatus(false);
+		it++;
+	}
+}
+
+void FileManager::clearTotalPaid()
+{
+	auto it = members.begin();
+	while (it != members.end())
+	{
+		members[it->first].setTotalPaid(0);
+		it++;
+	}
+}
+
 long long FileManager::getLastMemberId()
 {
 	return members.rbegin()->first;
@@ -371,6 +446,37 @@ long long FileManager::getLastMemberId()
 long long FileManager::getLastCoachId()
 {
 	return coachesInfo.rbegin()->first;
+}
+
+int FileManager::getTotalRevenue()
+{
+	int totalPaidByGym = 0, totalPaidToGym = 0;
+	auto coachesIt = coachesInfo.begin();
+	while (coachesIt != coachesInfo.end())
+	{
+		totalPaidByGym += coachesInfo[coachesIt->first].getSalary();
+		coachesIt++;
+	}
+	auto membersIt = members.begin();
+	while (membersIt != members.end())
+	{
+		totalPaidToGym += members[membersIt->first].getTotalPaid();
+		membersIt++;
+	}
+	return totalPaidToGym - totalPaidByGym;
+}
+
+vector<long long> FileManager::getMostActive(int visitsCount)
+{
+	vector <long long>membersId;
+	auto it = members.begin();
+	while (it != members.end())
+	{
+		if (members[it->first].getVisits() >= visitsCount)
+			membersId.push_back(it->first);
+		it++;
+	}
+	return membersId;
 }
 
 bool FileManager::matchingNameAndId(string firstName, string middleName, string lastName, long long id)

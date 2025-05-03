@@ -1,7 +1,7 @@
 #include "Slot.h"
 
 //Constructors
-Slot::Slot() {}
+Slot::Slot() : memberID(0), courtID(0), slotID(0) {}
 
 Slot::Slot(long long cid, long long sid, Date dt)
 {
@@ -23,11 +23,9 @@ void Slot::setSlotID(long long sid)
 {
 	slotID = sid;
 }
-void Slot::setDate(int d, int m, int y)
+void Slot::setDate(const Date& Date) 
 {
-	date.setDay(d);
-	date.setMonth(m);
-	date.setYear(y);
+	date = Date;
 }
 
 //Getters
@@ -49,4 +47,11 @@ long long Slot::getSlotID()
 Date Slot::getDate()
 {
 	return date;
+}
+
+bool Slot::operator == (const Slot& slot)
+{
+	return courtID == slot.courtID and
+		date == slot.date and
+		slotID == slot.slotID;
 }

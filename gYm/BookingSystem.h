@@ -13,7 +13,7 @@ private:
 public:
 
     void addCourt(int cid, string loc);
-    Slot searchAvailableCourts(int d, int m, int y, int sid, string loc);
+    Slot searchAvailableCourts(Date date, int sid, string loc);
     void checkSlotTimePassed(vector<Slot>& slots);
     void makeBooking(Slot s, int mID);
     bool cancelBooking(int sid);
