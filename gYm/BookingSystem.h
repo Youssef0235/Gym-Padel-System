@@ -1,21 +1,15 @@
 #pragma once
 #include <vector>
-#include "Court.h"
-#include "Slot.h"
+#include"FileManager.h"
 using namespace std;
 
 class BookingSystem
 {
-private:
-    vector<Court> courts;
-    vector<Slot> slots;
-
 public:
-
-    void addCourt(int cid, string loc);
-    Slot searchAvailableCourts(Date date, int sid, string loc);
-    void checkSlotTimePassed(vector<Slot>& slots);
-    void makeBooking(Slot s, int mID);
-    bool cancelBooking(int sid);
+    static bool isSlotAvailable(const Slot& slot);
+    static Slot searchAvailableCourts(Date date, int sid, string loc);
+    static void checkSlotTimePassed();
+    static void makeBooking(Slot& slot, long long memberId);
+    static bool cancelBooking(long long memberId, Slot slot);
 
 };

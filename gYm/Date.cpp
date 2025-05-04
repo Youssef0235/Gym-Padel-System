@@ -1,12 +1,8 @@
 #include "Date.h"
 
-Date::Date() : day(0), month(0), year(0)
-{
-}
+Date::Date() : day(0), month(0), year(0) {}
 
-Date::Date(int d, int m, int y) : day(d), month(m), year(y)
-{
-}
+Date::Date(int d, int m, int y) : day(d), month(m), year(y) {}
 
 int Date::getDay() const
 {
@@ -112,7 +108,8 @@ Date Date::getNextDate(const Date& date)
     {
         d = 1;
         m++;
-        if (m > 12) {
+        if (m > 12) 
+        {
             m = 1;
             y++;
         }

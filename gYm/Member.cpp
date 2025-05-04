@@ -1,9 +1,9 @@
 #include "Member.h"
 using namespace std;
 
-Member::Member() : ID(0), isVip(0), visits(0) {}
+Member::Member() : ID(0), isVip(0), visits(0), totalPaid(0) {}
 
-Member::Member(string FirstName, string MiddleName, string LastName, Date dob, long long id, string planName, vector<string> PastWorkouts, bool vip, int Visits, unordered_set<string> SubClasses, Date endDate, int TotalPaid) : Person(FirstName, MiddleName, LastName, dob)
+Member::Member(string FirstName, string MiddleName, string LastName, Date dob, long long id, string planName, vector<string> PastWorkouts, bool vip, int Visits, unordered_set<string> SubClasses, Date endDate, int TotalPaid, vector<Slot> Slots) : Person(FirstName, MiddleName, LastName, dob)
 {
     ID = id;
     pastWorkouts = PastWorkouts;
@@ -13,6 +13,7 @@ Member::Member(string FirstName, string MiddleName, string LastName, Date dob, l
     plan.setPlanName(planName);
     plan.setEndDate();
     totalPaid = TotalPaid;
+    slots = Slots;
 }
 
 void Member::setID(long long id)
@@ -47,6 +48,11 @@ void Member::setTotalPaid(int TotalPaid)
     totalPaid = TotalPaid;
 }
 
+void Member::setSlots(vector<Slot> Slots)
+{
+    slots = Slots;
+}
+
 bool Member::getVipStatus() const
 {
     return isVip;
@@ -55,6 +61,20 @@ bool Member::getVipStatus() const
 void Member::addWorkout(string workout)
 {
     pastWorkouts.push_back(workout);
+}
+
+void Member::removeSlot(const Slot& slot)
+{
+    for (int i = 0; i < slots.size(); i++)
+    {
+        if (slots[i] == slot)
+            slots.erase(slots.begin() + i);
+    }
+}
+
+void Member::addSlot(const Slot& slot)
+{
+    slots.push_back(slot);
 }
 
 long long Member::getID() const
@@ -92,6 +112,11 @@ Date Member::getEndDate() const
     return plan.getEndDate();
 }
 
+vector<Slot> Member::getSlots() const
+{
+    return slots;
+}
+
 //For Staff
 Subscription Member::getPlan()
 {
@@ -110,11 +135,6 @@ void Member::leaveClass(string className)
 
 // Membership functions
 
-void Member::resetSubscription()
-{
-    plan.setPlanName("");
-}
-
 void Member::renewPlan()
 {
     plan.extendPlan(plan.getName());
@@ -123,13 +143,11 @@ void Member::renewPlan()
 void Member::cancelPlan()
 {
     plan.cancelPlan();
-    isVip = 0;
 }
 
 void Member::changePlan(string newPlan) 
 {
     plan.changePlan(newPlan);
-    isVip = 0;
 }
 
 bool Member::operator == (const Member& member)
@@ -143,7 +161,8 @@ bool Member::operator == (const Member& member)
         plan == member.plan and
         isVip == member.isVip and
         visits == member.visits and
-        subClasses == member.subClasses;
+        subClasses == member.subClasses and
+        totalPaid == member.totalPaid;
 }
 
 bool Member::operator<(const Member& other) const
@@ -162,4 +181,5 @@ void Member::display()
     cout << ID << "\n";
     cout << plan.getName() << "\n";
     cout << isVip << "\n";
+    cout << totalPaid << "\n";
 }

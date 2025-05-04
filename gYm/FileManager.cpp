@@ -22,7 +22,7 @@ void from_json(const json& j, Date& u)
 	{
 		j.at("Day").get<int>(),
 		j.at("Month").get<int>(),
-		j.at("Year").get<int>(),
+		j.at("Year").get<int>()
 	};
 }
 
@@ -32,7 +32,27 @@ void to_json(json& j, const Date& u)
 	{
 		{"Day", u.getDay()},
 		{"Month", u.getMonth()},
-		{"Year", u.getYear()},
+		{"Year", u.getYear()}
+	};
+}
+
+void from_json(const json& j, Slot& u)
+{
+	u = Slot
+	{
+		j.at("Court ID").get<long long>(),
+		j.at("ID").get<long long>(),
+		j.at("Date").get<Date>()
+	};
+}
+
+void to_json(json& j, const Slot& u)
+{
+	j = json
+	{
+		{"Court ID", u.getCourtID()},
+		{"ID", u.getSlotID()},
+		{"Date", u.getDate()}
 	};
 }
 
@@ -51,7 +71,8 @@ void from_json(const json& j, Member& u)
 		j.at("Visits").get<int>(),
 		j.at("Classes").get<unordered_set<string>>(),
 		j.at("End Date").get<Date>(),
-		j.at("Total Paid").get<int>()
+		j.at("Total Paid").get<int>(),
+		j.at("Slots").get<vector<Slot>>()
 	};
 }
 
@@ -70,7 +91,8 @@ void to_json(json& j, const Member& u)
 		{"Visits", u.getVisits()},
 		{"Classes", u.getSubClasses()},
 		{"End Date", u.getEndDate()},
-		{"Total Paid", u.getTotalPaid()}
+		{"Total Paid", u.getTotalPaid()},
+		{"Slots", u.getSlots()}
 	};
 }
 
@@ -359,7 +381,7 @@ void FileManager::handleSubscriptions()
 	{
 		Date userEndDate = members[it->first].getEndDate();
 		if (!Date::isFutureDate(userEndDate))
-			members[it->first].resetSubscription();
+			members[it->first].cancelPlan();
 		it++;
 	}
 }
@@ -457,6 +479,11 @@ long long FileManager::getLastCoachId()
 	return coachesInfo.rbegin()->first;
 }
 
+long long FileManager::getLastCourtId()
+{
+	return courts.rbegin()->first;
+}
+
 int FileManager::getTotalRevenue()
 {
 	int totalPaidByGym = 0, totalPaidToGym = 0;
@@ -515,7 +542,6 @@ void FileManager::addToWaiting(string className, long long memberId)
 {
 	if (members[memberId].getVipStatus())
 		vipWaitingList[className].push(memberId);
-
 	else
 		waitingLists[className].push(memberId);
 }
@@ -532,6 +558,41 @@ void FileManager::removeFromWaiting(string className)
 void FileManager::removeMemberFromGym(long long memberId)
 {
 	members.erase(memberId);
+}
+
+void FileManager::removeSlot(long long memberId, const Slot& slot)
+{
+	members[memberId].removeSlot(slot);
+}
+
+void FileManager::addCourt(string Location, string CourtName)
+{
+	long long CourtId = getLastCourtId() + 1;
+	Court cnew(CourtId, Location, CourtName);
+	courts[CourtId] = cnew;
+}
+
+long long FileManager::getCourtId(string location)
+{
+	auto it = courts.begin();
+	while (it != courts.end())
+	{
+		if (location == it->second.getLocation())
+			return it->second.getID();
+		it++;
+	}
+	return -1;
+}
+
+bool FileManager::foundSlot(long long memberId, const Slot& slot)
+{
+	vector<Slot>slots = members[memberId].getSlots();
+	for (int i = 0; i < slots.size(); i++)
+	{
+		if (slots[i] == slot)
+			return true;
+	}
+	return false;
 }
 
 bool FileManager::fileExist(string fileName)

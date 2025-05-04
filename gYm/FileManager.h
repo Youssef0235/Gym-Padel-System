@@ -7,6 +7,7 @@
 #include"Member.h"
 #include"Coach.h"
 #include"Court.h"
+#include"Slot.h"
 using json = nlohmann::json;
 using namespace std;
 
@@ -46,8 +47,10 @@ public:
 	static void loadCourts();
 	static void saveCourts();
 
-	// Handle If Sub Ended
+	// Handle If Sub Ends
 	static void handleSubscriptions();
+	// Handle If Reservation Ends
+	//static void handleSlots();
   
 	// At End Of Month
 	static void clearWaitingList();
@@ -63,6 +66,7 @@ public:
 	static string getClassName(int id);
 	static long long getLastMemberId();
 	static long long getLastCoachId();
+	static long long getLastCourtId();
 	static int getTotalRevenue();
 	static vector<long long> getMostActive(int visitsCount);
 	static bool matchingNameAndId(string firstName, string middleName, string lastName, long long id);
@@ -73,6 +77,11 @@ public:
 	static void addToWaiting(string className, long long memberId);
 	static void removeFromWaiting(string className);
 	static void removeMemberFromGym(long long memberId);
+	static void removeSlot(long long memberId, const Slot& slot);
+
+	static void addCourt(string Location, string CourtName);
+	static long long getCourtId(string location);
+	static bool foundSlot(long long memberId, const Slot& slot);
 
 	// Wait
 	static bool fileExist(string fileName);

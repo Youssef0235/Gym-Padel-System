@@ -63,9 +63,10 @@ vector<Member> Staff::ManageSubscription(vector<Member>& members)
 
 	auto now = system_clock::now();
 	auto now_time_t = system_clock::to_time_t(now);
-	tm* now_tm = localtime(&now_time_t);
+	std::tm now_tm;
+	localtime_s(&now_tm, &now_time_t);
 
-	Date currentDate(now_tm->tm_mday, now_tm->tm_mon + 1, now_tm->tm_year + 1900);
+	Date currentDate(now_tm.tm_mday, now_tm.tm_mon + 1, now_tm.tm_year + 1900);
 
 	for (Member& member : members) 
 	{

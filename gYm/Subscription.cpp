@@ -2,8 +2,9 @@
 
 Subscription::Subscription() {}
 
-Subscription::Subscription(string Name, const Date& EndDate) : name(Name)
+Subscription::Subscription(string Name, const Date& EndDate)
 {
+	name = Name;
 	endDate = EndDate;
 }
 
@@ -18,6 +19,7 @@ void Subscription::setPlan(const Subscription& subscription)
 	endDate = subscription.endDate;
 }
 
+// Todays Date + Sub
 void Subscription::setEndDate()
 {
 	endDate.setDay(Date::getTodaysDate().getDay());
@@ -43,6 +45,7 @@ void Subscription::extendPlan(string planName)
 void Subscription::cancelPlan()
 {
 	name = "";
+	endDate = Date::getTodaysDate();
 }
 
 // only when sub ends

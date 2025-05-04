@@ -7,7 +7,7 @@
         },
         "Classes": [],
         "End Date": {
-            "Day": 4,
+            "Day": 5,
             "Month": 6,
             "Year": 2025
         },
@@ -17,6 +17,44 @@
         "Middle Name": "Fayek",
         "Past Workouts": [],
         "Plan": "Basic",
+        "Slots": [
+            {
+                "Court ID": 1,
+                "Date": {
+                    "Day": 5,
+                    "Month": 5,
+                    "Year": 2025
+                },
+                "ID": 19
+            },
+            {
+                "Court ID": 2,
+                "Date": {
+                    "Day": 5,
+                    "Month": 5,
+                    "Year": 2025
+                },
+                "ID": 19
+            },
+            {
+                "Court ID": 20,
+                "Date": {
+                    "Day": 5,
+                    "Month": 5,
+                    "Year": 2025
+                },
+                "ID": 23
+            },
+            {
+                "Court ID": 5,
+                "Date": {
+                    "Day": 5,
+                    "Month": 5,
+                    "Year": 2025
+                },
+                "ID": 2
+            }
+        ],
         "Total Paid": 100,
         "VIP": false,
         "Visits": 0
@@ -29,7 +67,7 @@
         },
         "Classes": [],
         "End Date": {
-            "Day": 4,
+            "Day": 5,
             "Month": 8,
             "Year": 2025
         },
@@ -39,6 +77,7 @@
         "Middle Name": "Khaled",
         "Past Workouts": [],
         "Plan": "Standard",
+        "Slots": [],
         "Total Paid": 300,
         "VIP": false,
         "Visits": 5
@@ -51,7 +90,7 @@
         },
         "Classes": [],
         "End Date": {
-            "Day": 4,
+            "Day": 5,
             "Month": 11,
             "Year": 2025
         },
@@ -61,6 +100,7 @@
         "Middle Name": "Hamed",
         "Past Workouts": [],
         "Plan": "Premium",
+        "Slots": [],
         "Total Paid": 600,
         "VIP": false,
         "Visits": 17
@@ -73,7 +113,7 @@
         },
         "Classes": [],
         "End Date": {
-            "Day": 4,
+            "Day": 5,
             "Month": 7,
             "Year": 2025
         },
@@ -83,6 +123,7 @@
         "Middle Name": "Hamdy",
         "Past Workouts": [],
         "Plan": "",
+        "Slots": [],
         "Total Paid": 1000,
         "VIP": false,
         "Visits": 30
@@ -95,7 +136,7 @@
         },
         "Classes": [],
         "End Date": {
-            "Day": 4,
+            "Day": 5,
             "Month": 6,
             "Year": 2025
         },
@@ -105,6 +146,7 @@
         "Middle Name": "Adel",
         "Past Workouts": [],
         "Plan": "Basic",
+        "Slots": [],
         "Total Paid": 100,
         "VIP": false,
         "Visits": 24
@@ -117,7 +159,7 @@
         },
         "Classes": [],
         "End Date": {
-            "Day": 4,
+            "Day": 5,
             "Month": 8,
             "Year": 2025
         },
@@ -127,6 +169,7 @@
         "Middle Name": "Hany",
         "Past Workouts": [],
         "Plan": "Standard",
+        "Slots": [],
         "Total Paid": 300,
         "VIP": false,
         "Visits": 2
@@ -139,7 +182,7 @@
         },
         "Classes": [],
         "End Date": {
-            "Day": 4,
+            "Day": 5,
             "Month": 11,
             "Year": 2025
         },
@@ -149,6 +192,7 @@
         "Middle Name": "Mostafa",
         "Past Workouts": [],
         "Plan": "Premium",
+        "Slots": [],
         "Total Paid": 600,
         "VIP": false,
         "Visits": 32
@@ -161,7 +205,7 @@
         },
         "Classes": [],
         "End Date": {
-            "Day": 4,
+            "Day": 5,
             "Month": 7,
             "Year": 2025
         },
@@ -171,6 +215,7 @@
         "Middle Name": "Hesham",
         "Past Workouts": [],
         "Plan": "",
+        "Slots": [],
         "Total Paid": 1000,
         "VIP": false,
         "Visits": 27
@@ -183,7 +228,7 @@
         },
         "Classes": [],
         "End Date": {
-            "Day": 4,
+            "Day": 5,
             "Month": 8,
             "Year": 2025
         },
@@ -193,6 +238,7 @@
         "Middle Name": "Akram",
         "Past Workouts": [],
         "Plan": "Standard",
+        "Slots": [],
         "Total Paid": 300,
         "VIP": false,
         "Visits": 11
@@ -205,7 +251,7 @@
         },
         "Classes": [],
         "End Date": {
-            "Day": 4,
+            "Day": 5,
             "Month": 6,
             "Year": 2025
         },
@@ -215,6 +261,7 @@
         "Middle Name": "Gamal",
         "Past Workouts": [],
         "Plan": "Basic",
+        "Slots": [],
         "Total Paid": 100,
         "VIP": false,
         "Visits": 8
@@ -227,7 +274,7 @@
         },
         "Classes": [],
         "End Date": {
-            "Day": 4,
+            "Day": 5,
             "Month": 11,
             "Year": 2025
         },
@@ -237,6 +284,7 @@
         "Middle Name": "Rafik",
         "Past Workouts": [],
         "Plan": "Premium",
+        "Slots": [],
         "Total Paid": 600,
         "VIP": false,
         "Visits": 19
@@ -249,7 +297,7 @@
         },
         "Classes": [],
         "End Date": {
-            "Day": 4,
+            "Day": 5,
             "Month": 8,
             "Year": 2025
         },
@@ -259,6 +307,7 @@
         "Middle Name": "Mohamed",
         "Past Workouts": [],
         "Plan": "Standard",
+        "Slots": [],
         "Total Paid": 300,
         "VIP": false,
         "Visits": 5
@@ -271,7 +320,7 @@
         },
         "Classes": [],
         "End Date": {
-            "Day": 4,
+            "Day": 5,
             "Month": 7,
             "Year": 2025
         },
@@ -281,6 +330,7 @@
         "Middle Name": "Said",
         "Past Workouts": [],
         "Plan": "",
+        "Slots": [],
         "Total Paid": 1000,
         "VIP": false,
         "Visits": 35
@@ -293,7 +343,7 @@
         },
         "Classes": [],
         "End Date": {
-            "Day": 4,
+            "Day": 5,
             "Month": 11,
             "Year": 2025
         },
@@ -303,6 +353,7 @@
         "Middle Name": "Zaher",
         "Past Workouts": [],
         "Plan": "Premium",
+        "Slots": [],
         "Total Paid": 600,
         "VIP": false,
         "Visits": 20
@@ -315,7 +366,7 @@
         },
         "Classes": [],
         "End Date": {
-            "Day": 4,
+            "Day": 5,
             "Month": 6,
             "Year": 2025
         },
@@ -325,6 +376,7 @@
         "Middle Name": "Hady",
         "Past Workouts": [],
         "Plan": "Basic",
+        "Slots": [],
         "Total Paid": 100,
         "VIP": false,
         "Visits": 13
@@ -337,7 +389,7 @@
         },
         "Classes": [],
         "End Date": {
-            "Day": 4,
+            "Day": 5,
             "Month": 8,
             "Year": 2025
         },
@@ -347,6 +399,7 @@
         "Middle Name": "Amr",
         "Past Workouts": [],
         "Plan": "Standard",
+        "Slots": [],
         "Total Paid": 300,
         "VIP": false,
         "Visits": 38
@@ -359,7 +412,7 @@
         },
         "Classes": [],
         "End Date": {
-            "Day": 4,
+            "Day": 5,
             "Month": 7,
             "Year": 2025
         },
@@ -369,6 +422,7 @@
         "Middle Name": "Malek",
         "Past Workouts": [],
         "Plan": "",
+        "Slots": [],
         "Total Paid": 1000,
         "VIP": false,
         "Visits": 7
@@ -381,7 +435,7 @@
         },
         "Classes": [],
         "End Date": {
-            "Day": 4,
+            "Day": 5,
             "Month": 11,
             "Year": 2025
         },
@@ -391,6 +445,7 @@
         "Middle Name": "Ali",
         "Past Workouts": [],
         "Plan": "Premium",
+        "Slots": [],
         "Total Paid": 600,
         "VIP": false,
         "Visits": 23
@@ -403,7 +458,7 @@
         },
         "Classes": [],
         "End Date": {
-            "Day": 4,
+            "Day": 5,
             "Month": 6,
             "Year": 2025
         },
@@ -413,6 +468,7 @@
         "Middle Name": "Ayman",
         "Past Workouts": [],
         "Plan": "Basic",
+        "Slots": [],
         "Total Paid": 100,
         "VIP": false,
         "Visits": 11
@@ -425,7 +481,7 @@
         },
         "Classes": [],
         "End Date": {
-            "Day": 4,
+            "Day": 5,
             "Month": 7,
             "Year": 2025
         },
@@ -435,6 +491,7 @@
         "Middle Name": "Atef",
         "Past Workouts": [],
         "Plan": "Utltimate",
+        "Slots": [],
         "Total Paid": 1000,
         "VIP": false,
         "Visits": 3

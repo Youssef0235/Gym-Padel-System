@@ -133,9 +133,11 @@
     <ClInclude Include="Court.h" />
     <ClInclude Include="Date.h" />
     <ClInclude Include="FileManager.h" />
+    <ClInclude Include="Manager.h" />
     <ClInclude Include="Member.h" />
     <ClInclude Include="Person.h" />
     <ClInclude Include="PlansData.h" />
+    <ClInclude Include="Receptionist.h" />
     <ClInclude Include="Slot.h" />
     <ClInclude Include="Staff.h" />
     <ClInclude Include="Subscription.h" />
@@ -148,9 +150,11 @@
     <ClCompile Include="cpp.cpp" />
     <ClCompile Include="Date.cpp" />
     <ClCompile Include="FileManager.cpp" />
+    <ClCompile Include="Manager.cpp" />
     <ClCompile Include="Member.cpp" />
     <ClCompile Include="Person.cpp" />
     <ClCompile Include="PlansData.cpp" />
+    <ClCompile Include="Receptionist.cpp" />
     <ClCompile Include="Slot.cpp" />
     <ClCompile Include="Staff.cpp" />
     <ClCompile Include="Subscription.cpp" />

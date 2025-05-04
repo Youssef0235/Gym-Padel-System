@@ -1,109 +1,98 @@
 #include "BookingSystem.h"
 #include <ctime>
 
-void BookingSystem::addCourt(int cid, string loc)
+bool BookingSystem::isSlotAvailable(const Slot& slot)
 {
-	Court cnew(cid, loc, "");
-	courts.push_back(cnew);
+	auto it = FileManager::members.begin();
+	while (it != FileManager::members.end())
+	{
+		bool exist = (FileManager::foundSlot(it->first, slot));
+		if (exist)
+			return false;
+		it++;
+	}
+	return true;
 }
 
 Slot BookingSystem::searchAvailableCourts(Date date, int sid, string loc)
 {
-	long long id = -1;
-	for (auto& court : courts) 
-	{
-		if (loc == court.getLocation()) 
-			id = court.getID();
-	}
+	long long courtId = FileManager::getCourtId(loc);
 	Date newDate = date;
-	while (true) 
+	Slot candidateSlot;
+	auto it = FileManager::members.begin();
+	while (it != FileManager::members.end())
 	{
-		Slot candidateSlot(id, sid, newDate);
-		bool found = false;
-		for (auto& slot : slots)
+		vector<Slot> st =  FileManager::members[it->first].getSlots();
+		candidateSlot = Slot(courtId, sid, newDate);
+		bool available = isSlotAvailable(candidateSlot);
+		if (available)
+			break;
+		else
 		{
-			// Search in the booked slots
-			if (slot == candidateSlot)
+			sid++;
+			if (sid == 24)
 			{
-				found = false;
-				break;
+				// Check Next Day
+				newDate = Date::getNextDate(newDate);
+				sid = 0;
 			}
 		}
-		if (!found) 
-		{
-			// Slot is available
-			return Slot(id, sid, date);
-		}
-		// Search for the next hour (sid == hours from 0 to 23
-		sid++;
-		if (sid == 24)
-		{
-			sid = 0;
-			newDate = Date::getNextDate(newDate);
-		}
+		it++;
 	}
+	return candidateSlot;
 }
 
-void BookingSystem::checkSlotTimePassed(vector<Slot>& slots)
+void BookingSystem::checkSlotTimePassed()
 {
-	vector<Slot>::iterator tempS;
-	for (tempS = slots.begin(); tempS != slots.end(); tempS++)
+	auto it = FileManager::members.begin();
+	while (it != FileManager::members.end())
 	{
-		tm targetTime = {};
-		targetTime.tm_mday = (*tempS).getDate().getDay();
-		targetTime.tm_mon = ((*tempS).getDate().getMonth()) - 1;  // tm_mon is 0-based (0 = Jan)
-		targetTime.tm_year = ((*tempS).getDate().getYear()) - 1900; // tm_year is years since 1900
-		targetTime.tm_hour = (*tempS).getSlotID();
-		targetTime.tm_min = 0;
-		targetTime.tm_sec = 0;
-
-		time_t target = mktime(&targetTime);
-
-		time_t now = time(0);
-
-		double hoursDiff = difftime(target, now) / 3600.0;
-
-		if (hoursDiff < 0) {
-			slots.erase((tempS));
-		}
-	}
-}
-
-void BookingSystem::makeBooking(Slot s, int mID)
-{
-	s.setMemberID(mID);
-	slots.push_back(s);
-}
-
-bool BookingSystem::cancelBooking(int sid)
-{
-	vector<Slot>::iterator tempS;
-	for (tempS = slots.begin(); tempS != slots.end(); tempS++)
-	{
-		if (sid == (*tempS).getSlotID())
+		vector<Slot>memberReservedSlots = FileManager::members[it->first].getSlots();
+		for(int i = 0; i < memberReservedSlots.size(); i++)
 		{
 			tm targetTime = {};
-			targetTime.tm_mday = (*tempS).getDate().getDay();
-			targetTime.tm_mon = ((*tempS).getDate().getMonth()) - 1;  // tm_mon is 0-based (0 = Jan)
-			targetTime.tm_year = ((*tempS).getDate().getYear()) - 1900; // tm_year is years since 1900
-			targetTime.tm_hour = sid;
+			targetTime.tm_mday = memberReservedSlots[i].getDate().getDay();
+			targetTime.tm_mon = memberReservedSlots[i].getDate().getMonth() - 1;  // tm_mon is 0-based (0 = Jan)
+			targetTime.tm_year = memberReservedSlots[i].getDate().getYear() - 1900; // tm_year is years since 1900
+			targetTime.tm_hour = memberReservedSlots[i].getSlotID();
 			targetTime.tm_min = 0;
 			targetTime.tm_sec = 0;
-
 			time_t target = mktime(&targetTime);
-
 			time_t now = time(0);
-
 			double hoursDiff = difftime(target, now) / 3600.0;
-
-			if (hoursDiff > 3) {
-				slots.erase((tempS));
-				return 1;
-			}
-			else {
-				return 0; //GUI
-			}
+			if (hoursDiff < 0)
+				FileManager::removeSlot(it->first, memberReservedSlots[i]);
 		}
+		it++;
 	}
-	return 0;
+}
+
+void BookingSystem::makeBooking(Slot& slot, long long memberId)
+{
+	FileManager::members[memberId].addSlot(slot);
+}
+
+bool BookingSystem::cancelBooking(long long memberId, Slot slot)
+{
+
+	tm targetTime = {};
+	targetTime.tm_mday = slot.getDate().getDay();
+	targetTime.tm_mon = slot.getDate().getMonth() - 1;  // tm_mon is 0-based (0 = Jan)
+	targetTime.tm_year = slot.getDate().getYear() - 1900; // tm_year is years since 1900
+	targetTime.tm_hour = slot.getSlotID();
+	targetTime.tm_min = 0;
+	targetTime.tm_sec = 0;
+
+	time_t target = mktime(&targetTime);
+
+	time_t now = time(0);
+
+	double hoursDiff = difftime(target, now) / 3600.0;
+
+	if (hoursDiff > 3) 
+	{
+		FileManager::removeSlot(memberId, slot);
+		return true;
+	}
+	return false;
 }
