@@ -34,6 +34,7 @@ public:
 	void addMember(long long memberId);
 	void removeMember(long long memberId);
 	void clearClassMembers();
+	bool hasSpace();
 
 	// for debug
 	void display();

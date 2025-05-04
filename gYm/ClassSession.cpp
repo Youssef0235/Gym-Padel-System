@@ -4,6 +4,7 @@ ClassSession::ClassSession() : classCapacity(0), classId(0), coachId(0)
 {
 }
 
+// Read Only Info
 ClassSession::ClassSession(string ClassDay, string ClassTime, string ClassName, int ClassCapacity, unordered_set<long long>ClassMembers, long long ClassId, long long CoachId)
 {
 	classId = ClassId;
@@ -100,6 +101,12 @@ void ClassSession::removeMember(long long memberId)
 void ClassSession::clearClassMembers()
 {
 	classMembers.clear();
+	classCapacity = 0;
+}
+
+bool ClassSession::hasSpace()
+{
+	return classMembers.size() <= classCapacity;
 }
 
 void ClassSession::display()

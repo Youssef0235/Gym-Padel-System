@@ -13,6 +13,7 @@ public:
     Coach(string firstName, string middleName, string lastName, string ClassName, Date dob, long long id, vector<ClassSession>AssignedClasses, int Salary);
 
     void setClassName(string ClassName);
+
     string getClassName() const;
 
     void assignClass(const ClassSession& classSession);

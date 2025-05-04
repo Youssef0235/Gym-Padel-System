@@ -147,8 +147,7 @@ void FileManager::loadClasses()
 	auto it = Classes.begin();
 	while (it != Classes.end())
 	{
-		string className = it.key();
-		classes[className] = it.value();
+		classes[it.key()] = it.value();
 		it++;
 	}
 }
@@ -160,8 +159,7 @@ void FileManager::saveClasses()
 	auto it = classes.begin();
 	while (it != classes.end())
 	{
-		string className = it->first;
-		Classes[className] = it->second;
+		Classes[it->first] = it->second;
 		it++;
 	}
 	file << Classes.dump(4);
@@ -438,6 +436,17 @@ void FileManager::clearTotalPaid()
 	}
 }
 
+string FileManager::getClassName(int id)
+{
+	auto it = classes.begin();
+	while (it != classes.end())
+	{
+		if (it->second.getClassId() == id)
+			return it->second.getClassName();
+		it++;
+	}
+}
+
 long long FileManager::getLastMemberId()
 {
 	return members.rbegin()->first;
@@ -489,20 +498,24 @@ bool FileManager::matchingNameAndId(string firstName, string middleName, string 
 	return fName == firstName && mName == middleName && lName == lastName;
 }
 
+
 void FileManager::addToClass(string className, long long memberId)
 {
 	classes[className].addMember(memberId);
+	members[memberId].joinClass(className);
 }
 
 void FileManager::removeFromClass(string className, long long memberId)
 {
 	classes[className].removeMember(memberId);
+	members[memberId].leaveClass(className);
 }
 
 void FileManager::addToWaiting(string className, long long memberId)
 {
 	if (members[memberId].getVipStatus())
 		vipWaitingList[className].push(memberId);
+
 	else
 		waitingLists[className].push(memberId);
 }

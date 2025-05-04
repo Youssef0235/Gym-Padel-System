@@ -1,8 +1,8 @@
 #pragma once
 #include<iostream>
 #include<fstream>
-#include"json.hpp"
 #include<queue>
+#include"json.hpp"
 #include"ClassSession.h"
 #include"Member.h"
 #include"Coach.h"
@@ -60,6 +60,7 @@ public:
 
 
 	// Utilities
+	static string getClassName(int id);
 	static long long getLastMemberId();
 	static long long getLastCoachId();
 	static int getTotalRevenue();

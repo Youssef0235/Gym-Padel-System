@@ -1,4 +1,3 @@
-#define _CRT_SECURE_NO_WARNINGS
 #include "Staff.h"
 #include "Member.h"
 #include <ctime>
