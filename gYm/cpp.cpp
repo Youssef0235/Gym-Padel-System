@@ -14,14 +14,10 @@ using namespace std;
 
 int main()
 {
-	FileManager::loadAccounts();
-	FileManager::loadClasses();
-	//FileManager::loadWaitLists();
-	//FileManager::loadVipWaitingList();
-	FileManager::loadCoachesInfo();
+	FileManager::Load();
 	FileManager::handleSubscriptions();
-	FileManager::loadCourts();
 	BookingSystem::checkSlotTimePassed();
+
 	cout << "F M L\n";
 	string f, m, l; cin >> f >> m >> l;
 	cout << "Id\n";
@@ -70,23 +66,37 @@ int main()
 				cout << "Enter Hour\n";
 				int h; cin >> h;
 				Slot newSlot(v[k - 1].getID(), h, date);
-				if (BookingSystem::isSlotAvailable(newSlot))
+				if (Date::isFutureDate(date))
 				{
-					BookingSystem::makeBooking(newSlot, id);
-					cout << "Done\n";
+					if (BookingSystem::isSlotAvailable(newSlot))
+					{
+						BookingSystem::makeBooking(newSlot, id);
+						cout << "Done\n";
+					}
+					else
+					{
+						cout << "Next Available Slot\n";
+						newSlot = BookingSystem::searchNext(date, h, v[k - 1].getLocation());
+						cout << "Hour\n";
+						cout << newSlot.getHour() << "\n";
+						cout << "Day\n";
+						cout << newSlot.getDate().getDay() << "\n";
+						cout << "Month\n";
+						cout << newSlot.getDate().getMonth() << "\n";
+						cout << "Year\n";
+						cout << newSlot.getDate().getYear() << "\n";
+						cout << "To Book Next Available Slot Press 1\n";
+						int p; cin >> p;
+						if (p == 1)
+						{
+							BookingSystem::makeBooking(newSlot, id);
+							cout << "Done\n";
+						}
+					}
 				}
 				else
 				{
-					cout << "Next Available Slot\n";
-					Slot av = BookingSystem::searchAvailableCourts(date, h, v[k - 1].getLocation());
-					cout << "Hour\n";
-					cout << av.getSlotID() << "\n";
-					cout << "Day\n";
-					cout << av.getDate().getDay() << "\n";
-					cout << "Month\n";
-					cout << av.getDate().getMonth() << "\n";
-					cout << "Year\n";
-					cout << av.getDate().getYear() << "\n";
+					cout << "Date Is Invalid\n";
 				}
 			}
 		}
@@ -101,10 +111,10 @@ int main()
 			{
 				v.push_back(*it);
 				cout << "Slot Number: " << count << "\n";
-				cout << "At: " << it->getSlotID() << "\n";
+				cout << "At: " << it->getHour() << "\n";
 				cout << "Location: " << FileManager::courts[it->getCourtID()].getLocation() << "\n";
 				cout << "Court Name: " << FileManager::courts[it->getCourtID()].getName() << "\n";
-				it++;
+				it++, count++;
 			}
 			if (v.empty())
 				return 0;
@@ -121,13 +131,7 @@ int main()
 		}
 	}
 
-
-	FileManager::saveAccounts();
-	FileManager::saveClasses();
-	FileManager::saveWaitLists();
-	FileManager::saveVipWaitingList();
-	FileManager::saveCoachesInfo();
-	FileManager::saveCourts();
+	FileManager::Save();
 
 	return 0;
 }

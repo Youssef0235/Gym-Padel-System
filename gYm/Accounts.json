@@ -19,40 +19,22 @@
         "Plan": "Basic",
         "Slots": [
             {
-                "Court ID": 1,
+                "Court ID": 3,
                 "Date": {
                     "Day": 5,
                     "Month": 5,
                     "Year": 2025
                 },
-                "ID": 19
+                "Hour": 15
             },
             {
-                "Court ID": 2,
+                "Court ID": 19,
                 "Date": {
                     "Day": 5,
                     "Month": 5,
                     "Year": 2025
                 },
-                "ID": 19
-            },
-            {
-                "Court ID": 20,
-                "Date": {
-                    "Day": 5,
-                    "Month": 5,
-                    "Year": 2025
-                },
-                "ID": 23
-            },
-            {
-                "Court ID": 5,
-                "Date": {
-                    "Day": 5,
-                    "Month": 5,
-                    "Year": 2025
-                },
-                "ID": 2
+                "Hour": 15
             }
         ],
         "Total Paid": 100,
@@ -77,7 +59,17 @@
         "Middle Name": "Khaled",
         "Past Workouts": [],
         "Plan": "Standard",
-        "Slots": [],
+        "Slots": [
+            {
+                "Court ID": 1,
+                "Date": {
+                    "Day": 5,
+                    "Month": 5,
+                    "Year": 2025
+                },
+                "Hour": 19
+            }
+        ],
         "Total Paid": 300,
         "VIP": false,
         "Visits": 5
@@ -195,7 +187,7 @@
         "Slots": [],
         "Total Paid": 600,
         "VIP": false,
-        "Visits": 32
+        "Visits": 29
     },
     "16": {
         "Birth Date": {
@@ -333,7 +325,7 @@
         "Slots": [],
         "Total Paid": 1000,
         "VIP": false,
-        "Visits": 35
+        "Visits": 7
     },
     "3": {
         "Birth Date": {
@@ -402,7 +394,7 @@
         "Slots": [],
         "Total Paid": 300,
         "VIP": false,
-        "Visits": 38
+        "Visits": 19
     },
     "6": {
         "Birth Date": {

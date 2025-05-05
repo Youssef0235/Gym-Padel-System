@@ -23,6 +23,10 @@ public:
 	static unordered_map<string, queue<long long>>vipWaitingList;
 	static unordered_map<string, ClassSession>classes;
 
+	// Load And Save All
+	static void Load();
+	static void Save();
+
 	// Working
 	static void loadAccounts();
 	static void saveAccounts();
@@ -68,10 +72,11 @@ public:
 	static long long getLastCoachId();
 	static long long getLastCourtId();
 	static int getTotalRevenue();
-	static vector<long long> getMostActive(int visitsCount);
+	static bool comp(const Member& a, const Member& b);
+	static vector<long long> getMostActive();
 	static bool matchingNameAndId(string firstName, string middleName, string lastName, long long id);
 
-	// Needs Testing
+
 	static void addToClass(string className, long long memberId);
 	static void removeFromClass(string className, long long memberId);
 	static void addToWaiting(string className, long long memberId);

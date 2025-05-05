@@ -33,29 +33,6 @@ void Staff::setSalary(int Salary)
 	salary = Salary;
 }
 
-// set
-void Staff::viewMemberInfo(vector<Member>& members)
-{
-	for (Member member : members)
-	{
-		member.getFname();
-		member.getID();
-	}
-}
-
-// set
-void Staff::searchMember(vector<Member>& members, long long memID)
-{
-	for (Member member : members)
-	{
-		if (member.getID() == memID)
-		{
-			member.getFname();
-			member.getID();
-		}
-	}
-}
-
 vector<Member> Staff::ManageSubscription(vector<Member>& members)
 {
 

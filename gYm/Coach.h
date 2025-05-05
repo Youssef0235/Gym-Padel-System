@@ -6,6 +6,7 @@
 class Coach : public Staff
 {
 private:
+    // Graph If Multiple Classes
     vector<ClassSession> assignedClasses;
     string className;
 public:
@@ -20,7 +21,4 @@ public:
     void removeClass(long long classId);
     vector<ClassSession> getAssignedClasses() const;
     void clearAssignedClasses();
-
-    // for debug
-    void displayClasses();
 };

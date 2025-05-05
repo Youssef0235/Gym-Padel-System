@@ -41,7 +41,7 @@ void from_json(const json& j, Slot& u)
 	u = Slot
 	{
 		j.at("Court ID").get<long long>(),
-		j.at("ID").get<long long>(),
+		j.at("Hour").get<int>(),
 		j.at("Date").get<Date>()
 	};
 }
@@ -51,7 +51,7 @@ void to_json(json& j, const Slot& u)
 	j = json
 	{
 		{"Court ID", u.getCourtID()},
-		{"ID", u.getSlotID()},
+		{"Hour", u.getHour()},
 		{"Date", u.getDate()}
 	};
 }
@@ -96,6 +96,104 @@ void to_json(json& j, const Member& u)
 	};
 }
 
+void to_json(json& j, const ClassSession& u)
+{
+	j = json
+	{
+		{"Day", u.getClassDay()},
+		{"Time", u.getClassTime()},
+		{"Name", u.getClassName()},
+		{"Capacity", u.getClassCapacity()},
+		{"Members", u.getClassMembers()},
+		{"Class ID",u.getCoachId()},
+		{"Coach ID",u.getClassId()}
+	};
+}
+
+
+void from_json(const json& j, ClassSession& u)
+{
+	u = ClassSession
+	{
+		j.at("Day").get<string>(),
+		j.at("Time").get<string>(),
+		j.at("Name").get<string>(),
+		j.at("Capacity").get<int>(),
+		j.at("Members").get<unordered_set<long long>>(),
+		j.at("Class ID").get<long long>(),
+		j.at("Coach ID").get<long long>()
+	};
+}
+
+void from_json(const json& j, Coach& u)
+{
+	u = Coach
+	{
+		j.at("First Name").get<string>(),
+		j.at("Middle Name").get<string>(),
+		j.at("Last Name").get<string>(),
+		j.at("Class").get<string>(),
+		j.at("Birth Date").get<Date>(),
+		j.at("ID").get<long long>(),
+		j.at("Assigned Classes").get<vector<ClassSession>>(),
+		j.at("Salary").get<int>()
+	};
+}
+void to_json(json& j, const Coach& u)
+{
+	j = json
+	{
+		{"First Name", u.getFname()},
+		{"Middle Name", u.getMname()},
+		{"Last Name", u.getLname()},
+		{"Class", u.getClassName()},
+		{"Birth Date", u.getDateOfBirth()},
+		{"ID", u.getID()},
+		{"Assigned Classes", u.getAssignedClasses()},
+		{"Salary", u.getSalary()}
+	};
+}
+
+void from_json(const json& j, Court& u)
+{
+	u = Court
+	{
+		j.at("ID").get<long long>(),
+		j.at("Location").get<string>(),
+		j.at("Name").get<string>()
+	};
+}
+
+void to_json(json& j, const Court& u)
+{
+	j = json
+	{
+		{"ID", u.getID()},
+		{"Location", u.getLocation()},
+		{"Name", u.getName()},
+	};
+}
+
+void FileManager::Load()
+{
+	loadAccounts();
+	loadClasses();
+	//loadWaitLists();
+	//loadVipWaitingList();
+	loadCoachesInfo();
+	loadCourts();
+}
+
+void FileManager::Save()
+{
+	saveAccounts();
+	saveClasses();
+	saveWaitLists();
+	saveVipWaitingList();
+	saveCoachesInfo();
+	saveCourts();
+}
+
 void FileManager::loadAccounts()
 {
 	json Accounts;
@@ -129,37 +227,6 @@ void FileManager::saveAccounts()
 	file << Accounts.dump(4);
 	file.close();
 }
-
-
-void to_json(json& j, const ClassSession& u)
-{
-	j = json
-	{
-		{"Day", u.getClassDay()},
-		{"Time", u.getClassTime()},
-		{"Name", u.getClassName()},
-		{"Capacity", u.getClassCapacity()},
-		{"Members", u.getClassMembers()},
-	    {"Class ID",u.getCoachId()},
-		{"Coach ID",u.getClassId()}
-	};
-}
-
-
-void from_json(const json& j, ClassSession& u)
-{
-	u = ClassSession
-	{
-		j.at("Day").get<string>(),
-		j.at("Time").get<string>(),
-		j.at("Name").get<string>(),
-		j.at("Capacity").get<int>(),
-		j.at("Members").get<unordered_set<long long>>(),
-		j.at("Class ID").get<long long>(),
-		j.at("Coach ID").get<long long>()
-	};
-}
-
 
 void FileManager::loadClasses()
 {
@@ -263,20 +330,7 @@ void FileManager::saveVipWaitingList()
 	file.close();
 }
 
-void from_json(const json& j, Coach& u) 
-{
-	u = Coach
-	{
-		j.at("First Name").get<string>(),
-		j.at("Middle Name").get<string>(),
-		j.at("Last Name").get<string>(),
-		j.at("Class").get<string>(),
-		j.at("Birth Date").get<Date>(),
-		j.at("ID").get<long long>(),
-		j.at("Assigned Classes").get<vector<ClassSession>>(),
-		j.at("Salary").get<int>()
-	};
-}
+
 
 
 void FileManager::loadCoachesInfo()
@@ -294,22 +348,6 @@ void FileManager::loadCoachesInfo()
 	}
 }
 
-
-void to_json(json& j, const Coach& u)
-{
-	j = json
-	{
-		{"First Name", u.getFname()},
-		{"Middle Name", u.getMname()},
-		{"Last Name", u.getLname()},
-		{"Class", u.getClassName()},
-		{"Birth Date", u.getDateOfBirth()},
-		{"ID", u.getID()},
-		{"Assigned Classes", u.getAssignedClasses()},
-		{"Salary", u.getSalary()}
-	};
-}
-
 void FileManager::saveCoachesInfo()
 {
 	json CoachesInfo;
@@ -325,15 +363,6 @@ void FileManager::saveCoachesInfo()
 	file.close();
 }
 
-void from_json(const json& j, Court& u)
-{
-	u = Court
-	{
-		j.at("ID").get<long long>(),
-		j.at("Location").get<string>(),
-		j.at("Name").get<string>()
-	};
-}
 
 void FileManager::loadCourts()
 {
@@ -347,16 +376,6 @@ void FileManager::loadCourts()
 		courts[stoll(it.key())] = it.value();
 		it++;
 	}
-}
-
-void to_json(json& j, const Court& u)
-{
-	j = json
-	{
-		{"ID", u.getID()},
-		{"Location", u.getLocation()},
-		{"Name", u.getName()},
-	};
 }
 
 void FileManager::saveCourts()
@@ -502,16 +521,24 @@ int FileManager::getTotalRevenue()
 	return totalPaidToGym - totalPaidByGym;
 }
 
-vector<long long> FileManager::getMostActive(int visitsCount)
+bool FileManager::comp(const Member& a, const Member& b)
 {
-	vector <long long>membersId;
+	return a.getVisits() > b.getVisits();
+}
+
+vector<long long> FileManager::getMostActive()
+{
+	vector <Member>myMembers;
 	auto it = members.begin();
 	while (it != members.end())
 	{
-		if (members[it->first].getVisits() >= visitsCount)
-			membersId.push_back(it->first);
+		myMembers.push_back(it->second);
 		it++;
 	}
+	sort(myMembers.begin(), myMembers.end(), comp);
+	vector<long long>membersId(5);
+	for (int i = 0; i < 5; i++)
+		membersId[i] = myMembers[i].getID();
 	return membersId;
 }
 

@@ -7,9 +7,8 @@ class BookingSystem
 {
 public:
     static bool isSlotAvailable(const Slot& slot);
-    static Slot searchAvailableCourts(Date date, int sid, string loc);
+    static Slot searchNext(Date date, int slotId, string location);
     static void checkSlotTimePassed();
     static void makeBooking(Slot& slot, long long memberId);
     static bool cancelBooking(long long memberId, Slot slot);
-
 };

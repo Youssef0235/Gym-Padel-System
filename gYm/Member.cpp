@@ -117,7 +117,6 @@ vector<Slot> Member::getSlots() const
     return slots;
 }
 
-//For Staff
 Subscription Member::getPlan()
 {
     return plan;
@@ -162,12 +161,8 @@ bool Member::operator == (const Member& member)
         isVip == member.isVip and
         visits == member.visits and
         subClasses == member.subClasses and
-        totalPaid == member.totalPaid;
-}
-
-bool Member::operator<(const Member& other) const
-{
-    return ID < other.ID;
+        totalPaid == member.totalPaid and
+        slots == member.slots;
 }
 
 void Member::display()

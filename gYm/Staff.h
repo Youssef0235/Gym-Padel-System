@@ -20,7 +20,5 @@ public:
 	void setID(long long id);
 	void setSalary(int Salary);
 
-	void viewMemberInfo(vector<Member>&members);
-	void searchMember(vector<Member>& members, long long memID);
 	vector<Member> ManageSubscription(vector<Member>&members);
 };

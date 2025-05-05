@@ -47,10 +47,3 @@ void Coach::clearAssignedClasses()
 {
 	assignedClasses.clear();
 }
-
-void Coach::displayClasses()
-{
-	for (auto x : assignedClasses)
-		cout << x.getClassName() << " ";
-	cout << "\n";
-}

@@ -15,6 +15,7 @@ private:
     Subscription plan;
     vector<string>pastWorkouts;
     unordered_set<string>subClasses;
+    // Check Ds
     vector<Slot>slots;
     long long ID;
     bool isVip;
@@ -55,7 +56,6 @@ public:
 
     // Operator Overloading
     bool operator == (const Member& member);
-    bool operator < (const Member& other) const; // For Set
 
     // for debug
     void display();

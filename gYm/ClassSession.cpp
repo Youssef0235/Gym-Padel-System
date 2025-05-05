@@ -108,11 +108,3 @@ bool ClassSession::hasSpace()
 {
 	return classMembers.size() <= classCapacity;
 }
-
-void ClassSession::display()
-{
-	cout << classTime << "\n";
-	cout << classDay << "\n";
-	cout << classCapacity << "\n";
-	cout << coachId << "\n";
-}
