@@ -6,7 +6,7 @@ bool BookingSystem::isSlotAvailable(const Slot& slot)
 	auto it = FileManager::members.begin();
 	while (it != FileManager::members.end())
 	{
-		bool exist = (FileManager::foundSlot(it->first, slot));
+		bool exist = (foundSlot(it->first, slot));
 		if (exist)
 			return false;
 		it++;
@@ -16,7 +16,7 @@ bool BookingSystem::isSlotAvailable(const Slot& slot)
 
 Slot BookingSystem::searchNext(Date date, int slotId, string location)
 {
-	long long courtId = FileManager::getCourtId(location);
+	long long courtId = getCourtId(location);
 	Date newDate = date;
 	Slot candidateSlot;
 	auto it = FileManager::members.begin();
@@ -61,7 +61,7 @@ void BookingSystem::checkSlotTimePassed()
 			time_t now = time(0);
 			double hoursDiff = difftime(target, now) / 3600.0;
 			if (hoursDiff < 0)
-				FileManager::removeSlot(it->first, memberReservedSlots[i]);
+				removeSlot(it->first, memberReservedSlots[i]);
 		}
 		it++;
 	}
@@ -91,8 +91,38 @@ bool BookingSystem::cancelBooking(long long memberId, Slot slot)
 
 	if (hoursDiff > 3) 
 	{
-		FileManager::removeSlot(memberId, slot);
+		removeSlot(memberId, slot);
 		return true;
+	}
+	return false;
+}
+
+void BookingSystem::removeSlot(long long memberId, const Slot& slot)
+{
+	FileManager::members[memberId].removeSlot(slot);
+
+}
+
+long long BookingSystem::getCourtId(string location)
+{
+
+	auto it = FileManager::courts.begin();
+	while (it != FileManager::courts.end())
+	{
+		if (location == it->second.getLocation())
+			return it->second.getID();
+		it++;
+	}
+	return -1;
+}
+
+bool BookingSystem::foundSlot(long long memberId, const Slot& slot)
+{
+	vector<Slot>slots = FileManager::members[memberId].getSlots();
+	for (int i = 0; i < slots.size(); i++)
+	{
+		if (slots[i] == slot)
+			return true;
 	}
 	return false;
 }

@@ -57,6 +57,9 @@
     <ClInclude Include="Receptionist.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Messages.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Person.cpp">
@@ -102,6 +105,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Receptionist.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Messages.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

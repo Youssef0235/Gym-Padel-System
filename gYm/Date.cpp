@@ -118,6 +118,35 @@ Date Date::getNextDate(const Date& date)
     return Date(d, m, y);
 }
 
+bool Date::oneWeekLeft(const Date& a, const Date& b)
+{
+    tm date1 = {};
+    date1.tm_year = a.getYear() - 1900;
+    date1.tm_mon = a.getMonth() - 1;
+    date1.tm_mday = a.getDay();
+
+    tm date2 = {};
+    date2.tm_year = b.getYear() - 1900; 
+    date2.tm_mon = b.getMonth() - 1;     
+    date2.tm_mday = b.getDay();        
+
+    time_t time1 = std::mktime(&date1);
+    time_t time2 = std::mktime(&date2);
+    double diff = difftime(time2, time1);
+    return diff == 7 * 24 * 60 * 60;
+}
+
+bool isNow(const std::string& given_time) 
+{
+    time_t t = time(nullptr);
+    tm current_time = {};
+    localtime_s(&current_time, &t);
+    ostringstream oss;
+    oss << put_time(&current_time, "%H:%M:%S");
+    string current_time_str = oss.str();
+    return current_time_str > given_time;
+}
+
 bool Date::operator == (const Date& date) const
 {
 	return day == date.day and

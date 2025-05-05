@@ -6,7 +6,6 @@
 class Coach : public Staff
 {
 private:
-    // Graph If Multiple Classes
     vector<ClassSession> assignedClasses;
     string className;
 public:
@@ -16,7 +15,6 @@ public:
     void setClassName(string ClassName);
 
     string getClassName() const;
-    string getRole() const override;
 
     void assignClass(const ClassSession& classSession);
     void removeClass(long long classId);

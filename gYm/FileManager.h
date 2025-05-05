@@ -8,8 +8,7 @@
 #include"Coach.h"
 #include"Court.h"
 #include"Slot.h"
-#include"Manager.h"
-#include"Receptionist.h"
+#include"Messages.h"
 using json = nlohmann::json;
 using namespace std;
 
@@ -25,9 +24,11 @@ public:
 	static unordered_map<string, queue<long long>>vipWaitingList;
 	static unordered_map<string, ClassSession>classes;
 
-	// Load And Save All
+	// Work
 	static void Load();
 	static void Save();
+	static void itsFirstDay();
+
 
 	// Working
 	static void loadAccounts();
@@ -53,44 +54,37 @@ public:
 	static void loadCourts();
 	static void saveCourts();
 
-	//
 
+	// -------------------- GYM ---------------------------- //
 	// Handle If Sub Ends
 	static void handleSubscriptions();
-	// Handle If Reservation Ends
-	//static void handleSlots();
-  
+
 	// At End Of Month
 	static void clearWaitingList();
 	static void clearVipWaitingList();
 	static void clearMembersInClasses();
-	static void clearCoachesAssignedClasses();
 	static void clearVisits();
-	static void clearVip();
 	static void clearTotalPaid();
+	// -------------------- GYM ---------------------------- //
+
+
+	// -------------------------- CLASSES ---------------------------------- //
+	static void addToClass(string className, long long memberId);
+	static void removeFromClass(string className, long long memberId);
+	static void addToWaiting(string className, long long memberId);
+	static long long getFirstInWaiting(string className);
+	static void removeMemberFromGym(long long memberId);
+	// -------------------------- CLASSES ---------------------------------- //
 
 
 	// Utilities
+	static void clearInbox(long long memberId);
 	static string getClassName(int id);
 	static long long getLastMemberId();
 	static long long getLastCoachId();
 	static long long getLastCourtId();
-	static int getTotalRevenue();
-	static bool comp(const Member& a, const Member& b);
-	static vector<long long> getMostActive();
 	static bool matchingNameAndId(string firstName, string middleName, string lastName, long long id);
 
-
-	static void addToClass(string className, long long memberId);
-	static void removeFromClass(string className, long long memberId);
-	static void addToWaiting(string className, long long memberId);
-	static void removeFromWaiting(string className);
-	static void removeMemberFromGym(long long memberId);
-	static void removeSlot(long long memberId, const Slot& slot);
-
-	static void addCourt(string Location, string CourtName);
-	static long long getCourtId(string location);
-	static bool foundSlot(long long memberId, const Slot& slot);
 
 	// Wait
 	static bool fileExist(string fileName);

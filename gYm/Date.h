@@ -1,5 +1,7 @@
 #pragma once
 #include<iostream>
+#include <iomanip>
+#include <sstream>
 #include"json.hpp"
 using namespace std;
 using json = nlohmann::json;
@@ -28,6 +30,8 @@ public:
 	static Date extendBy(Date&date, int months);
 	static bool isLeapYear(int year);
 	static Date getNextDate(const Date& date);
+	static bool oneWeekLeft(const Date& a, const Date& b);
+	static bool isNow(const string time);
 
 	// Operator Overloading
 	bool operator == (const Date& date) const;

@@ -19,5 +19,4 @@ public:
 
 	void setID(long long id);
 	void setSalary(int Salary);
-	virtual string getRole() const = 0;
 };

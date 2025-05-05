@@ -135,6 +135,7 @@
     <ClInclude Include="FileManager.h" />
     <ClInclude Include="Manager.h" />
     <ClInclude Include="Member.h" />
+    <ClInclude Include="Messages.h" />
     <ClInclude Include="Person.h" />
     <ClInclude Include="PlansData.h" />
     <ClInclude Include="Receptionist.h" />
@@ -152,6 +153,7 @@
     <ClCompile Include="FileManager.cpp" />
     <ClCompile Include="Manager.cpp" />
     <ClCompile Include="Member.cpp" />
+    <ClCompile Include="Messages.cpp" />
     <ClCompile Include="Person.cpp" />
     <ClCompile Include="PlansData.cpp" />
     <ClCompile Include="Receptionist.cpp" />

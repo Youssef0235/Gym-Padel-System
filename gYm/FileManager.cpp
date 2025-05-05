@@ -235,6 +235,18 @@ void FileManager::saveCourts()
 	file.close();
 }
 
+void FileManager::itsFirstDay()
+{
+	if (Date::isFirstDay() && Date::isNow("23:59:59"))
+	{
+		clearWaitingList();
+		clearVipWaitingList();
+		clearMembersInClasses();
+		clearVisits();
+		clearTotalPaid();
+	}
+}
+
 void FileManager::handleSubscriptions()
 {
 	auto it = members.begin();
@@ -279,32 +291,12 @@ void FileManager::clearMembersInClasses()
 	}
 }
 
-void FileManager::clearCoachesAssignedClasses()
-{
-	auto it = coachesInfo.begin();
-	while (it != coachesInfo.end())
-	{
-		coachesInfo[it->first].clearAssignedClasses();
-		it++;
-	}
-}
-
 void FileManager::clearVisits()
 {
 	auto it = members.begin();
 	while (it != members.end())
 	{
 		members[it->first].setVisits(0);
-		it++;
-	}
-}
-
-void FileManager::clearVip()
-{
-	auto it = members.begin();
-	while (it != members.end())
-	{
-		members[it->first].setVipStatus(false);
 		it++;
 	}
 }
@@ -345,45 +337,6 @@ long long FileManager::getLastCourtId()
 	return courts.rbegin()->first;
 }
 
-int FileManager::getTotalRevenue()
-{
-	int totalPaidByGym = 0, totalPaidToGym = 0;
-	auto coachesIt = coachesInfo.begin();
-	while (coachesIt != coachesInfo.end())
-	{
-		totalPaidByGym += coachesInfo[coachesIt->first].getSalary();
-		coachesIt++;
-	}
-	auto membersIt = members.begin();
-	while (membersIt != members.end())
-	{
-		totalPaidToGym += members[membersIt->first].getTotalPaid();
-		membersIt++;
-	}
-	return totalPaidToGym - totalPaidByGym;
-}
-
-bool FileManager::comp(const Member& a, const Member& b)
-{
-	return a.getVisits() > b.getVisits();
-}
-
-vector<long long> FileManager::getMostActive()
-{
-	vector <Member>myMembers;
-	auto it = members.begin();
-	while (it != members.end())
-	{
-		myMembers.push_back(it->second);
-		it++;
-	}
-	sort(myMembers.begin(), myMembers.end(), comp);
-	vector<long long>membersId(5);
-	for (int i = 0; i < 5; i++)
-		membersId[i] = myMembers[i].getID();
-	return membersId;
-}
-
 bool FileManager::matchingNameAndId(string firstName, string middleName, string lastName, long long id)
 {
 	if (members.find(id) == members.end())
@@ -415,13 +368,24 @@ void FileManager::addToWaiting(string className, long long memberId)
 		waitingLists[className].push(memberId);
 }
 
-void FileManager::removeFromWaiting(string className)
+long long FileManager::getFirstInWaiting(string className)
 {
+	long long id = 0;
 	if (vipWaitingList[className].size())
+	{
+		id = vipWaitingList[className].front();
 		vipWaitingList[className].pop();
+	}
 
 	else if (waitingLists[className].size())
+	{
+		id = waitingLists[className].front();
 		waitingLists[className].pop();
+	}
+
+	// Send Message
+	members[id].pushMessage(Messages::addedTo(className));
+	return id;
 }
 
 void FileManager::removeMemberFromGym(long long memberId)
@@ -429,39 +393,9 @@ void FileManager::removeMemberFromGym(long long memberId)
 	members.erase(memberId);
 }
 
-void FileManager::removeSlot(long long memberId, const Slot& slot)
+void FileManager::clearInbox(long long memberId)
 {
-	members[memberId].removeSlot(slot);
-}
-
-void FileManager::addCourt(string Location, string CourtName)
-{
-	long long CourtId = getLastCourtId() + 1;
-	Court cnew(CourtId, Location, CourtName);
-	courts[CourtId] = cnew;
-}
-
-long long FileManager::getCourtId(string location)
-{
-	auto it = courts.begin();
-	while (it != courts.end())
-	{
-		if (location == it->second.getLocation())
-			return it->second.getID();
-		it++;
-	}
-	return -1;
-}
-
-bool FileManager::foundSlot(long long memberId, const Slot& slot)
-{
-	vector<Slot>slots = members[memberId].getSlots();
-	for (int i = 0; i < slots.size(); i++)
-	{
-		if (slots[i] == slot)
-			return true;
-	}
-	return false;
+	members[memberId].clearInbox();
 }
 
 bool FileManager::fileExist(string fileName)

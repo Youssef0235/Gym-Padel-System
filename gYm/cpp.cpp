@@ -17,6 +17,7 @@ using namespace std;
 int main()
 {
 	FileManager::Load();
+	FileManager::itsFirstDay();
 	FileManager::handleSubscriptions();
 	BookingSystem::checkSlotTimePassed();
 
@@ -132,6 +133,7 @@ int main()
 				cout << "Cannot Cancel\n";
 			}
 		}
+		FileManager::clearInbox(id);
 	}
 
 	FileManager::Save();

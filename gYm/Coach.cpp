@@ -18,12 +18,6 @@ string Coach::getClassName() const
 	return className;
 }
 
-string Coach::getRole() const
-{
-	return "Coach";
-}
-
-
 void Coach::assignClass(const ClassSession& classSession)
 {
 	assignedClasses.push_back(classSession);

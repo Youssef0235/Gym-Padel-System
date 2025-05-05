@@ -2,13 +2,12 @@
 #include <iostream>
 #include<vector>
 #include<unordered_set>
-#include<set>
+#include<stack>
 #include<deque>
 #include "Person.h"
 #include "Subscription.h"
 #include"PlansData.h"
 #include"Slot.h"
-
 
 class Member : public Person
 {
@@ -16,6 +15,7 @@ private:
     Subscription plan;
     deque<string>pastWorkouts;
     unordered_set<string>subClasses;
+    vector<string>inbox;
     // Check Ds
     vector<Slot>slots;
     long long ID;
@@ -23,7 +23,7 @@ private:
     int visits, totalPaid;
 public:
     Member();
-    Member(string FirstName, string MiddleName, string LastName, Date dob, long long id, string planName, deque<string>PastWorkouts, bool vip, int Visits, unordered_set<string>SubClasses, Date endDate, int TotalPaid, vector<Slot> Slots);
+    Member(string FirstName, string MiddleName, string LastName, Date dob, long long id, string planName, deque<string>PastWorkouts, bool vip, int Visits, unordered_set<string>SubClasses, Date endDate, int TotalPaid, vector<Slot> Slots, vector<string>Inbox);
 
     void setID(long long id);
     void setVipStatus(bool vip);
@@ -32,6 +32,7 @@ public:
     void setSubClasses(unordered_set<string>SubClasses);
     void setTotalPaid(int TotalPaid);
     void setSlots(vector<Slot>Slots);
+    void setInbox(vector<string>Inbox);
 
     bool getVipStatus() const;
     long long getID() const;
@@ -42,7 +43,8 @@ public:
     int getTotalPaid() const;
     Date getEndDate() const;
     vector<Slot>getSlots() const;
-
+    vector<string>getInbox() const;
+    
 
     // For Staff
     Subscription getPlan();
@@ -51,6 +53,8 @@ public:
     void addWorkout(string workout);
     void removeSlot(const Slot& slot);
     void addSlot(const Slot& slot);
+    void pushMessage(string Message);
+    void clearInbox();
     void renewPlan();
     void cancelPlan();
     void changePlan(string newPlan);
@@ -74,15 +78,16 @@ inline void from_json(const json& j, Member& u)
         j.at("Birth Date").get<Date>(),
         j.at("ID").get<long long>(),
         j.at("Plan").get<string>(),
-        j.at("Past Workouts").get<vector<string>>(),
+        j.at("Past Workouts").get<deque<string>>(),
         j.at("VIP").get<bool>(),
         j.at("Visits").get<int>(),
         j.at("Classes").get<unordered_set<string>>(),
         j.at("End Date").get<Date>(),
         j.at("Total Paid").get<int>(),
-        j.at("Slots").get<vector<Slot>>()
+        j.at("Slots").get<vector<Slot>>(),
+        j.at("Inbox").get<vector<string>>()
     };
-}
+}   
 
 inline void to_json(json& j, const Member& u)
 {
@@ -100,6 +105,7 @@ inline void to_json(json& j, const Member& u)
         {"Classes", u.getSubClasses()},
         {"End Date", u.getEndDate()},
         {"Total Paid", u.getTotalPaid()},
-        {"Slots", u.getSlots()}
+        {"Slots", u.getSlots()},
+        {"Inbox", u.getInbox()}
     };
 }

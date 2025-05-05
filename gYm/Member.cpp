@@ -3,7 +3,7 @@ using namespace std;
 
 Member::Member() : ID(0), isVip(0), visits(0), totalPaid(0) {}
 
-Member::Member(string FirstName, string MiddleName, string LastName, Date dob, long long id, string planName, deque<string> PastWorkouts, bool vip, int Visits, unordered_set<string> SubClasses, Date endDate, int TotalPaid, vector<Slot> Slots) : Person(FirstName, MiddleName, LastName, dob)
+Member::Member(string FirstName, string MiddleName, string LastName, Date dob, long long id, string planName, deque<string> PastWorkouts, bool vip, int Visits, unordered_set<string> SubClasses, Date endDate, int TotalPaid, vector<Slot> Slots, vector<string>Inbox) : Person(FirstName, MiddleName, LastName, dob)
 {
     ID = id;
     pastWorkouts = PastWorkouts;
@@ -14,6 +14,7 @@ Member::Member(string FirstName, string MiddleName, string LastName, Date dob, l
     plan.setEndDate();
     totalPaid = TotalPaid;
     slots = Slots;
+    inbox = Inbox;
 }
 
 void Member::setID(long long id)
@@ -53,6 +54,11 @@ void Member::setSlots(vector<Slot> Slots)
     slots = Slots;
 }
 
+void Member::setInbox(vector<string> Inbox)
+{
+    inbox = Inbox;
+}
+
 bool Member::getVipStatus() const
 {
     return isVip;
@@ -77,6 +83,16 @@ void Member::removeSlot(const Slot& slot)
 void Member::addSlot(const Slot& slot)
 {
     slots.push_back(slot);
+}
+
+void Member::pushMessage(string Message)
+{
+    inbox.push_back(Message);
+}
+
+void Member::clearInbox()
+{
+    inbox.clear();
 }
 
 long long Member::getID() const
@@ -117,6 +133,11 @@ Date Member::getEndDate() const
 vector<Slot> Member::getSlots() const
 {
     return slots;
+}
+
+vector<string> Member::getInbox() const
+{
+    return inbox;
 }
 
 Subscription Member::getPlan()
