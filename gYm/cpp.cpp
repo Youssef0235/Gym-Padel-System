@@ -8,6 +8,8 @@
 #include"ClassSession.h"
 #include"Court.h"
 #include"BookingSystem.h"
+#include"Receptionist.h"
+#include"Manager.h"
 #define ll long long
 using namespace std;
 
@@ -17,6 +19,7 @@ int main()
 	FileManager::Load();
 	FileManager::handleSubscriptions();
 	BookingSystem::checkSlotTimePassed();
+
 
 	cout << "F M L\n";
 	string f, m, l; cin >> f >> m >> l;

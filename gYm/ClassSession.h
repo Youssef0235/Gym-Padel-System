@@ -36,3 +36,31 @@ public:
 	void clearClassMembers();
 	bool hasSpace();
 };
+
+inline void to_json(json& j, const ClassSession& u)
+{
+	j = json
+	{
+		{"Day", u.getClassDay()},
+		{"Time", u.getClassTime()},
+		{"Name", u.getClassName()},
+		{"Capacity", u.getClassCapacity()},
+		{"Members", u.getClassMembers()},
+		{"Class ID",u.getCoachId()},
+		{"Coach ID",u.getClassId()}
+	};
+}
+
+inline void from_json(const json& j, ClassSession& u)
+{
+	u = ClassSession
+	{
+		j.at("Day").get<string>(),
+		j.at("Time").get<string>(),
+		j.at("Name").get<string>(),
+		j.at("Capacity").get<int>(),
+		j.at("Members").get<unordered_set<long long>>(),
+		j.at("Class ID").get<long long>(),
+		j.at("Coach ID").get<long long>()
+	};
+}

@@ -7,5 +7,6 @@ private:
 
 public:
 	Manager();
-	Manager(string firstName, string middleName, string lastName, Date dob, long long id, int Salary);
+	Manager(string firstName, string middleName, string lastName, Date dob, int id, int Salary);
+	string getRole() const override;
 };

@@ -3,7 +3,7 @@ using namespace std;
 
 Member::Member() : ID(0), isVip(0), visits(0), totalPaid(0) {}
 
-Member::Member(string FirstName, string MiddleName, string LastName, Date dob, long long id, string planName, vector<string> PastWorkouts, bool vip, int Visits, unordered_set<string> SubClasses, Date endDate, int TotalPaid, vector<Slot> Slots) : Person(FirstName, MiddleName, LastName, dob)
+Member::Member(string FirstName, string MiddleName, string LastName, Date dob, long long id, string planName, deque<string> PastWorkouts, bool vip, int Visits, unordered_set<string> SubClasses, Date endDate, int TotalPaid, vector<Slot> Slots) : Person(FirstName, MiddleName, LastName, dob)
 {
     ID = id;
     pastWorkouts = PastWorkouts;
@@ -60,6 +60,8 @@ bool Member::getVipStatus() const
 
 void Member::addWorkout(string workout)
 {
+    while (pastWorkouts.size() > 5)
+        pastWorkouts.pop_front();
     pastWorkouts.push_back(workout);
 }
 
@@ -82,7 +84,7 @@ long long Member::getID() const
     return ID;
 }
 
-vector<string> Member::getPastWorkouts() const
+deque<string> Member::getPastWorkouts() const
 {
     return pastWorkouts;
 }

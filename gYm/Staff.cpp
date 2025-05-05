@@ -32,33 +32,3 @@ void Staff::setSalary(int Salary)
 {
 	salary = Salary;
 }
-
-vector<Member> Staff::ManageSubscription(vector<Member>& members)
-{
-
-	vector<Member> membersToRenew;
-
-	auto now = system_clock::now();
-	auto now_time_t = system_clock::to_time_t(now);
-	std::tm now_tm;
-	localtime_s(&now_tm, &now_time_t);
-
-	Date currentDate(now_tm.tm_mday, now_tm.tm_mon + 1, now_tm.tm_year + 1900);
-
-	for (Member& member : members) 
-	{
-
-		Date endDate(member.getPlan().getEndDate().getDay(), member.getPlan().getEndDate().getMonth(), member.getPlan().getEndDate().getYear());
-
-		int daysUntilRenewal = (endDate.getYear() - currentDate.getYear()) * 365 +
-			(endDate.getMonth() - currentDate.getMonth()) * 30 +
-			(endDate.getDay() - currentDate.getDay());
-
-		if (daysUntilRenewal <= 7) 
-		{
-			membersToRenew.push_back(member);
-		}
-	}
-
-	return membersToRenew;
-}

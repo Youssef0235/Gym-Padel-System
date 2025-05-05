@@ -8,6 +8,8 @@
 #include"Coach.h"
 #include"Court.h"
 #include"Slot.h"
+#include"Manager.h"
+#include"Receptionist.h"
 using json = nlohmann::json;
 using namespace std;
 
@@ -50,6 +52,8 @@ public:
 	// Working
 	static void loadCourts();
 	static void saveCourts();
+
+	//
 
 	// Handle If Sub Ends
 	static void handleSubscriptions();

@@ -3,6 +3,7 @@
 #include<vector>
 #include<unordered_set>
 #include<set>
+#include<deque>
 #include "Person.h"
 #include "Subscription.h"
 #include"PlansData.h"
@@ -13,7 +14,7 @@ class Member : public Person
 {
 private:
     Subscription plan;
-    vector<string>pastWorkouts;
+    deque<string>pastWorkouts;
     unordered_set<string>subClasses;
     // Check Ds
     vector<Slot>slots;
@@ -22,7 +23,7 @@ private:
     int visits, totalPaid;
 public:
     Member();
-    Member(string FirstName, string MiddleName, string LastName, Date dob, long long id, string planName, vector<string>PastWorkouts, bool vip, int Visits, unordered_set<string>SubClasses, Date endDate, int TotalPaid, vector<Slot> Slots);
+    Member(string FirstName, string MiddleName, string LastName, Date dob, long long id, string planName, deque<string>PastWorkouts, bool vip, int Visits, unordered_set<string>SubClasses, Date endDate, int TotalPaid, vector<Slot> Slots);
 
     void setID(long long id);
     void setVipStatus(bool vip);
@@ -34,7 +35,7 @@ public:
 
     bool getVipStatus() const;
     long long getID() const;
-    vector<string>getPastWorkouts() const;
+    deque<string>getPastWorkouts() const;
     unordered_set<string>getSubClasses() const;
     string getPlanName() const;
     int getVisits() const;
@@ -60,3 +61,45 @@ public:
     // for debug
     void display();
 };
+
+
+
+inline void from_json(const json& j, Member& u)
+{
+    u = Member
+    {
+        j.at("First Name").get<string>(),
+        j.at("Middle Name").get<string>(),
+        j.at("Last Name").get<string>(),
+        j.at("Birth Date").get<Date>(),
+        j.at("ID").get<long long>(),
+        j.at("Plan").get<string>(),
+        j.at("Past Workouts").get<vector<string>>(),
+        j.at("VIP").get<bool>(),
+        j.at("Visits").get<int>(),
+        j.at("Classes").get<unordered_set<string>>(),
+        j.at("End Date").get<Date>(),
+        j.at("Total Paid").get<int>(),
+        j.at("Slots").get<vector<Slot>>()
+    };
+}
+
+inline void to_json(json& j, const Member& u)
+{
+    j = json
+    {
+        {"First Name", u.getFname()},
+        {"Middle Name", u.getMname()},
+        {"Last Name", u.getLname()},
+        {"Birth Date", u.getDateOfBirth()},
+        {"ID", u.getID()},
+        {"Plan", u.getPlanName()},
+        {"Past Workouts", u.getPastWorkouts()},
+        {"VIP", u.getVipStatus()},
+        {"Visits", u.getVisits()},
+        {"Classes", u.getSubClasses()},
+        {"End Date", u.getEndDate()},
+        {"Total Paid", u.getTotalPaid()},
+        {"Slots", u.getSlots()}
+    };
+}

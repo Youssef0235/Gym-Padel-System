@@ -1,6 +1,8 @@
 #pragma once
 #include<iostream>
+#include"json.hpp"
 using namespace std;
+using json = nlohmann::json;
 
 
 class Date
@@ -30,3 +32,23 @@ public:
 	// Operator Overloading
 	bool operator == (const Date& date) const;
 };
+
+inline void from_json(const json& j, Date& u)
+{
+	u = Date
+	{
+		j.at("Day").get<int>(),
+		j.at("Month").get<int>(),
+		j.at("Year").get<int>()
+	};
+}
+
+inline void to_json(json& j, const Date& u)
+{
+	j = json
+	{
+		{"Day", u.getDay()},
+		{"Month", u.getMonth()},
+		{"Year", u.getYear()}
+	};
+}

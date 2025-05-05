@@ -19,6 +19,5 @@ public:
 
 	void setID(long long id);
 	void setSalary(int Salary);
-
-	vector<Member> ManageSubscription(vector<Member>&members);
+	virtual string getRole() const = 0;
 };
