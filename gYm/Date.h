@@ -11,6 +11,7 @@ class Date
 {
 private:
 	int day, month, year;
+	static int daysInMonth(int mm, int yy);
 public:
 	Date();
 	Date(int d, int m, int y);
@@ -25,16 +26,20 @@ public:
 
 	// Utilities
 	static Date getTodaysDate();
+	// If Today Or Past -> False
 	static bool isFutureDate(const Date& dateToCheck);
+	// If 1/x/x -> True
 	static bool isFirstDay();
-	static Date extendBy(Date&date, int months);
+	static Date extendBy(Date date, int months);
 	static bool isLeapYear(int year);
 	static Date getNextDate(const Date& date);
 	static bool oneWeekLeft(const Date& a, const Date& b);
-	static bool isNow(const string time);
+	// Needs Fixing
+	static bool isNow(const string givenTime);
 
 	// Operator Overloading
 	bool operator == (const Date& date) const;
+	bool operator != (const Date& date) const;
 };
 
 inline void from_json(const json& j, Date& u)

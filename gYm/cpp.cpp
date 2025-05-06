@@ -20,7 +20,7 @@ int main()
 	FileManager::itsFirstDay();
 	FileManager::handleSubscriptions();
 	BookingSystem::checkSlotTimePassed();
-
+	Receptionist::sendRenewalNoti();
 
 	cout << "F M L\n";
 	string f, m, l; cin >> f >> m >> l;
@@ -28,10 +28,13 @@ int main()
 	ll id; cin >> id;
 	if (FileManager::matchingNameAndId(f, m, l, id))
 	{
-		cout << "Welcome To Padel System\n";
+		vector<string>v = FileManager::members[id].getInbox();
+		if (v.size())
+			cout << "You Have New Noti!\n";
 		cout << "To Check Your Reservations Press 1\n";
 		cout << "To Make A Reservation Press 2\n";
 		cout << "To Cancel A Reservation Press 3\n";
+		cout << "To Check Inbox Press 4\n";
 		int k; cin >> k;
 		if (k == 1)
 		{
@@ -104,7 +107,7 @@ int main()
 				}
 			}
 		}
-		else
+		else if(k == 3)
 		{
 			cout << "Your Slots:\n";
 			vector<Slot>st = FileManager::members[id].getSlots();
@@ -133,7 +136,12 @@ int main()
 				cout << "Cannot Cancel\n";
 			}
 		}
-		FileManager::clearInbox(id);
+		else
+		{
+			for (int i = 0; i < v.size(); i++)
+				cout << v[i] << "\n";
+			FileManager::clearInbox(id);
+		}
 	}
 
 	FileManager::Save();

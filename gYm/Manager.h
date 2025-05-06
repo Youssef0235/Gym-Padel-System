@@ -5,7 +5,8 @@
 class Manager : public Staff
 {
 private:
-	static bool comp(const Member& a, const Member& b); // Comparator
+	// Comparator To Sort Based On Visits
+	static bool comp(const Member& a, const Member& b); 
 public:
 	Manager();
 	Manager(string firstName, string middleName, string lastName, Date dob, int id, int Salary);

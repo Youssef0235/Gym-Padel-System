@@ -1,6 +1,7 @@
 #include "BookingSystem.h"
 #include <ctime>
 
+// Slot Not Booked
 bool BookingSystem::isSlotAvailable(const Slot& slot)
 {
 	auto it = FileManager::members.begin();
@@ -14,6 +15,7 @@ bool BookingSystem::isSlotAvailable(const Slot& slot)
 	return true;
 }
 
+// Closest Free Slot
 Slot BookingSystem::searchNext(Date date, int slotId, string location)
 {
 	long long courtId = getCourtId(location);
@@ -42,6 +44,7 @@ Slot BookingSystem::searchNext(Date date, int slotId, string location)
 	return candidateSlot;
 }
 
+// Handle If Booking Passed
 void BookingSystem::checkSlotTimePassed()
 {
 	auto it = FileManager::members.begin();

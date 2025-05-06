@@ -6,6 +6,7 @@
 class Coach : public Staff
 {
 private:
+	// Check Ds
     vector<ClassSession> assignedClasses;
     string className;
 public:

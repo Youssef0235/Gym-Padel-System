@@ -16,7 +16,7 @@ private:
     deque<string>pastWorkouts;
     unordered_set<string>subClasses;
     vector<string>inbox;
-    // Check Ds
+    // Set - Unordered_set?????
     vector<Slot>slots;
     long long ID;
     bool isVip;
@@ -52,6 +52,7 @@ public:
     void leaveClass(string className);
     void addWorkout(string workout);
     void removeSlot(const Slot& slot);
+    bool inClass(string className);
     void addSlot(const Slot& slot);
     void pushMessage(string Message);
     void clearInbox();
@@ -65,7 +66,6 @@ public:
     // for debug
     void display();
 };
-
 
 
 inline void from_json(const json& j, Member& u)

@@ -20,8 +20,8 @@ void FileManager::Load()
 {
 	loadAccounts();
 	loadClasses();
-	//loadWaitLists();
-	//loadVipWaitingList();
+	loadWaitLists();
+	loadVipWaitingList();
 	loadCoachesInfo();
 	loadCourts();
 }
@@ -42,7 +42,11 @@ void FileManager::loadAccounts()
 	// Open Accounts File
 	ifstream file("Accounts.json");
 	// Load To Accounts
-	file >> Accounts;
+	try
+	{
+		file >> Accounts;
+	}
+	catch (...) {}	
 	file.close();
 	// User Exists, Look For Matching ID
 	auto it = Accounts.begin();
@@ -61,7 +65,7 @@ void FileManager::saveAccounts()
 	auto it = members.begin();
 	while (it != members.end())
 	{
-		string id = to_string(it->first);
+		string id = to_string(it->second.getID());
 		Accounts[id] = it->second;
 		it++;
 	}
@@ -74,7 +78,11 @@ void FileManager::loadClasses()
 {
 	ifstream file("Classes.json");
 	json Classes;
-	file >> Classes;
+	try
+	{
+		file >> Classes;
+	}
+	catch (...) {}
 	auto it = Classes.begin();
 	while (it != Classes.end())
 	{
@@ -103,7 +111,11 @@ void FileManager::loadWaitLists()
 {
 	json waitingListsJson;
 	ifstream file("WaitLists.json");
-	file >> waitingListsJson;
+	try
+	{
+		file >> waitingListsJson;
+	}
+	catch (...) {}
 	file.close();
 	auto it = waitingListsJson.begin();
 	while (it != waitingListsJson.end())
@@ -139,8 +151,11 @@ void FileManager::loadVipWaitingList()
 {
 	json waitingListsJson;
 	ifstream file("Vip WaitingLists.json");
-	file >> waitingListsJson;
-	file.close();
+	try
+	{
+		file >> waitingListsJson;
+	}
+	catch (...) {}	file.close();
 	auto it = waitingListsJson.begin();
 	while (it != waitingListsJson.end())
 	{
@@ -179,7 +194,11 @@ void FileManager::loadCoachesInfo()
 {
 	json CoachesInfo;
 	ifstream file("Coaches Info.json");
-	file >> CoachesInfo;
+	try
+	{
+		file >> CoachesInfo;
+	}
+	catch (...) {}
 	file.close();
 	auto it = CoachesInfo.begin();
 	while (it != CoachesInfo.end())
@@ -196,7 +215,7 @@ void FileManager::saveCoachesInfo()
 	auto it = coachesInfo.begin();
 	while (it != coachesInfo.end())
 	{
-		string id = to_string(it->first);
+		string id = to_string(it->second.getID());
 		CoachesInfo[id] = it->second;
 		it++;
 	}
@@ -210,7 +229,11 @@ void FileManager::loadCourts()
 {
 	json Courts;
 	ifstream file("Courts.json");
-	file >> Courts;
+	try
+	{
+		file >> Courts;
+	}
+	catch (...) {}	
 	file.close();
 	auto it = Courts.begin();
 	while (it != Courts.end())
@@ -244,6 +267,7 @@ void FileManager::itsFirstDay()
 		clearMembersInClasses();
 		clearVisits();
 		clearTotalPaid();
+		clearVip();
 	}
 }
 
@@ -311,30 +335,14 @@ void FileManager::clearTotalPaid()
 	}
 }
 
-string FileManager::getClassName(int id)
+void FileManager::clearVip()
 {
-	auto it = classes.begin();
-	while (it != classes.end())
+	auto it = members.begin();
+	while (it != members.end())
 	{
-		if (it->second.getClassId() == id)
-			return it->second.getClassName();
+		members[it->first].setVipStatus(0);
 		it++;
 	}
-}
-
-long long FileManager::getLastMemberId()
-{
-	return members.rbegin()->first;
-}
-
-long long FileManager::getLastCoachId()
-{
-	return coachesInfo.rbegin()->first;
-}
-
-long long FileManager::getLastCourtId()
-{
-	return courts.rbegin()->first;
 }
 
 bool FileManager::matchingNameAndId(string firstName, string middleName, string lastName, long long id)
@@ -347,50 +355,21 @@ bool FileManager::matchingNameAndId(string firstName, string middleName, string 
 	return fName == firstName && mName == middleName && lName == lastName;
 }
 
-
-void FileManager::addToClass(string className, long long memberId)
+bool FileManager::isStaff(string firstName, string middleName, string lastName, long long id)
 {
-	classes[className].addMember(memberId);
-	members[memberId].joinClass(className);
+	if (firstName == middleName and middleName == lastName and id >= 1 and id <= 16)
+		return true;
+	return false;
 }
 
-void FileManager::removeFromClass(string className, long long memberId)
+string FileManager::staffRole(long long id)
 {
-	classes[className].removeMember(memberId);
-	members[memberId].leaveClass(className);
-}
-
-void FileManager::addToWaiting(string className, long long memberId)
-{
-	if (members[memberId].getVipStatus())
-		vipWaitingList[className].push(memberId);
+	if (id == 1)
+		return "Manager";
+	else if (id >= 2 and id <= 6)
+		return "Receptionist";
 	else
-		waitingLists[className].push(memberId);
-}
-
-long long FileManager::getFirstInWaiting(string className)
-{
-	long long id = 0;
-	if (vipWaitingList[className].size())
-	{
-		id = vipWaitingList[className].front();
-		vipWaitingList[className].pop();
-	}
-
-	else if (waitingLists[className].size())
-	{
-		id = waitingLists[className].front();
-		waitingLists[className].pop();
-	}
-
-	// Send Message
-	members[id].pushMessage(Messages::addedTo(className));
-	return id;
-}
-
-void FileManager::removeMemberFromGym(long long memberId)
-{
-	members.erase(memberId);
+		return "Coach";
 }
 
 void FileManager::clearInbox(long long memberId)

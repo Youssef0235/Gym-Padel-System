@@ -11,7 +11,7 @@ Member::Member(string FirstName, string MiddleName, string LastName, Date dob, l
     visits = Visits;
     subClasses = SubClasses;
     plan.setPlanName(planName);
-    plan.setEndDate();
+    plan.setEndDate(endDate);
     totalPaid = TotalPaid;
     slots = Slots;
     inbox = Inbox;
@@ -36,7 +36,7 @@ void Member::setVisits(int Visits)
 void Member::setPlan(int PlanNumber)
 {
     plan.setPlanName(PlansData::getName(PlanNumber));
-    plan.setEndDate();
+    plan.calcEndDate();
 }
 
 void Member::setSubClasses(unordered_set<string> SubClasses)
@@ -66,7 +66,7 @@ bool Member::getVipStatus() const
 
 void Member::addWorkout(string workout)
 {
-    while (pastWorkouts.size() > 5)
+    while (pastWorkouts.size() >= 5)
         pastWorkouts.pop_front();
     pastWorkouts.push_back(workout);
 }
@@ -80,6 +80,11 @@ void Member::removeSlot(const Slot& slot)
     }
 }
 
+bool Member::inClass(string className)
+{
+    return subClasses.find(className) != subClasses.end();
+}
+
 void Member::addSlot(const Slot& slot)
 {
     slots.push_back(slot);
@@ -87,6 +92,11 @@ void Member::addSlot(const Slot& slot)
 
 void Member::pushMessage(string Message)
 {
+    for (int i = 0; i < inbox.size(); i++)
+    {
+        if (inbox[i] == Message)
+            return;
+    }
     inbox.push_back(Message);
 }
 

@@ -23,18 +23,9 @@ void Coach::assignClass(const ClassSession& classSession)
 	assignedClasses.push_back(classSession);
 }
 
-void Coach::removeClass(long long classId)
+void Coach::removeClass(long long classIdx)
 {
-	auto it = assignedClasses.begin();
-	while(it != assignedClasses.end())
-	{
-		if (it->getClassId() == classId)
-		{
-			assignedClasses.erase(it);
-			return;
-		}
-		it++;
-	}
+	assignedClasses.erase(assignedClasses.begin() + classIdx);
 }
 
 vector<ClassSession> Coach::getAssignedClasses() const

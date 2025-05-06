@@ -13,6 +13,15 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Staffs">
+      <UniqueIdentifier>{21db4700-b0ac-4878-a9e8-baddf0357543}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Padel System">
+      <UniqueIdentifier>{d9c76670-1bec-49a8-ad2e-3286e0f4cdb8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes">
+      <UniqueIdentifier>{f255f9b2-8a52-416f-818c-f69a2bfe9cb9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Person.h">
@@ -33,32 +42,32 @@
     <ClInclude Include="PlansData.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ClassSession.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Coach.h">
+    <ClInclude Include="Messages.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Staff.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Court.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Slot.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="BookingSystem.h">
-      <Filter>Header Files</Filter>
+      <Filter>Staffs</Filter>
     </ClInclude>
     <ClInclude Include="Manager.h">
-      <Filter>Header Files</Filter>
+      <Filter>Staffs</Filter>
     </ClInclude>
     <ClInclude Include="Receptionist.h">
-      <Filter>Header Files</Filter>
+      <Filter>Staffs</Filter>
     </ClInclude>
-    <ClInclude Include="Messages.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Coach.h">
+      <Filter>Staffs</Filter>
+    </ClInclude>
+    <ClInclude Include="BookingSystem.h">
+      <Filter>Padel System</Filter>
+    </ClInclude>
+    <ClInclude Include="Slot.h">
+      <Filter>Padel System</Filter>
+    </ClInclude>
+    <ClInclude Include="Court.h">
+      <Filter>Padel System</Filter>
+    </ClInclude>
+    <ClInclude Include="ClassSession.h">
+      <Filter>Classes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -83,32 +92,32 @@
     <ClCompile Include="PlansData.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Coach.cpp">
+    <ClCompile Include="Messages.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Staff.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Court.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Slot.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ClassSession.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="BookingSystem.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Staffs</Filter>
     </ClCompile>
     <ClCompile Include="Manager.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Staffs</Filter>
     </ClCompile>
     <ClCompile Include="Receptionist.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Staffs</Filter>
     </ClCompile>
-    <ClCompile Include="Messages.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Coach.cpp">
+      <Filter>Staffs</Filter>
+    </ClCompile>
+    <ClCompile Include="BookingSystem.cpp">
+      <Filter>Padel System</Filter>
+    </ClCompile>
+    <ClCompile Include="Court.cpp">
+      <Filter>Padel System</Filter>
+    </ClCompile>
+    <ClCompile Include="Slot.cpp">
+      <Filter>Padel System</Filter>
+    </ClCompile>
+    <ClCompile Include="ClassSession.cpp">
+      <Filter>Classes</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

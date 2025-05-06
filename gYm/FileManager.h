@@ -15,6 +15,28 @@ using namespace std;
 
 class FileManager
 {
+private:
+	static void loadAccounts();
+	static void saveAccounts();
+	static void loadClasses();
+	static void saveClasses();
+	static void loadWaitLists();
+	static void saveWaitLists();
+	static void loadVipWaitingList();
+	static void saveVipWaitingList();
+	static void loadCoachesInfo();
+	static void saveCoachesInfo();
+	static void loadCourts();
+	static void saveCourts();
+
+	// At End Of Month
+	static void clearWaitingList();
+	static void clearVipWaitingList();
+	static void clearMembersInClasses();
+	static void clearVisits();
+	static void clearTotalPaid();
+	static void clearVip();
+
 public:
 	FileManager();
 	static map<long long, Member>members;
@@ -24,66 +46,20 @@ public:
 	static unordered_map<string, queue<long long>>vipWaitingList;
 	static unordered_map<string, ClassSession>classes;
 
-	// Work
+
 	static void Load();
 	static void Save();
 	static void itsFirstDay();
 
-
-	// Working
-	static void loadAccounts();
-	static void saveAccounts();
-
-	// Working
-	static void loadClasses();
-	static void saveClasses();
-
-	// Working 
-	static void loadWaitLists();
-	static void saveWaitLists();
-
-	// Working
-	static void loadVipWaitingList();
-	static void saveVipWaitingList();
-
-	// Working
-	static void loadCoachesInfo();
-	static void saveCoachesInfo();
-
-	// Working
-	static void loadCourts();
-	static void saveCourts();
-
-
-	// -------------------- GYM ---------------------------- //
-	// Handle If Sub Ends
+	// Handle Ended Subs
 	static void handleSubscriptions();
-
-	// At End Of Month
-	static void clearWaitingList();
-	static void clearVipWaitingList();
-	static void clearMembersInClasses();
-	static void clearVisits();
-	static void clearTotalPaid();
-	// -------------------- GYM ---------------------------- //
-
-
-	// -------------------------- CLASSES ---------------------------------- //
-	static void addToClass(string className, long long memberId);
-	static void removeFromClass(string className, long long memberId);
-	static void addToWaiting(string className, long long memberId);
-	static long long getFirstInWaiting(string className);
-	static void removeMemberFromGym(long long memberId);
-	// -------------------------- CLASSES ---------------------------------- //
 
 
 	// Utilities
 	static void clearInbox(long long memberId);
-	static string getClassName(int id);
-	static long long getLastMemberId();
-	static long long getLastCoachId();
-	static long long getLastCourtId();
 	static bool matchingNameAndId(string firstName, string middleName, string lastName, long long id);
+	static bool isStaff(string firstName, string middleName, string lastName, long long id);
+	static string staffRole(long long id);
 
 
 	// Wait

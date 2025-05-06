@@ -11,13 +11,15 @@ class Subscription
 private:
 	string name;
 	Date endDate;
+private:
 public:
 	Subscription();
 	Subscription(string Name, const Date& EndDate);
 
 	void setPlanName(string Name);
 	void setPlan(const Subscription& subscription);
-	void setEndDate();
+	void setEndDate(const Date& EndDate);
+	void calcEndDate();
 
 	string getName() const;
 	Date getEndDate() const;

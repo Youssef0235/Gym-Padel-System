@@ -2,36 +2,44 @@
 
 Subscription::Subscription() {}
 
+// OK
 Subscription::Subscription(string Name, const Date& EndDate)
 {
 	name = Name;
 	endDate = EndDate;
 }
 
+// OK
 void Subscription::setPlanName(string Name)
 {
 	name = Name;
 }
 
+// OK
 void Subscription::setPlan(const Subscription& subscription)
 {
 	name = subscription.name;
 	endDate = subscription.endDate;
 }
 
-// Todays Date + Sub
-void Subscription::setEndDate()
+void Subscription::setEndDate(const Date& EndDate)
 {
-	endDate.setDay(Date::getTodaysDate().getDay());
-	endDate.setMonth((Date::getTodaysDate().getMonth() + (PlansData::getDuration(name) / 30)) % 12);
-	endDate.setYear(Date::getTodaysDate().getYear() + Date::getTodaysDate().getMonth() / 12);
+	endDate = EndDate;
 }
 
+// Todays Date + Sub
+void Subscription::calcEndDate()
+{
+	endDate = Date::extendBy(Date::getTodaysDate(), PlansData::getDuration(name) / 30);
+}
+
+// OK
 string Subscription::getName() const
 {
 	return name;
 }
 
+// OK
 Date Subscription::getEndDate() const
 {
 	return endDate;
@@ -48,13 +56,14 @@ void Subscription::cancelPlan()
 	endDate = Date::getTodaysDate();
 }
 
-// only when sub ends
 void Subscription::changePlan(string newPlan)
 {
+	cancelPlan();
 	name = newPlan;
-	setEndDate();
+	calcEndDate();
 }
 
+// OK
 bool Subscription::operator==(const Subscription& subscription) const
 {
 	return name == subscription.name and
