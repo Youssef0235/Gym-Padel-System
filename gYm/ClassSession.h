@@ -9,11 +9,11 @@ class ClassSession
 private:
 	long long classId, coachId;
 	string classDay, classTime, className;
-	int classCapacity;
+	int classCapacity, classPrice;
 	unordered_set<long long>classMembers;
 public:
 	ClassSession();
-	ClassSession(string ClassDay, string ClassTime, string ClassName, int ClassCapacity, unordered_set<long long>ClassMembers, long long ClassId, long long CoachId);
+	ClassSession(string ClassDay, string ClassTime, string ClassName, int ClassCapacity, unordered_set<long long>ClassMembers, long long ClassId, long long CoachId, int ClassPrice);
 
 	void setClassId(long long ClassId);
 	void setClassTime(string ClassTime);
@@ -22,6 +22,7 @@ public:
 	void setClassCapacity(int Capacity);
 	void setClassMembers(unordered_set<long long>ClassMembers);
 	void setClassName(string ClassName);
+	void setClassPrice(int price);
 
 	long long getClassId() const;
 	string getClassTime() const;
@@ -30,7 +31,8 @@ public:
 	int getClassCapacity() const;
 	unordered_set<long long>getClassMembers() const;
 	string getClassName()const;
-	
+	int getClassPrice()const;
+
 	void addMember(long long memberId);
 	void removeMember(long long memberId);
 	void clearClassMembers();
@@ -47,7 +49,8 @@ inline void to_json(json& j, const ClassSession& u)
 		{"Capacity", u.getClassCapacity()},
 		{"Members", u.getClassMembers()},
 		{"Class ID",u.getCoachId()},
-		{"Coach ID",u.getClassId()}
+		{"Coach ID",u.getClassId()},
+		{"Price", u.getClassPrice()}
 	};
 }
 
@@ -61,6 +64,7 @@ inline void from_json(const json& j, ClassSession& u)
 		j.at("Capacity").get<int>(),
 		j.at("Members").get<unordered_set<long long>>(),
 		j.at("Class ID").get<long long>(),
-		j.at("Coach ID").get<long long>()
+		j.at("Coach ID").get<long long>(),
+		j.at("Price").get<int>()
 	};
 }

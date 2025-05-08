@@ -3,7 +3,7 @@ using namespace std;
 
 Member::Member() : ID(0), isVip(0), visits(0), totalPaid(0) {}
 
-Member::Member(string FirstName, string MiddleName, string LastName, Date dob, long long id, string planName, deque<string> PastWorkouts, bool vip, int Visits, unordered_set<string> SubClasses, Date endDate, int TotalPaid, vector<Slot> Slots, vector<string>Inbox) : Person(FirstName, MiddleName, LastName, dob)
+Member::Member(string FirstName, string MiddleName, string LastName, Date dob, long long id, string planName, deque<string> PastWorkouts, bool vip, int Visits, unordered_set<string> SubClasses, Date endDate, int TotalPaid, set<Slot> Slots, vector<string>Inbox) : Person(FirstName, MiddleName, LastName, dob)
 {
     ID = id;
     pastWorkouts = PastWorkouts;
@@ -49,7 +49,7 @@ void Member::setTotalPaid(int TotalPaid)
     totalPaid = TotalPaid;
 }
 
-void Member::setSlots(vector<Slot> Slots)
+void Member::setSlots(set<Slot> Slots)
 {
     slots = Slots;
 }
@@ -73,11 +73,7 @@ void Member::addWorkout(string workout)
 
 void Member::removeSlot(const Slot& slot)
 {
-    for (int i = 0; i < slots.size(); i++)
-    {
-        if (slots[i] == slot)
-            slots.erase(slots.begin() + i);
-    }
+    slots.erase(slot);
 }
 
 bool Member::inClass(string className)
@@ -87,7 +83,7 @@ bool Member::inClass(string className)
 
 void Member::addSlot(const Slot& slot)
 {
-    slots.push_back(slot);
+    slots.insert(slot);
 }
 
 void Member::pushMessage(string Message)
@@ -140,7 +136,7 @@ Date Member::getEndDate() const
     return plan.getEndDate();
 }
 
-vector<Slot> Member::getSlots() const
+set<Slot> Member::getSlots() const
 {
     return slots;
 }

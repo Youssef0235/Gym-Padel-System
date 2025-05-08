@@ -7,5 +7,5 @@ string Messages::earlyRenewal()
 
 string Messages::addedTo(string className)
 {
-    return "You Have Been Added To " + className + "Class";
+    return "You Have Been Added To " + className + " Class";
 }

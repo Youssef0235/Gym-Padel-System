@@ -1,28 +1,4 @@
 {
-    "0": {
-        "Birth Date": {
-            "Day": 0,
-            "Month": 0,
-            "Year": 0
-        },
-        "Classes": [],
-        "End Date": {
-            "Day": 0,
-            "Month": 0,
-            "Year": 0
-        },
-        "First Name": "",
-        "ID": 0,
-        "Inbox": [],
-        "Last Name": "",
-        "Middle Name": "",
-        "Past Workouts": [],
-        "Plan": "",
-        "Slots": [],
-        "Total Paid": 0,
-        "VIP": false,
-        "Visits": 0
-    },
     "17": {
         "Birth Date": {
             "Day": 29,
@@ -161,7 +137,7 @@
         "Last Name": "Abdelrahamn",
         "Middle Name": "Malek",
         "Past Workouts": [],
-        "Plan": "",
+        "Plan": "Ultimate",
         "Slots": [],
         "Total Paid": 1000,
         "VIP": false,
@@ -305,7 +281,7 @@
         "Last Name": "Shawky",
         "Middle Name": "Hamdy",
         "Past Workouts": [],
-        "Plan": "",
+        "Plan": "Ultimate",
         "Slots": [],
         "Total Paid": 1000,
         "VIP": false,
@@ -325,7 +301,9 @@
         },
         "First Name": "Salah",
         "ID": 29,
-        "Inbox": [],
+        "Inbox": [
+            "You Have Been Added To Yoga Class"
+        ],
         "Last Name": "Selim",
         "Middle Name": "Adel",
         "Past Workouts": [],
@@ -349,7 +327,9 @@
         },
         "First Name": "Younis",
         "ID": 30,
-        "Inbox": [],
+        "Inbox": [
+            "You Have Been Added To Yoga Class"
+        ],
         "Last Name": "Tarek",
         "Middle Name": "Hany",
         "Past Workouts": [],
@@ -373,7 +353,9 @@
         },
         "First Name": "Wael",
         "ID": 31,
-        "Inbox": [],
+        "Inbox": [
+            "You Have Been Added To Yoga Class"
+        ],
         "Last Name": "Amgad",
         "Middle Name": "Mostafa",
         "Past Workouts": [],
@@ -397,11 +379,13 @@
         },
         "First Name": "Essam",
         "ID": 32,
-        "Inbox": [],
+        "Inbox": [
+            "You Have Been Added To Yoga Class"
+        ],
         "Last Name": "Ramy",
         "Middle Name": "Hesham",
         "Past Workouts": [],
-        "Plan": "",
+        "Plan": "Ultimate",
         "Slots": [],
         "Total Paid": 1000,
         "VIP": false,
@@ -421,7 +405,9 @@
         },
         "First Name": "Youssef",
         "ID": 33,
-        "Inbox": [],
+        "Inbox": [
+            "You Have Been Added To Yoga Class"
+        ],
         "Last Name": "Ihab",
         "Middle Name": "Akram",
         "Past Workouts": [],
@@ -445,7 +431,9 @@
         },
         "First Name": "Nabil",
         "ID": 34,
-        "Inbox": [],
+        "Inbox": [
+            "You Have Been Added To Yoga Class"
+        ],
         "Last Name": "Ossama",
         "Middle Name": "Gamal",
         "Past Workouts": [],
@@ -469,13 +457,15 @@
         },
         "First Name": "Hussein",
         "ID": 35,
-        "Inbox": [],
+        "Inbox": [
+            "You Have Been Added To Yoga Class"
+        ],
         "Last Name": "Ayoub",
         "Middle Name": "Rafik",
         "Past Workouts": [],
-        "Plan": "Premium",
+        "Plan": "Ultimate",
         "Slots": [],
-        "Total Paid": 600,
+        "Total Paid": 1000,
         "VIP": false,
         "Visits": 19
     },
@@ -497,9 +487,9 @@
         "Last Name": "Reda",
         "Middle Name": "Said",
         "Past Workouts": [],
-        "Plan": "",
+        "Plan": "Basic",
         "Slots": [],
-        "Total Paid": 1000,
+        "Total Paid": 100,
         "VIP": false,
         "Visits": 7
     }

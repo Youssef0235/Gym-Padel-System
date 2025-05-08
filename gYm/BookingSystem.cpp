@@ -19,12 +19,12 @@ bool BookingSystem::isSlotAvailable(const Slot& slot)
 Slot BookingSystem::searchNext(Date date, int slotId, string location)
 {
 	long long courtId = getCourtId(location);
+	cout << courtId << "\n";
 	Date newDate = date;
 	Slot candidateSlot;
 	auto it = FileManager::members.begin();
 	while (it != FileManager::members.end())
 	{
-		vector<Slot> st =  FileManager::members[it->first].getSlots();
 		candidateSlot = Slot(courtId, slotId, newDate);
 		bool available = isSlotAvailable(candidateSlot);
 		if (available)
@@ -50,21 +50,23 @@ void BookingSystem::checkSlotTimePassed()
 	auto it = FileManager::members.begin();
 	while (it != FileManager::members.end())
 	{
-		vector<Slot>memberReservedSlots = FileManager::members[it->first].getSlots();
-		for(int i = 0; i < memberReservedSlots.size(); i++)
+		set<Slot>memberReservedSlots = FileManager::members[it->first].getSlots();
+		auto itt = memberReservedSlots.begin();
+		while (itt != memberReservedSlots.end())
 		{
 			tm targetTime = {};
-			targetTime.tm_mday = memberReservedSlots[i].getDate().getDay();
-			targetTime.tm_mon = memberReservedSlots[i].getDate().getMonth() - 1;  // tm_mon is 0-based (0 = Jan)
-			targetTime.tm_year = memberReservedSlots[i].getDate().getYear() - 1900; // tm_year is years since 1900
-			targetTime.tm_hour = memberReservedSlots[i].getHour();
+			targetTime.tm_mday = itt->getDate().getDay();
+			targetTime.tm_mon = itt->getDate().getMonth() - 1;
+			targetTime.tm_year = itt->getDate().getYear() - 1900;
+			targetTime.tm_hour = itt->getHour();
 			targetTime.tm_min = 0;
 			targetTime.tm_sec = 0;
 			time_t target = mktime(&targetTime);
 			time_t now = time(0);
 			double hoursDiff = difftime(target, now) / 3600.0;
 			if (hoursDiff < 0)
-				removeSlot(it->first, memberReservedSlots[i]);
+				removeSlot(it->first, *itt);
+			itt++;
 		}
 		it++;
 	}
@@ -77,7 +79,6 @@ void BookingSystem::makeBooking(Slot& slot, long long memberId)
 
 bool BookingSystem::cancelBooking(long long memberId, Slot slot)
 {
-
 	tm targetTime = {};
 	targetTime.tm_mday = slot.getDate().getDay();
 	targetTime.tm_mon = slot.getDate().getMonth() - 1;  // tm_mon is 0-based (0 = Jan)
@@ -103,12 +104,10 @@ bool BookingSystem::cancelBooking(long long memberId, Slot slot)
 void BookingSystem::removeSlot(long long memberId, const Slot& slot)
 {
 	FileManager::members[memberId].removeSlot(slot);
-
 }
 
 long long BookingSystem::getCourtId(string location)
 {
-
 	auto it = FileManager::courts.begin();
 	while (it != FileManager::courts.end())
 	{
@@ -121,11 +120,13 @@ long long BookingSystem::getCourtId(string location)
 
 bool BookingSystem::foundSlot(long long memberId, const Slot& slot)
 {
-	vector<Slot>slots = FileManager::members[memberId].getSlots();
-	for (int i = 0; i < slots.size(); i++)
+	set<Slot>slots = FileManager::members[memberId].getSlots();
+	auto it = slots.begin();
+	while (it != slots.end())
 	{
-		if (slots[i] == slot)
+		if (*it == slot)
 			return true;
+		it++;
 	}
 	return false;
 }

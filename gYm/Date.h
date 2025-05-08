@@ -40,6 +40,7 @@ public:
 	// Operator Overloading
 	bool operator == (const Date& date) const;
 	bool operator != (const Date& date) const;
+	bool operator < (const Date& date) const;
 };
 
 inline void from_json(const json& j, Date& u)

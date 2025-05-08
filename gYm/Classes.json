@@ -1,114 +1,102 @@
 {
     "Cardio": {
         "Capacity": 11,
-        "Class ID": 1,
-        "Coach ID": 8,
+        "Class ID": 8,
+        "Coach ID": 1,
         "Day": "Friday",
         "Members": [],
         "Name": "Cardio",
+        "Price": 100,
         "Time": "8 PM"
     },
     "CrossFit": {
         "Capacity": 15,
-        "Class ID": 5,
-        "Coach ID": 13,
+        "Class ID": 13,
+        "Coach ID": 5,
         "Day": "Monday",
         "Members": [],
         "Name": "CrossFit",
+        "Price": 120,
         "Time": "10 AM"
     },
     "Dance": {
         "Capacity": 10,
-        "Class ID": 2,
+        "Class ID": 10,
         "Coach ID": 2,
         "Day": "Friday",
         "Members": [],
         "Name": "Dance",
+        "Price": 130,
         "Time": "6 PM"
     },
     "Kickboxing": {
         "Capacity": 20,
-        "Class ID": 6,
+        "Class ID": 14,
         "Coach ID": 6,
         "Day": "Saturday",
         "Members": [],
         "Name": "Kickboxing",
+        "Price": 170,
         "Time": "12 PM"
     },
-    "MMA conditioning": {
+    "MMA Conditioning": {
         "Capacity": 10,
-        "Class ID": 7,
+        "Class ID": 15,
         "Coach ID": 7,
         "Day": "Sunday",
         "Members": [],
         "Name": "MMA conditioning",
+        "Price": 190,
         "Time": "6 PM"
     },
     "Pilates": {
         "Capacity": 31,
-        "Class ID": 3,
+        "Class ID": 11,
         "Coach ID": 3,
         "Day": "Wednesday",
         "Members": [],
         "Name": "Pilates",
+        "Price": 230,
         "Time": "10 AM"
     },
     "Powerlifting": {
         "Capacity": 20,
-        "Class ID": 10,
+        "Class ID": 16,
         "Coach ID": 10,
         "Day": "Wednesday",
         "Members": [],
         "Name": "Powerlifting",
+        "Price": 160,
         "Time": "11 AM"
     },
-    "Strength training": {
+    "Strength Training": {
         "Capacity": 10,
-        "Class ID": 9,
+        "Class ID": 17,
         "Coach ID": 9,
         "Day": "Tuesday",
         "Members": [],
         "Name": "Strength training",
+        "Price": 190,
         "Time": "5 PM"
     },
     "Tabata": {
         "Capacity": 5,
-        "Class ID": 8,
+        "Class ID": 12,
         "Coach ID": 8,
         "Day": "Monday",
         "Members": [],
         "Name": "Tabata",
+        "Price": 200,
         "Time": "3 PM"
     },
     "Yoga": {
-        "Capacity": 52,
-        "Class ID": 4,
+        "Capacity": 15,
+        "Class ID": 9,
         "Coach ID": 4,
         "Day": "Monday",
-        "Members": [
-            0,
-            17,
-            18,
-            19,
-            20,
-            21,
-            22,
-            23,
-            24,
-            25,
-            26,
-            27,
-            28,
-            29,
-            30,
-            31,
-            32,
-            33,
-            34,
-            35,
-            36
-        ],
+        "Members": [],
         "Name": "Yoga",
+        "Price": 150,
         "Time": "7 PM"
     }
 }

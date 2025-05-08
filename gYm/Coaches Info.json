@@ -76,7 +76,7 @@
             "Month": 11,
             "Year": 1999
         },
-        "Class": "MIMA Conditioning",
+        "Class": "MMA Conditioning",
         "First Name": "Malek",
         "ID": 15,
         "Last Name": "Hussein",
@@ -97,7 +97,7 @@
         "Middle Name": "Sherif",
         "Salary": 700
     },
-    "17": {
+    "7": {
         "Assigned Classes": [],
         "Birth Date": {
             "Day": 13,
@@ -106,24 +106,10 @@
         },
         "Class": "Strength Training",
         "First Name": "Amr",
-        "ID": 17,
+        "ID": 7,
         "Last Name": "Nour",
         "Middle Name": "Mazen",
         "Salary": 250
-    },
-    "7": {
-        "Assigned Classes": [],
-        "Birth Date": {
-            "Day": 0,
-            "Month": 0,
-            "Year": 0
-        },
-        "Class": "",
-        "First Name": "",
-        "ID": 7,
-        "Last Name": "",
-        "Middle Name": "",
-        "Salary": 0
     },
     "8": {
         "Assigned Classes": [],

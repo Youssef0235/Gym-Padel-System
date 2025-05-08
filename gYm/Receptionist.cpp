@@ -7,13 +7,10 @@ Receptionist::Receptionist(string firstName, string middleName, string lastName,
 
 void Receptionist::sendRenewalNoti()
 {
-	int add = 17;
 	for (int i = 0; i < FileManager::members.size(); i++)
 	{
-		if (Date::oneWeekLeft(Date::getTodaysDate(), FileManager::members[add + i].getEndDate()))
-		{
-			FileManager::members[add + i].pushMessage(Messages::earlyRenewal());
-		}
+		if (Date::oneWeekLeft(Date::getTodaysDate(), FileManager::members[17 + i].getEndDate()))
+			FileManager::members[17 + i].pushMessage(Messages::earlyRenewal());
 	}
 }
 
@@ -27,16 +24,22 @@ void Receptionist::renewSub(long long memberID)
 	FileManager::members[memberID].renewPlan();
 }
 
-void Receptionist::addToClass(string className, long long memberId)
+bool Receptionist::addToClass(string className, long long memberId)
 {
-	FileManager::classes[className].addMember(memberId);
-	FileManager::members[memberId].joinClass(className);
+	if (FileManager::classes[className].hasSpace())
+	{
+		FileManager::classes[className].addMember(memberId);
+		FileManager::members[memberId].joinClass(className);
+		return true;
+	}
+	addToWaiting(className, memberId);
+	return false;
 }
 
 void Receptionist::removeFromClass(string className, long long memberId)
 {
-	FileManager::classes[className].removeMember(memberId);
 	FileManager::members[memberId].leaveClass(className);
+	FileManager::classes[className].removeMember(memberId);
 }
 
 void Receptionist::addToWaiting(string className, long long memberId)
@@ -47,7 +50,7 @@ void Receptionist::addToWaiting(string className, long long memberId)
 		FileManager::waitingLists[className].push(memberId);
 }
 
-long long Receptionist::getFirstInWaiting(string className)
+void Receptionist::addFirstInWaiting(string className)
 {
 	long long id = 0;
 	if (FileManager::vipWaitingList[className].size())
@@ -62,9 +65,11 @@ long long Receptionist::getFirstInWaiting(string className)
 		FileManager::waitingLists[className].pop();
 	}
 
-	// Send Message
+	// Send Message And Add
+	if (id == 0) return;
+	FileManager::members[id].joinClass(className);
+	FileManager::classes[className].addMember(id);
 	FileManager::members[id].pushMessage(Messages::addedTo(className));
-	return id;
 }
 
 void Receptionist::removeMemberFromGym(long long memberId)
@@ -78,15 +83,15 @@ string Receptionist::getClassName(int id)
 	while (it != FileManager::classes.end())
 	{
 		if (it->second.getClassId() == id)
-			return it->second.getClassName();
+			return it->first;
 		it++;
 	}
+	return "";
 }
 
 long long Receptionist::getLastMemberId()
 {
 	return FileManager::members.rbegin()->first;
-
 }
 
 int Receptionist::applyDiscount(int planNumber, double rate)

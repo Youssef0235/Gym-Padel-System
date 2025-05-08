@@ -11,10 +11,10 @@ public:
 	static void sendRenewalNoti();
 	static void cancelSub(long long memberID);
 	static void renewSub(long long memberID);
-	static void addToClass(string className, long long memberId);
+	static bool addToClass(string className, long long memberId);
 	static void removeFromClass(string className, long long memberId);
 	static void addToWaiting(string className, long long memberId);
-	static long long getFirstInWaiting(string className);
+	static void addFirstInWaiting(string className);
 	static void removeMemberFromGym(long long memberId);
 	static string getClassName(int id);
 	static long long getLastMemberId();

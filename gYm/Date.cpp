@@ -160,3 +160,12 @@ bool Date::operator!=(const Date& date) const
         month != date.month or
         year != date.year;
 }
+
+bool Date::operator<(const Date& date) const
+{
+    if (year != date.getYear())
+        return year < date.getYear();
+    if (month != date.getMonth())
+        return year < date.getMonth();
+    return day < date.getDay();
+}

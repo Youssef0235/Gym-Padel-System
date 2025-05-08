@@ -14,6 +14,7 @@
 using namespace std;
 
 
+
 int main()
 {
 	FileManager::Load();
@@ -21,6 +22,8 @@ int main()
 	FileManager::handleSubscriptions();
 	BookingSystem::checkSlotTimePassed();
 	Receptionist::sendRenewalNoti();
+
+
 
 	cout << "F M L\n";
 	string f, m, l; cin >> f >> m >> l;
@@ -34,12 +37,11 @@ int main()
 		cout << "To Check Your Reservations Press 1\n";
 		cout << "To Make A Reservation Press 2\n";
 		cout << "To Cancel A Reservation Press 3\n";
-		cout << "To Check Inbox Press 4\n";
 		int k; cin >> k;
 		if (k == 1)
 		{
 			cout << "Your Slots:\n";
-			vector<Slot>st = FileManager::members[id].getSlots();
+			set<Slot>st = FileManager::members[id].getSlots();
 			auto it = st.begin();
 			while (it != st.end())
 			{
@@ -75,6 +77,7 @@ int main()
 				Slot newSlot(v[k - 1].getID(), h, date);
 				if (Date::isFutureDate(date))
 				{
+					cout << "IN FUTURE\n";
 					if (BookingSystem::isSlotAvailable(newSlot))
 					{
 						BookingSystem::makeBooking(newSlot, id);
@@ -110,7 +113,7 @@ int main()
 		else if(k == 3)
 		{
 			cout << "Your Slots:\n";
-			vector<Slot>st = FileManager::members[id].getSlots();
+			set<Slot>st = FileManager::members[id].getSlots();
 			auto it = st.begin();
 			int count = 1;
 			vector<Slot>v;

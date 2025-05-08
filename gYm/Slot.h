@@ -21,6 +21,7 @@ public:
 
 	// Operator Overloading
 	bool operator == (const Slot& slot) const;
+	bool operator < (const Slot & slot) const;
 };
 
 inline void from_json(const json& j, Slot& u)

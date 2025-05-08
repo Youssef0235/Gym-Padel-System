@@ -45,3 +45,10 @@ bool Slot::operator == (const Slot& slot) const
 		date == slot.date and
 		hour == slot.hour;
 }
+
+bool Slot::operator < (const Slot& slot) const
+{
+	if (date == slot.date)
+		return hour < slot.getHour();
+	return date < slot.date;
+}

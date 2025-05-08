@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include<vector>
+#include<set>
 #include<unordered_set>
 #include<stack>
 #include<deque>
@@ -15,15 +16,14 @@ private:
     Subscription plan;
     deque<string>pastWorkouts;
     unordered_set<string>subClasses;
+    set<Slot>slots;
     vector<string>inbox;
-    // Set - Unordered_set?????
-    vector<Slot>slots;
     long long ID;
     bool isVip;
     int visits, totalPaid;
 public:
     Member();
-    Member(string FirstName, string MiddleName, string LastName, Date dob, long long id, string planName, deque<string>PastWorkouts, bool vip, int Visits, unordered_set<string>SubClasses, Date endDate, int TotalPaid, vector<Slot> Slots, vector<string>Inbox);
+    Member(string FirstName, string MiddleName, string LastName, Date dob, long long id, string planName, deque<string>PastWorkouts, bool vip, int Visits, unordered_set<string>SubClasses, Date endDate, int TotalPaid, set<Slot> Slots, vector<string>Inbox);
 
     void setID(long long id);
     void setVipStatus(bool vip);
@@ -31,7 +31,7 @@ public:
     void setPlan(int PlanNumber);
     void setSubClasses(unordered_set<string>SubClasses);
     void setTotalPaid(int TotalPaid);
-    void setSlots(vector<Slot>Slots);
+    void setSlots(set<Slot>Slots);
     void setInbox(vector<string>Inbox);
 
     bool getVipStatus() const;
@@ -42,7 +42,7 @@ public:
     int getVisits() const;
     int getTotalPaid() const;
     Date getEndDate() const;
-    vector<Slot>getSlots() const;
+    set<Slot>getSlots() const;
     vector<string>getInbox() const;
     
 
@@ -84,7 +84,7 @@ inline void from_json(const json& j, Member& u)
         j.at("Classes").get<unordered_set<string>>(),
         j.at("End Date").get<Date>(),
         j.at("Total Paid").get<int>(),
-        j.at("Slots").get<vector<Slot>>(),
+        j.at("Slots").get<set<Slot>>(),
         j.at("Inbox").get<vector<string>>()
     };
 }   

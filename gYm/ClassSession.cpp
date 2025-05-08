@@ -5,7 +5,7 @@ ClassSession::ClassSession() : classCapacity(0), classId(0), coachId(0)
 }
 
 // Read Only Info
-ClassSession::ClassSession(string ClassDay, string ClassTime, string ClassName, int ClassCapacity, unordered_set<long long>ClassMembers, long long ClassId, long long CoachId)
+ClassSession::ClassSession(string ClassDay, string ClassTime, string ClassName, int ClassCapacity, unordered_set<long long>ClassMembers, long long ClassId, long long CoachId, int ClassPrice)
 {
 	classId = ClassId;
 	classDay = ClassDay;
@@ -14,6 +14,7 @@ ClassSession::ClassSession(string ClassDay, string ClassTime, string ClassName, 
 	classCapacity = ClassCapacity;
 	classMembers = ClassMembers;
 	className = ClassName;
+	classPrice = ClassPrice;
 }
 
 void ClassSession::setClassId(long long ClassId)
@@ -51,6 +52,11 @@ void ClassSession::setClassName(string ClassName)
 	className = ClassName;
 }
 
+void ClassSession::setClassPrice(int price)
+{
+	classPrice = price;
+}
+
 long long ClassSession::getClassId() const
 {
 	return classId;
@@ -86,22 +92,24 @@ string ClassSession::getClassName() const
 	return className;
 }
 
+int ClassSession::getClassPrice() const
+{
+	return classPrice;
+}
+
 void ClassSession::addMember(long long memberId)
 {
 	classMembers.insert(memberId);
-	classCapacity++;
 }
 
 void ClassSession::removeMember(long long memberId)
 {
 	classMembers.erase(memberId);
-	classCapacity--;
 }
 
 void ClassSession::clearClassMembers()
 {
 	classMembers.clear();
-	classCapacity = 0;
 }
 
 bool ClassSession::hasSpace()
