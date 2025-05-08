@@ -2,11 +2,12 @@
 
 Court::Court() : courtId(0) {}
 
-Court::Court(long long CourtId, string CourtLocation, string CourtName)
+Court::Court(long long CourtId, string CourtLocation, string CourtName, int BookingPrice)
 {
 	courtId = CourtId;
 	courtLocation = CourtLocation;
 	courtName = CourtName;
+	bookingPrice = BookingPrice;
 }
 
 void Court::setID(long long Courtid)
@@ -24,6 +25,11 @@ void Court::setName(string CourtName)
 	courtName = CourtName;
 }
 
+void Court::setBookingPrice(int price)
+{
+	bookingPrice = price;
+}
+
 long long Court::getID() const
 {
 	return courtId;
@@ -37,4 +43,9 @@ string Court::getLocation() const
 string Court::getName() const
 {
 	return courtName;
+}
+
+int Court::getBookingPrice() const
+{
+	return bookingPrice;
 }

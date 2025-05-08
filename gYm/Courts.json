@@ -2,101 +2,121 @@
     "1": {
         "ID": 1,
         "Location": "Masr El Gedida",
-        "Name": "Padel World"
+        "Name": "Padel World",
+        "Booking Price": 100
     },
     "10": {
         "ID": 10,
         "Location": "Tagamoa",
-        "Name": "Padel City"
+        "Name": "Padel City",
+        "Booking Price": 200
     },
     "11": {
         "ID": 11,
         "Location": "Shorouk",
-        "Name": "Pro Court"
+        "Name": "Pro Court",
+        "Booking Price": 150
     },
     "12": {
         "ID": 12,
         "Location": "Obour",
-        "Name": "Padel Square"
+        "Name": "Padel Square",
+        "Booking Price": 140
     },
     "13": {
         "ID": 13,
         "Location": "Rehab",
-        "Name": "Racket Club"
+        "Name": "Racket Club",
+        "Booking Price": 250
     },
     "14": {
         "ID": 14,
         "Location": "Madinty",
-        "Name": "Court House"
+        "Name": "Court House",
+        "Booking Price": 160
     },
     "15": {
         "ID": 15,
         "Location": "Shobra",
-        "Name": "Padel View"
+        "Name": "Padel View",
+        "Booking Price": 190
     },
     "16": {
         "ID": 16,
         "Location": "Almaza",
-        "Name": "Padel Hub"
+        "Name": "Padel Hub",
+        "Booking Price": 300
     },
     "17": {
         "ID": 17,
         "Location": "Triumph",
-        "Name": "Padel League"
+        "Name": "Padel League",
+        "Booking Price": 320
     },
     "18": {
         "ID": 18,
         "Location": "Saint Fatima",
-        "Name": "Power Court"
+        "Name": "Power Court",
+        "Booking Price": 210
     },
     "19": {
         "ID": 19,
         "Location": "El Nozha",
-        "Name": "The Arena"
+        "Name": "The Arena",
+        "Booking Price": 320
     },
     "2": {
         "ID": 2,
         "Location": "Nasr City",
-        "Name": "Smash Club"
+        "Name": "Smash Club",
+        "Booking Price": 160
     },
     "20": {
         "ID": 20,
         "Location": "Roxy",
-        "Name": "Padel Base"
+        "Name": "Padel Base",
+        "Booking Price": 180
     },
     "3": {
         "ID": 3,
         "Location": "Zamalek",
-        "Name": "Padel Point"
+        "Name": "Padel Point",
+        "Booking Price": 150
     },
     "4": {
         "ID": 4,
         "Location": "Heliopolis",
-        "Name": "The Court"
+        "Name": "The Court",
+        "Booking Price": 130
     },
     "5": {
         "ID": 5,
         "Location": "New Cairo",
-        "Name": "Padel Spot"
+        "Name": "Padel Spot",
+        "Booking Price": 120
     },
     "6": {
         "ID": 6,
         "Location": "Dokki",
-        "Name": "Racket Zone"
+        "Name": "Racket Zone",
+        "Booking Price": 110
     },
     "7": {
         "ID": 7,
         "Location": "Maadi",
-        "Name": "Top Serve"
+        "Name": "Top Serve",
+        "Booking Price": 200
     },
     "8": {
         "ID": 8,
         "Location": "Sheikh Zayed",
-        "Name": "Ace Arena"
+        "Name": "Ace Arena",
+        "Booking Price": 220
     },
     "9": {
         "ID": 9,
         "Location": "6th October",
-        "Name": "Smash Center"
+        "Name": "Smash Center",
+        "Booking Price": 230
     }
 }

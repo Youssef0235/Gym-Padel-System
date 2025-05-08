@@ -19,12 +19,28 @@ int Manager::getTotalRevenue()
 		totalPaidByGym += FileManager::coachesInfo[coachesIt->first].getSalary();
 		coachesIt++;
 	}
+	// Gym Subs + Padel Bookings
 	auto membersIt = FileManager::members.begin();
 	while (membersIt != FileManager::members.end())
 	{
 		totalPaidToGym += FileManager::members[membersIt->first].getTotalPaid();
+		set<Slot>st = FileManager::members[membersIt->first].getSlots();
+		auto it = st.begin();
+		while (it != st.end())
+		{
+			totalPaidToGym += FileManager::courts[it->getCourtID()].getBookingPrice();
+			it++;
+		}
 		membersIt++;
 	}
+	// Classes Subs
+	auto classesIt = FileManager::classes.begin();
+	while (classesIt != FileManager::classes.end())
+	{
+		totalPaidToGym += FileManager::classes[classesIt->first].getClassMembers().size() * FileManager::classes[classesIt->first].getClassPrice();
+		classesIt++;
+	}
+
 	return totalPaidToGym - totalPaidByGym;
 }
 
